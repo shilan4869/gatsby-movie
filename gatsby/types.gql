@@ -1,0 +1,19 @@
+# pages
+
+type Search implements Node {
+  title: String!
+  description: String
+  slug: String
+  query: SearchQuery
+}
+
+type SearchQuery {
+  category_id: Int
+  sort: Int
+}
+
+# home page
+
+type ProductListing implements Node {
+  list: [Search]
+}

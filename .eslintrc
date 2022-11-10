@@ -1,0 +1,35 @@
+{
+  "extends": "@dkh-dev/eslint-config-react",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "ignorePatterns": [
+    ".cache",
+    "node_modules",
+    "public",
+    "*local*"
+  ],
+  "rules": {
+    "consistent-return": "off",
+    "guard-for-in": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignoreUrls": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true,
+        "ignoreComments": true,
+        "ignorePattern": "<\\w+|\\w+=|^import|^export|require\\(|[\\{\\[]\\s.+\\s[\\]\\}]"
+      }
+    ],
+    "max-statements": "off",
+    "no-constant-condition": "off",
+    "no-process-env": "off",
+    "react/display-name": "off",
+    "react/jsx-curly-brace-presence": "off",
+    "react/prop-types": "off"
+  }
+}

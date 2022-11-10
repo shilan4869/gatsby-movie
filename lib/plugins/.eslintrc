@@ -1,0 +1,8 @@
+{
+  "extends": "../.eslintrc",
+  "rules": {
+    "guard-for-in": "off",
+    "no-param-reassign": "off",
+    "no-underscore-dangle": "off"
+  }
+}
