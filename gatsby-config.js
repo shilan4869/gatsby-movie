@@ -2,6 +2,9 @@ require("./env")
 module.exports = {
   plugins: [
     "gatsby-plugin-jsconfig",
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
     "gatsby-plugin-postcss",
     "gatsby-plugin-url-loader",
     "gatsby-plugin-lodash",
