@@ -133,7 +133,7 @@
   }
 
   .button-primary {
-    @apply border border-transparent text-white bg-brand;
+    @apply border border-transparent text-black bg-primary-cyan;
   }
 
   .button-primary:hover,
@@ -142,7 +142,7 @@
   }
 
   .button-secondary {
-    @apply border border-secondary text-brand bg-light hover:border-brand focus:border-brand;
+    @apply border border-secondary text-white bg-light-gray hover:border-brand focus:border-brand;
   }
 
   .divider-x,

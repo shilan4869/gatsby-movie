@@ -158,14 +158,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        brand: {
-          DEFAULT: "#2579F2",
-          dark: "#0A59CC",
-        },
-        vendor: {
-          momo: "#AE2070",
-          vnpay: "#005baa",
-        },
+        "primary-cyan": "#00B9AE",
+        "light-gray": "#F9F9F9",
         success: "#29B474",
         warning: "#fa8c16",
         danger: "#DC3545",
