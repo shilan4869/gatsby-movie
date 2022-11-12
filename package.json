@@ -8,20 +8,23 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "bootstrap": "^5.2.2",
     "gatsby": "^5.0.0",
     "gatsby-plugin-image": "^3.0.0",
     "gatsby-plugin-lodash": "^6.0.0",
     "gatsby-plugin-minify": "^0.5.0",
     "gatsby-plugin-no-sourcemaps": "^5.0.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
+    "swiper": "^8.4.4",
     "webpack-bundle-analyzer": "^4.7.0"
   },
   "devDependencies": {
