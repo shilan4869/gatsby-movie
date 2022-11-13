@@ -15,7 +15,7 @@ module.exports = {
     },
     textColor: theme => ({
       ...theme('colors'),
-      DEFAULT: colors.gray[ 900 ],
+      DEFAULT: '#141414',
       dark: colors.gray[ 900 ],
       secondary: colors.gray[ 700 ],
       tertiary: colors.gray[ 500 ],
@@ -32,7 +32,7 @@ module.exports = {
     }),
     backgroundColor: theme => ({
       ...theme('colors'),
-      DEFAULT: colors.gray[ 100 ],
+      DEFAULT: '#141414',
       dark: colors.gray[ 900 ],
       light: colors.white,
       'black-10': 'rgba(0, 0, 0, 0.1)',
@@ -115,7 +115,16 @@ module.exports = {
       },
       sharpen: {
         '0%': {
+          filter: 'blur(0px)',
+        },
+        '30%': {
           filter: 'blur(2px)',
+        },
+        '70%': {
+          filter: 'blur(2px)',
+        },
+        '100%': {
+          filter: 'blur(0px)',
         },
       },
       'fade-in': {
@@ -238,11 +247,13 @@ module.exports = {
     'resize',
     'ringColor',
     'ringWidth',
+    'scale',
     'textAlign',
     'textColor',
     'textDecoration',
     'textOverflow',
     'textTransform',
+    'transform',
     'transitionDuration',
     'transitionProperty',
     'userSelect',

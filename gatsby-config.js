@@ -9,6 +9,14 @@ module.exports = {
     'gatsby-plugin-url-loader',
     'gatsby-plugin-lodash',
     'gatsby-plugin-serve-static-dev',
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /icon/,
+        },
+      },
+    },
     process.env.NODE_ENV !== 'development' && [
       'gatsby-plugin-no-sourcemaps',
       'gatsby-plugin-split-chunks',

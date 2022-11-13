@@ -1,2 +1,2 @@
-import "./lib/styles/styles.css"
+import './lib/styles/styles.css'
 
