@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby build",
+    "build": "gatsby clean; gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
@@ -18,8 +18,8 @@
     "gatsby": "^5.0.0",
     "gatsby-plugin-image": "^3.0.0",
     "gatsby-plugin-lodash": "^6.0.0",
-    "gatsby-plugin-minify": "^0.5.0",
     "gatsby-plugin-no-sourcemaps": "^5.0.0",
+    "gatsby-plugin-remote-images": "^3.6.0-alpha",
     "gatsby-plugin-sharp": "^5.0.0",
     "gatsby-source-filesystem": "^5.0.0",
     "gatsby-transformer-sharp": "^5.0.0",
@@ -29,6 +29,8 @@
     "webpack-bundle-analyzer": "^4.7.0"
   },
   "devDependencies": {
+    "@dkh-dev/eslint-config": "^2.0.1",
+    "@dkh-dev/eslint-config-react": "^1.4.0",
     "autoprefixer": "^10.4.13",
     "gatsby-plugin-postcss": "^6.0.0",
     "postcss": "^8.4.18",

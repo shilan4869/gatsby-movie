@@ -129,7 +129,7 @@
 
   .button-primary,
   .button-secondary {
-    @apply h-12 px-4 font-medium rounded-md ring-1 ring-transparent hover:ring-light-gray focus:ring-light-gray;
+    @apply h-12 px-4 font-medium  rounded-lg ring-1 ring-transparent hover:ring-light-gray focus:ring-light-gray;
   }
 
   .button-primary {
@@ -139,9 +139,16 @@
   .button-primary:hover,
   .button-primary:focus {
     filter: brightness(1.1);
+    transition: .2s ease;
   }
 
   .button-secondary {
-    @apply border border-secondary text-white bg-light-gray hover:border-light-gray focus:border-light-gray;
+    @apply border border-secondary text-white bg-black-75 backdrop-blur-sm;
+  }
+
+  .button-secondary:hover,
+  .button-secondary:focus {
+    background-color: rgba(0,0,0,0.4);
+    transition: .2s ease;
   }
 }
