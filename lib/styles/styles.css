@@ -4,7 +4,7 @@
 
 @layer base {
   @font-face {
-    font-family: "Roboto";
+    font-family: "Helvetica Neue,";
     font-style: normal;
     font-weight: 400;
     font-display: swap;
@@ -20,6 +20,20 @@
     src: url("lib/fonts/roboto-v29-500.woff2") format("woff2"),
       url("lib/fonts/roboto-v29-500.woff") format("woff");
   }
+
+  *,
+  ::before,
+  ::after {
+    --tw-backdrop-blur: ;
+    --tw-backdrop-brightness: ;
+    --tw-backdrop-contrast: ;
+    --tw-backdrop-grayscale: ;
+    --tw-backdrop-hue-rotate: ;
+    --tw-backdrop-invert: ;
+    --tw-backdrop-opacity: ;
+    --tw-backdrop-saturate: ;
+    --tw-backdrop-sepia: ;
+}
 
   html {
     font-size: 0.875em;
@@ -143,7 +157,7 @@
   }
 
   .button-secondary {
-    @apply border border-secondary text-white bg-black-75 backdrop-blur-sm;
+    @apply border border-secondary text-white bg-black-75;
   }
 
   .button-secondary:hover,
@@ -152,7 +166,12 @@
     transform: scale(1.05);
   }
 
-  .gradient {
-    background: linear-gradient(0deg, rgba(20,10,10,.85) 5%, rgba(40,30,30,0.55) 25%, rgba(180,155,155,0.1) 100%);
+  .gradient-bottom {
+    background: linear-gradient(0deg, rgba(20,20,20,.65) 5%, rgba(20,20,20,0.45) 25%, rgba(20,20,20,0.1) 100%);
   }
+
+  .gradient-top {
+    background: linear-gradient(180deg,rgba(20,20,20,95) 35%,transparent)
+  }
+
 }

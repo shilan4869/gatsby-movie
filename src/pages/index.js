@@ -8,7 +8,7 @@ import ToprateMovies from 'src/component/list/horizontal/ToprateMovies'
 import Carousel from 'src/component/carousel/Carousel'
 
 const Index = () => (
-  <div className='boundary bg min-h-screen py-6'>
+  <div className='boundary bg min-h-screen py-4'>
     <Carousel />
     <PopularMovies />
     <TrendingMovies />

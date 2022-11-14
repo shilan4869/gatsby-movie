@@ -2,6 +2,7 @@ const { mapValues } = require('lodash')
 const colors = require('tailwindcss/colors')
 const intellisense = require('./lib/styles/intellisense')
 const utilities = require('./lib/styles/utilities')
+const textShadow = require('./lib/styles/textShadow')
 
 module.exports = {
   content: [ './lib/**/*.js', './src/**/*.js' ],
@@ -147,8 +148,8 @@ module.exports = {
       sans: [
         'Roboto',
         '-apple-system',
-        'BlinkMacSystemFont',
         `'Helvetica Neue'`,
+        'BlinkMacSystemFont',
         'Helvetica',
         'Arial',
         'sans-serif',
@@ -185,6 +186,11 @@ module.exports = {
         ...theme('spacing'),
         ...mapValues(theme('fontSize'), ([ fontSize, { lineHeight } ]) => lineHeight === '1' ? fontSize : lineHeight),
       }),
+      textShadow: {
+        sm: '0 1px 2px var(--tw-shadow-color)',
+        DEFAULT: '0 2px 4px var(--tw-shadow-color)',
+        lg: '0 8px 16px var(--tw-shadow-color)',
+      },
     },
     backgroundImage: {
       times: `url('lib/fontawesome/far fa-times.svg')`,
@@ -196,7 +202,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [ intellisense, utilities ],
+  plugins: [ intellisense, utilities, textShadow ],
   corePlugins: [
     'animation',
     'preflight',
@@ -254,8 +260,10 @@ module.exports = {
     'textOverflow',
     'textTransform',
     'transform',
+    'transitionDelay',
     'transitionDuration',
     'transitionProperty',
+    'textShadow',
     'userSelect',
     'whitespace',
     'wordBreak',
