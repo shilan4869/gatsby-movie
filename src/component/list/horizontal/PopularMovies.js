@@ -6,12 +6,11 @@ import HorizontalList from './HorizontalList'
 const PopularMovies = () => {
   const { loading, error, data: popularMovies } = useQuery(TMDB_POPULAR_MOVIE_API)
 
-
   if (loading || error) {
     return
   }
 
-  return <HorizontalList movies={ popularMovies.results } />
+  return <HorizontalList movies={ popularMovies.results } heading='Popular Movies' />
 }
 
 export default PopularMovies

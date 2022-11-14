@@ -129,7 +129,7 @@
 
   .button-primary,
   .button-secondary {
-    @apply font-medium rounded-lg ring-1 ring-transparent hover:ring-light-gray focus:ring-light-gray;
+    @apply font-medium rounded-lg ring-1 ring-transparent hover:ring-light-gray focus:ring-light-gray transition-all;
   }
 
   .button-primary {
@@ -140,7 +140,6 @@
   .button-primary:focus {
     filter: brightness(1.1);
     transform: scale(1.05);
-    transition: all 0.2s ease-in-out;
   }
 
   .button-secondary {
@@ -151,10 +150,9 @@
   .button-secondary:focus {
     background-color: rgba(0,0,0,0.4);
     transform: scale(1.05);
-    transition: all 0.2s ease-in-out;
   }
 
   .gradient {
-    background: linear-gradient(0deg, rgba(20,10,10,1) 5%, rgba(40,30,30,0.5) 25%, rgba(180,155,155,0.1) 100%);
+    background: linear-gradient(0deg, rgba(20,10,10,.85) 5%, rgba(40,30,30,0.55) 25%, rgba(180,155,155,0.1) 100%);
   }
 }

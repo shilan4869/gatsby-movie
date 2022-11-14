@@ -6,7 +6,6 @@ import HorizontalList from './HorizontalList'
 const TrendingMovies = () => {
   const { loading, error, data: trendingMovies } = useQuery(TMDB_TRENDING_MOVIE_API)
 
-
   if (loading || error) {
     return
   }

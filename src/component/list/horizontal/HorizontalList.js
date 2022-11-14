@@ -11,16 +11,13 @@ const HorizontalList = ({ movies, heading }) => {
 
   return (
     <div className='w-full flex flex-col'>
-      <h3 className='text-white'>{ heading }</h3>
+      <h3 className='p-3 mt-2 text-white'>{ heading }</h3>
       <Swiper
         slidesPerView='auto'
-        slidesPerGroup={ 1 }
+        slidesPerGroup={ 2 }
         grabCursor
         loop
         breakpoints={ {
-          576: {
-            slidesPerGroup: 2,
-          },
           768: {
             slidesPerGroup: 4,
           },

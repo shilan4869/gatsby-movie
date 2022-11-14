@@ -6,7 +6,6 @@ import HorizontalList from './HorizontalList'
 const UpcomingMovies = () => {
   const { loading, error, data: upcomingMovies } = useQuery(TMDB_UPCOMING_MOVIE_API)
 
-
   if (loading || error) {
     return
   }

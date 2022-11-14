@@ -6,12 +6,11 @@ import HorizontalList from './HorizontalList'
 const ToprateMovies = () => {
   const { loading, error, data: toprateMovies } = useQuery(TMDB_TOPRATE_MOVIE_API)
 
-
   if (loading || error) {
     return
   }
 
-  return <HorizontalList movies={ toprateMovies.results } />
+  return <HorizontalList movies={ toprateMovies.results } heading='Toprate Movies' />
 }
 
 export default ToprateMovies
