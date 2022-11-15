@@ -1,19 +1,11 @@
 import React from 'react'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import UpcomingMovies from 'src/component/list/horizontal/UpcomingMovies'
-import PopularMovies from 'src/component/list/horizontal/PopularMovies'
-import TrendingMovies from 'src/component/list/horizontal/TrendingMovies'
-import ToprateMovies from 'src/component/list/horizontal/ToprateMovies'
-import Carousel from 'src/component/carousel/Carousel'
+import Main from 'src/component/home/Main'
+import RightSide from 'src/component/home/RightSide'
 
 const Index = () => (
-  <div className='boundary bg min-h-screen py-4'>
-    <Carousel />
-    <PopularMovies />
-    <TrendingMovies />
-    <ToprateMovies />
-    <UpcomingMovies />
+  <div className='flex'>
+    <Main className='w-full lg:w-3/4' />
+    <RightSide className='fixed right-0 hidden lg:flex flex-col w-1/4 h-screen pt-16 p-2' />
   </div>
 )
 

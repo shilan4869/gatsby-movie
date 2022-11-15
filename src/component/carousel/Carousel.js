@@ -78,13 +78,13 @@ const Carousel = () => {
         className='rounded-xl cursor-pointer overflow-hidden aspect-ratio aspect-w-16 aspect-h-9'
       >
         { movies.map((movie, index) => (
-          <SwiperSlide className='w-full text-white group' key={ index }>
+          <SwiperSlide className='w-full group' key={ index }>
             <img src={ TMDB_BACKDROP_ORIGIN + movie.backdrop_path } alt={ movie.title } className='object-cover' />
             <div className='absolute flex flex-col bottom-5 left-8 right-8 md:left-20 md:right-20 md:bottom-16 z-10'>
               <div className='text-2xl md:text-3xl font-semibold text-shadow shadow-black md:mb-6'>
                 { movie.title }
               </div>
-              <div className='hidden md:block text-shadow shadow-black lg:mb-4'>
+              <div className='hidden text-xs md:text-sm lg:text-base sm:block text-shadow shadow-black lg:mb-4'>
                 { movie.overview }
               </div>
               <div className='hidden lg:flex flex-wrap -ml-1'>

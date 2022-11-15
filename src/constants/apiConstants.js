@@ -10,3 +10,4 @@ export const TMDB_TRENDING_MOVIE_API = 'https://api.themoviedb.org/3/trending/mo
 export const TMDB_UPCOMING_MOVIE_API = 'https://api.themoviedb.org/3/movie/upcoming?api_key=c298c2cccf3f21af1e7a841e1034f72e'
 export const TMDB_NOW_PLAYING_MOVIE_API = 'https://api.themoviedb.org/3/movie/now_playing?api_key=c298c2cccf3f21af1e7a841e1034f72e'
 export const TMDB_GENRES_API = 'https://api.themoviedb.org/3/genre/list?api_key=c298c2cccf3f21af1e7a841e1034f72e&language=en-US'
+export const TMDB_MULTI_SEARCH_API = 'https://api.themoviedb.org/3/search/multi'

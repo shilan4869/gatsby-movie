@@ -171,7 +171,7 @@
   }
 
   .gradient-top {
-    background: linear-gradient(180deg,rgba(20,20,20,95) 35%,transparent)
+    background: linear-gradient(180deg,rgba(0,0,0,1) 35%,transparent)
   }
 
 }

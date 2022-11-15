@@ -1,53 +1,77 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import FontAwesome from 'lib/components/FontAwesome'
 import { farFaSearch } from 'lib/fontawesome/fontawesome'
+import { navigate } from 'gatsby'
 
-const SearchBox = () => {
+const SearchBox = ({ className, actived }) => {
   const searchBox = useRef()
   const searchInput = useRef()
   const searchIcon = useRef()
-  const handleClick = () => {
-    searchBox.current.classList.toggle('actived')
+  const [ keyword, setKeyword ] = useState('')
+  const [ focused, setFocused ] = useState(false)
 
-    if (!searchBox.current.classList.contains('actived')) {
-      console.log('go right!')
-      searchIcon.current.style.right = '16px'
-      searchInput.current.style.width = '0px'
-      searchInput.current.style.opacity = '0%'
-    } else {
-      console.log('go left!')
-      searchIcon.current.style.right = '244px'
-      searchInput.current.style.width = '320px'
-      searchInput.current.style.opacity = '100%'
-    }
+  const handleFormFocus = () => {
+    setFocused(true)
+  }
+  const handleFormBlur = () => {
+    setFocused(false)
+  }
+  const handleEnterKeyword = e => {
+    const newKeyword = e.target.value
+
+    console.log(newKeyword)
+
+    setKeyword(newKeyword)
+  }
+  const handleFormSubmit = e => {
+    e.preventDefault()
+    navigate('/search', { state: { keyword } })
   }
 
+  useEffect(() => {
+    if (focused || actived) {
+      searchIcon.current.style.left = '3%'
+      searchInput.current.style.width = '100%'
+      searchInput.current.style.opacity = '100%'
+    } else {
+      searchIcon.current.style.left = '100%'
+      searchInput.current.style.width = '0px'
+      searchInput.current.style.opacity = '0%'
+    }
+  }, [ focused, actived ])
+
   return (
-    <div
-      className='absolute right-36 top-4'
+    <form
+      autoComplete='off'
+      className={ className }
+      onFocus={ handleFormFocus }
+      onBlur={ handleFormBlur }
+      onSubmit={ handleFormSubmit }
     >
       <div
-        className='relative flex items-center w-80 justify-end'
+        className='relative flex items-center w-full lg:w-full justify-end'
         ref={ searchBox }
       >
-        <div
-          className='absolute right-4 w-5 h-5 invert cursor-pointer hover:scale-105 duration-500 delay-200 z-20'
-          onClick={ handleClick }
+        <label
+          className='absolute left-full w-12 h-12 p-3 cursor-pointer hover:scale-105 duration-500 delay-200 z-20'
+          htmlFor={ 'search-input' }
           ref={ searchIcon }
         >
           <FontAwesome
             icon={ farFaSearch }
           />
-        </div>
+        </label>
         <input
           type='text'
           name='search'
-          className='block text-white py-1 pl-16 pr-12 border border-white bg-black-50 opacity-0 duration-500 delay-200'
+          id='search-input'
+          className='block h-12 text-white outline-none rounded-full pl-16 pr-12 border border-white bg-black-50 opacity-0 duration-500 delay-200'
           placeholder='Enter movie, actor or genres'
+          onChange={ handleEnterKeyword }
           ref={ searchInput }
         />
       </div>
-    </div>
+    </form>
   )
 }
 

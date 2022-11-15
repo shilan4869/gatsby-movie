@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'lib/utilities/clsx'
-import VerticalMovie from 'src/component/movie/verticalMovie'
+import VerticalMovie from 'src/component/movie/VerticalMovie'
 import { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -12,7 +12,7 @@ const HorizontalList = ({ movies, heading, className }) => {
 
   return (
     <div className={ clsx('w-full flex flex-col', className) }>
-      <h3 className='p-3 mt-2 text-white'>{ heading }</h3>
+      <h3 className='p-3 mt-2'>{ heading }</h3>
       <Swiper
         slidesPerView='auto'
         slidesPerGroup={ 2 }
