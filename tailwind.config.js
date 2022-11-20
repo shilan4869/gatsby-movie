@@ -35,6 +35,7 @@ module.exports = {
     backgroundColor: theme => ({
       ...theme('colors'),
       DEFAULT: '#141414',
+      main: '#141414',
       dark: colors.gray[ 900 ],
       light: colors.white,
       'black-10': 'rgba(0, 0, 0, 0.1)',

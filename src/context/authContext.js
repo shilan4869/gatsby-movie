@@ -1,4 +1,4 @@
-import React, { createContext } from 'react'
+import React, { createContext, useState } from 'react'
 import useQuery from 'lib/hooks/useQuery'
 import { TMDB_GENRES_API } from 'src/constants/apiConstants'
 
@@ -6,6 +6,7 @@ export const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
   const { loading, error, data } = useQuery(TMDB_GENRES_API)
+  const [ homepageTab, setHomepageTab ] = useState(NaN)
 
   if (loading || error) {
     return
@@ -19,6 +20,8 @@ const AuthProvider = ({ children }) => {
 
   const authData = {
     genres,
+    homepageTab,
+    setHomepageTab,
   }
 
   return (

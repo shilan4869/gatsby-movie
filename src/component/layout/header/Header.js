@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef, memo } from 'react'
+import FontAwesome from 'lib/components/FontAwesome'
+import { falFaBars } from 'lib/fontawesome/fontawesome'
+import UserPlaceholder from './authentication/UserPlaceholder'
 import SearchBox from './SearchBox'
+import NetflixLogo from 'src/assets/img/netflix.png'
 
 
 const Header = () => {
@@ -9,7 +13,9 @@ const Header = () => {
   const [ isHugeScreen, setIsHugeScreen ] = useState(initialWidth >= 1200)
   const headerRef = useRef()
   const checkWindowWidth = () => {
-    if (window.innerWidth >= 992) {
+    const xlScreenWidth = 1200
+
+    if (window.innerWidth >= xlScreenWidth) {
       setIsHugeScreen(true)
     } else {
       setIsHugeScreen(false)
@@ -25,6 +31,10 @@ const Header = () => {
     }
   }
 
+  const openMenu = () => {
+    console.log('menu opened')
+  }
+
   useEffect(() => {
     window.addEventListener('resize', checkWindowWidth)
     window.addEventListener('scroll', checkIsWindowOnTop)
@@ -36,9 +46,14 @@ const Header = () => {
   }, [])
 
   return (
-    <div className='fixed left-0 right-0 top-0 h-16 gradient-top z-50 duration-500' ref={ headerRef }>
-      <div className='boundary xl:max-w-full relative'>
-        <SearchBox className='absolute hidden sm:block right-20 top-0 p-2 lg:right-0 lg:w-1/4 lg:opacity-70 hover:opacity-100 focus-within:opacity-100' actived={ isHugeScreen } />
+    <div className='fixed left-0 right-0 top-0 h-16 gradient-top z-20 md:z-10 duration-500' ref={ headerRef }>
+      <div className='xl:max-w-full relative'>
+        <FontAwesome icon={ falFaBars } className='absolute w-12 p-3 md:hidden cursor-pointer' onClick={ openMenu } />
+        <div className='absolute top-4 left-14 md:left-4 right-4 justify-start'>
+          <img src={ NetflixLogo } alt='netfix' className='w-24' />
+        </div>
+        <UserPlaceholder className='absolute top-16 md:top-3 xl:top-20 w-1/2 md:w-1/5 xl:w-1/6 md:right-5 xl:left-0' />
+        <SearchBox className='w-1/3 absolute sm:block right-14 md:right-28 top-0 p-2 xl:right-0 xl:w-1/6' actived={ isHugeScreen } />
       </div>
     </div>
   )

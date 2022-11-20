@@ -4,6 +4,7 @@ import { TMDB_NOW_PLAYING_MOVIE_API, TMDB_BACKDROP_ORIGIN } from 'src/constants/
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper'
 import { Tags } from '../utilities/Button'
+import Image from 'lib/components/Image'
 import playButton from 'src/assets/img/play-button.png'
 import useAuthContext from 'src/hooks/useAuthContext'
 
@@ -79,7 +80,7 @@ const Carousel = () => {
       >
         { movies.map((movie, index) => (
           <SwiperSlide className='w-full group' key={ index }>
-            <img src={ TMDB_BACKDROP_ORIGIN + movie.backdrop_path } alt={ movie.title } className='object-cover' />
+            <Image src={ TMDB_BACKDROP_ORIGIN + movie.backdrop_path } alt={ movie.title } className='object-cover' />
             <div className='absolute flex flex-col bottom-5 left-8 right-8 md:left-20 md:right-20 md:bottom-16 z-10'>
               <div className='text-2xl md:text-3xl font-semibold text-shadow shadow-black md:mb-6'>
                 { movie.title }

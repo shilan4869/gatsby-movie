@@ -21,7 +21,7 @@ const RightSide = ({ className }) => {
             { genre }
           </Tags>)) }
       </div> */ }
-      <RecommenedMovies className='mt-2' />
+      <RecommenedMovies />
     </div>
   )
 }
