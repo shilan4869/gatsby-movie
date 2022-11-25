@@ -10,9 +10,9 @@ const Watch = () => {
 
   return (
     <div className='flex bg min-h-96'>
-      <div className='md:mt-0 xl:w-4/6 mx-auto'>
+      <div className='w-full md:mt-0 xl:w-4/6 mx-auto'>
         <div className='aspect-ratio aspect-w-16 aspect-h-9'>
-          <iframe id='iframe' src={ apiURL } width='100%' height='100%' frameBorder='0' className='absolute px-4 pt-8' />
+          <iframe id='iframe' src={ apiURL } width='100%' height='100%' frameBorder='0' className='absolute px-4 pt-8' allowFullScreen />
         </div>
         <Movies />
       </div>
