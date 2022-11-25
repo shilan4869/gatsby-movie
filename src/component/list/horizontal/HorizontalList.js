@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'lib/utilities/clsx'
-import VerticalMovie from 'src/component/movie/VerticalSingleMovie'
+import VerticalMovie from 'src/component/movie/VerticalMovie'
 import { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 

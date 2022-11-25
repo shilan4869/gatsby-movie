@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import useQuery from 'lib/hooks/useQuery'
 import useAuthContext from 'src/hooks/useAuthContext'
 import { TMDB_MULTI_SEARCH_API } from 'src/constants/apiConstants'
-import VerticalMovie from 'src/component/movie/VerticalSingleMovie'
+import VerticalMovie from 'src/component/movie/VerticalMovie'
 
 const Search = () => {
   const ACCOUNT_TAB = 3
