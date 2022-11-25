@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgatsby_movie=self.webpackChunkgatsby_movie||[]).push([[742],{4742:function(s,t,e){e.d(t,{Z:function(){return o}});const n={}.GATSBY_IMAGE_ORIGIN||{}.GATSBY_CDN_ORIGIN,r=n?s=>s&&s.startsWith("/")?n+s:s:s=>s;var a=e(7294),c=e(5893);const i=s=>{let{src:t,...e}=s;return(0,c.jsx)("img",{loading:"lazy",src:r(t),...e})};var o=(0,a.memo)(i)}}]);
