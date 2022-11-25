@@ -3,7 +3,7 @@
   "homepage": "http://shilan4869.github.io/gatsby-movie",
   "version": "1.0.0",
   "engines": {
-    "node": "18.0.0"
+    "node": "18.x"
   },
   "private": true,
   "description": "gatsby-movie",
