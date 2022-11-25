@@ -6,27 +6,30 @@ import LeftSideMenu from 'src/component/layout/menu/LeftSideMenu'
 const Layout = ({ children }) => {
   const XL_SCREEN = 1200
   const MD_SCREEN = 768
-  const initialWidth = window.innerWidth
 
-  const [ isXlScreen, setIsXlScreen ] = useState(initialWidth >= XL_SCREEN)
-  const [ isMdScreen, setIsMdScreen ] = useState(initialWidth >= MD_SCREEN)
-  const checkWindowWidth = () => {
-    console.log('checking...')
-
-    if (window.innerWidth >= XL_SCREEN) {
-      setIsXlScreen(true)
-    } else {
-      setIsXlScreen(false)
-    }
-
-    if (window.innerWidth >= MD_SCREEN) {
-      setIsMdScreen(true)
-    } else {
-      setIsMdScreen(false)
-    }
-  }
+  const [ isXlScreen, setIsXlScreen ] = useState(false)
+  const [ isMdScreen, setIsMdScreen ] = useState(false)
 
   useEffect(() => {
+    const initialWidth = window.innerWidth
+
+    setIsMdScreen(initialWidth >= MD_SCREEN)
+    setIsXlScreen(initialWidth >= XL_SCREEN)
+
+    const checkWindowWidth = () => {
+      if (window.innerWidth >= XL_SCREEN) {
+        setIsXlScreen(true)
+      } else {
+        setIsXlScreen(false)
+      }
+
+      if (window.innerWidth >= MD_SCREEN) {
+        setIsMdScreen(true)
+      } else {
+        setIsMdScreen(false)
+      }
+    }
+
     window.addEventListener('resize', checkWindowWidth)
 
     return () => window.removeEventListener('resize', checkWindowWidth)

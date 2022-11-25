@@ -1,5 +1,6 @@
 require('./env')
 module.exports = {
+  pathPrefix: '/gatsby-movie',
   plugins: [
     'gatsby-plugin-jsconfig',
     'gatsby-plugin-image',
