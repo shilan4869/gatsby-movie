@@ -14,7 +14,7 @@ const HorizontalMovie = ({ className, movie }) => {
         <div className='aspect-ratio aspect-h-9 aspect-w-16 rounded-xl overflow-hidden'>
           <img src={ TMDB_SMALL_BACKDROP_ORIGIN + (backdropPath || '/olPXihyFeeNvnaD6IOBltgIV1FU.jpg') } alt='movie' className='swiper-lazy object-cover' />
         </div>
-        <div className='absolute left-4 top-4 px-4 py-2 md:px-3 md:py-1 flex items-center bg-primary-cyan text-white rounded-2xl hover:scale-125 transition-all'>
+        <div className='absolute left-2 top-2 px-3 py-1 flex items-center bg-primary-cyan text-white rounded-2xl hover:scale-125 transition-all'>
           <p className='text-lg md:text-base mt-1 md:mt-px mr-1'>{ numberOfStar }</p>
           <span>
             <Star className='w-4 h-4' />
@@ -27,7 +27,7 @@ const HorizontalMovie = ({ className, movie }) => {
         <SecondaryButton className='opacity-0 md:group-hover:opacity-100 absolute left-12 bottom-12 sm:left-4 sm:bottom-4'>
           Add
         </SecondaryButton>
-        <div className='opacity-0 group-hover:opacity-100 duration-500 absolute -bottom-8 left-0 right-0 flex justify-center text-shadow'>{ movie.title }</div>
+        <div className='opacity-0 group-hover:opacity-100 duration-500 absolute -bottom-8 left-0 right-0 flex justify-center text-shadow'>{ movie.title || movie.original_name }</div>
       </div>
     </div>
   )

@@ -12,7 +12,7 @@ const VerticalList = ({ movies, heading, className }) => {
 
   return (
     <div className={ clsx('w-full flex flex-col h-full  border-l border-light-gray p-2', className) }>
-      <h3 className='p-3 text-white'>{ heading }</h3>
+      <div className='text-xl lg:text-2xl font-medium p-3'>{ heading }</div>
       <Swiper
         slidesPerView={ 5 }
         slidesPerGroup={ 5 }
@@ -22,7 +22,7 @@ const VerticalList = ({ movies, heading, className }) => {
         freeMode
         speed={ 300 }
         breakpoints={ {
-          1500: {
+          1600: {
             slidesPerView: 4,
             slidesPerGroup: 4,
           },

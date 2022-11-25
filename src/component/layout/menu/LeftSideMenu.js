@@ -91,7 +91,7 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
 
   return (
     <>
-      <FontAwesome icon={ falFaBars } className='absolute w-12 p-3 md:hidden cursor-pointer z-50' onClick={ openMenu } />
+      <FontAwesome icon={ falFaBars } className='fixed w-12 p-3 md:hidden cursor-pointer z-50' onClick={ openMenu } />
       <div
         className={ clsx('md:w-full mt-1 p-2 bg xl:border-r border-light-gray h-screen md:h-16 xl:h-screen md:bg-transparent xl:bg-black-10 -left-full md:ml-28 xl:ml-0 z-10 md:z-20 xl:z-10 text-shadow duration-300', className) }
         ref={ menu }
