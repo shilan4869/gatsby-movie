@@ -76,7 +76,7 @@ const Carousel = () => {
         loop
         modules={ [ Autoplay ] }
         onInit={ onInit }
-        className='rounded-xl cursor-pointer overflow-hidden aspect-ratio aspect-w-16 aspect-h-9'
+        className='rounded-xl cursor-pointer overflow-hidden aspect-ratio aspect-w-16 aspect-h-9 pt-8'
       >
         { movies.map((movie, index) => (
           <SwiperSlide className='w-full group' key={ index }>

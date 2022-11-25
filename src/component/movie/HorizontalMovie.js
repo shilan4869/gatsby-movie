@@ -5,10 +5,6 @@ import { TMDB_SMALL_BACKDROP_ORIGIN } from 'src/constants/apiConstants'
 import Star from 'src/assets/icon/Star.svg'
 
 const HorizontalMovie = ({ className, movie }) => {
-  if (!movie.backdrop_path || !movie.vote_average) {
-    return
-  }
-
   const { backdrop_path: backdropPath, vote_average: voteAverage } = movie
   const numberOfStar = Math.floor(Number(voteAverage) * 10) / 10
 
@@ -16,7 +12,7 @@ const HorizontalMovie = ({ className, movie }) => {
     <div className={ clsx('m-2 rounded-xl group cursor-pointer', className) }>
       <div className='relative transform-none group-hover:scale-105 group-hover:z-50 group-hover:animate-sharpen duration-300'>
         <div className='aspect-ratio aspect-h-9 aspect-w-16 rounded-xl overflow-hidden'>
-          <img src={ TMDB_SMALL_BACKDROP_ORIGIN + backdropPath } alt='movie' className='swiper-lazy object-cover' />
+          <img src={ TMDB_SMALL_BACKDROP_ORIGIN + (backdropPath || '/olPXihyFeeNvnaD6IOBltgIV1FU.jpg') } alt='movie' className='swiper-lazy object-cover' />
         </div>
         <div className='absolute left-4 top-4 px-4 py-2 md:px-3 md:py-1 flex items-center bg-primary-cyan text-white rounded-2xl hover:scale-125 transition-all'>
           <p className='text-lg md:text-base mt-1 md:mt-px mr-1'>{ numberOfStar }</p>

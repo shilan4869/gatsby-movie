@@ -1,5 +1,6 @@
 {
   "name": "gatsby-movie",
+  "homepage": "http://shilan4869.github.io/gatsby-movie",
   "version": "1.0.0",
   "private": true,
   "description": "gatsby-movie",
@@ -12,7 +13,9 @@
     "start": "gatsby develop",
     "build": "gatsby clean; gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "babel-preset-gatsby": "^3.0.0",

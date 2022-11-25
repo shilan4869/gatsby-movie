@@ -9,14 +9,12 @@ const HorizontalList = ({ movies, heading, className }) => {
     return
   }
 
-
   return (
     <div className={ clsx('w-full flex flex-col', className) }>
       <h3 className='p-3 mt-2'>{ heading }</h3>
       <Swiper
         slidesPerView={ 4 }
         slidesPerGroup={ 4 }
-        grabCursor
         loop
         navigation
         breakpoints={ {
@@ -30,7 +28,7 @@ const HorizontalList = ({ movies, heading, className }) => {
       >
         <div className='swiper-wrapper '>
           { movies.map((movie, index) => (
-            <SwiperSlide className='w-1/4 lg:w-1/5' key={ index }>
+            <SwiperSlide className='w-1/4 lg:w-1/5 cursor-pointer' key={ index }>
               <VerticalMovie className='w-full' movie={ movie } />
             </SwiperSlide>
           )) }

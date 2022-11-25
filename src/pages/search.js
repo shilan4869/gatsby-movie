@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useQuery from 'lib/hooks/useQuery'
 import useAuthContext from 'src/hooks/useAuthContext'
 import { TMDB_MULTI_SEARCH_API } from 'src/constants/apiConstants'
@@ -8,9 +8,11 @@ const Search = () => {
   const ACCOUNT_TAB = 3
   const { setHomepageTab } = useAuthContext()
 
-  setHomepageTab(ACCOUNT_TAB)
+  useEffect(() => {
+    setHomepageTab(ACCOUNT_TAB)
+  }, [ setHomepageTab ])
 
-  const searchKeyword = window.history.state.keyword || ''
+  const searchKeyword = window.history.state?.keyword || ''
   const { loading, error, data: searchResult } = useQuery(TMDB_MULTI_SEARCH_API, { query: { query: searchKeyword, language: 'en-US', api_key: 'c298c2cccf3f21af1e7a841e1034f72e' } })
 
   if (loading || error) {

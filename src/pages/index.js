@@ -6,7 +6,7 @@ import 'lib/styles/swiper/navigation.css'
 
 const Index = () => (
   <div className='flex bg min-h-screen'>
-    <Main className='w-full mt-10 md:mt-0 xl:w-4/6 mx-auto' />
+    <Main className='w-full mt-16 md:mt-0 xl:w-4/6 mx-auto' />
     <RightSide className='fixed right-0 hidden xl:flex flex-col w-1/6 h-screen pt-16' />
   </div>
 )
