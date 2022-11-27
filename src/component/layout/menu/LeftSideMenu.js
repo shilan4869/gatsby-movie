@@ -6,6 +6,9 @@ import clsx from 'lib/utilities/clsx'
 import Link from 'lib/components/Link'
 import UserPlaceholder from 'src/component/layout/menu/authentication/UserPlaceholder'
 import useAuthContext from 'src/hooks/useAuthContext'
+import Television from 'src/assets/icon/Television.svg'
+import Movie from 'src/assets/icon/Movie.svg'
+import Browse from 'src/assets/icon/Genres.svg'
 
 const LeftSideMenu = ({ className, isMdScreen }) => {
   const TV_TAB = 1
@@ -92,22 +95,24 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
     <>
       <FontAwesome icon={ falFaBars } className='fixed w-12 p-3 md:hidden cursor-pointer z-50' onClick={ openMenu } />
       <div
-        className={ clsx('mt-1 p-2 bg xl:border-r-2 border-dark-gray h-screen md:h-16 xl:h-screen md:bg-transparent xl:bg-black-10 -left-full md:ml-32 xl:ml-0 z-10 md:z-20 xl:z-10 text-shadow duration-300', className) }
+        className={ clsx('mt-1 p-2 bg xl:border-r-2 border-dark-gray h-screen md:h-16 xl:h-screen md:bg-transparent xl:bg-black-10 -left-full md:ml-52 xl:ml-0 z-10 md:z-20 xl:z-10 text-shadow duration-300', className) }
         ref={ menu }
       >
         <UserPlaceholder className='absolute top-20 left-0 w-full md:hidden xl:block' />
         <div className='mt-80 md:mt-0 xl:mt-80 md:flex xl:block'>
-          <div className='text-lg xl:text-xl py-4 px-4 md:hidden xl:block'>Browse your movies</div>
+          <div className='text-lg xl:text-lg py-4 px-4 md:hidden xl:block'>Browse your movies</div>
           <Link className='hover:no-underline' to='/'>
             <div className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 px-4' onClick={ tvMenuSelect }>
-              <div className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto' ref={ tvBar } />
-              <span className='ml-10 md:ml-0 xl:ml-10 opacity-80 hover:opacity-100' ref={ tvText }>TV Shows</span>
+              <div className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto' ref={ tvBar } />
+              <Television className='w-5 h-5 ml-7 md:hidden xl:block' fill='#fff' />
+              <span className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100' ref={ tvText }>TV Shows</span>
             </div>
           </Link>
           <Link className='hover:no-underline' to='/'>
-            <div className='flex md:flex-col-reverse  xl:flex-row py-4 md:py-1 xl:py-4 px-4' onClick={ moviesMenuSelect }>
-              <div className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto' ref={ moviesBar } />
-              <span className='ml-10 md:ml-0 xl:ml-10 opacity-80 hover:opacity-100' ref={ moviesText }>Movies</span>
+            <div className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 px-4' onClick={ moviesMenuSelect }>
+              <div className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto' ref={ moviesBar } />
+              <Movie className='w-5 h-6 ml-7 md:hidden xl:block' fill='#fff' />
+              <span className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100' ref={ moviesText }>Movies</span>
             </div>
           </Link>
           <div
@@ -118,8 +123,9 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
             onMouseLeave={ handleCloseGenres }
             onBlur={ handleCloseGenres }
           >
-            <div className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto' ref={ genresBar } />
-            <span className='ml-10 md:ml-0 xl:ml-10 opacity-80 hover:opacity-100' ref={ genresText }>Genres</span>
+            <div className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto' ref={ genresBar } />
+            <Browse className='w-5 h-5 ml-7 md:hidden xl:block' fill='#fff' />
+            <span className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100' ref={ genresText }>Genres</span>
             { genresOpened && <Genres /> }
           </div>
         </div>

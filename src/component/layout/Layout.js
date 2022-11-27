@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
   return (
     <AuthProvider>
       <div className='bg w-full relative min-h-screen text-white'>
-        <LeftSideMenu className='fixed w-1/2 xl:w-1/6 text-base xl:text-lg' isMdScreen={ isMdScreen } />
+        <LeftSideMenu className='fixed w-1/2 xl:w-1/6 text-base' isMdScreen={ isMdScreen } />
         <Header isXlScreen={ isXlScreen } />
         { children }
       </div>

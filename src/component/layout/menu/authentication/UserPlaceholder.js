@@ -5,6 +5,9 @@ import useAuthContext from 'src/hooks/useAuthContext'
 import FontAwesome from 'lib/components/FontAwesome'
 import { fasFaUserAlt } from 'lib/fontawesome/fontawesome'
 import Link from 'lib/components/Link'
+import Setting from 'src/assets/icon/Setting.svg'
+import Favorite from 'src/assets/icon/Favorite.svg'
+import Logout from 'src/assets/icon/Exit-right.svg'
 
 const UserPlaceholder = ({ className }) => {
   const { homepageTab } = useAuthContext()
@@ -57,17 +60,20 @@ const UserPlaceholder = ({ className }) => {
         <div className='ml-4 text-sm opacity-70 md:hidden xl:block'>Your name here</div>
       </div>
       <div className='bg opacity-95 xl:bg-transparent md:border-x md:border-b md:rounded-b-lg md:rounded-l-lg xl:rounded-none xl:border-0 md:opacity-0 md:group-hover:opacity-100 duration-200 xl:opacity-100'>
-        <Link className='text-base py-4 px-6 flex md:block xl:flex xl:text-lg hover:no-underline md:ml-auto xl:ml-0' to='/'>
-          <div className='text-base w-1 md:hidden xl:block rounded-r-md bg-primary-cyan opacity-0' ref={ accountBarRef } />
-          <span className='ml-10 md:ml-0 xl:ml-10 opacity-80 hover:opacity-100' ref={ accountTextRef }>Your Account</span>
+        <Link className='py-4 px-6 flex md:block xl:flex hover:no-underline md:ml-auto xl:ml-0' to='/'>
+          <div className='w-1 md:hidden xl:block rounded-r-md bg-primary-cyan opacity-0' ref={ accountBarRef } />
+          <Setting className='w-5 h-5 ml-7 md:hidden xl:block' fill='#fff' />
+          <span className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100' ref={ accountTextRef }>Your Account</span>
         </Link>
-        <Link className='text-base py-4 px-6 flex md:block xl:flex xl:text-lg hover:no-underline md:ml-auto xl:ml-0' to='/'>
-          <div className='text-base w-1 md:hidden xl:block rounded-r-md bg-primary-cyan opacity-0' ref={ favoriteBarRef } />
-          <span className='ml-10 md:ml-0 xl:ml-10 opacity-80 hover:opacity-100' ref={ favoriteTextRef }>Favorite Movies</span>
+        <Link className='py-4 px-6 flex md:block xl:flex hover:no-underline md:ml-auto xl:ml-0' to='/'>
+          <div className='w-1 md:hidden xl:block rounded-r-md bg-primary-cyan opacity-0' ref={ favoriteBarRef } />
+          <Favorite className='w-5 h-5 ml-7 md:hidden xl:block' fill='#fff' />
+          <span className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100' ref={ favoriteTextRef }>Favorite Movies</span>
         </Link>
-        <Link className='text-base py-4 px-6 flex md:block xl:flex xl:text-lg hover:no-underline md:ml-auto xl:ml-0' to='/'>
-          <div className='text-base w-1 md:hidden xl:block rounded-r-md bg-primary-cyan opacity-0' ref={ bookmarkBarRef } />
-          <span className='ml-10 md:ml-0 xl:ml-10 opacity-80 hover:opacity-100' ref={ bookmarkTextRef }>Bookmark</span>
+        <Link className='py-4 px-6 flex md:block xl:flex hover:no-underline md:ml-auto xl:ml-0' to='/'>
+          <div className='w-1 md:hidden xl:block rounded-r-md bg-primary-cyan opacity-0' ref={ bookmarkBarRef } />
+          <Logout className='w-5 h-5 ml-7 md:hidden xl:block' fill='#fff' />
+          <span className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100' ref={ bookmarkTextRef }>Bookmark</span>
         </Link>
       </div>
     </div>
