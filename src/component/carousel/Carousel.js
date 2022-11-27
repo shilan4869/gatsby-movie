@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import useQuery from 'lib/hooks/useQuery'
-import { TMDB_NOW_PLAYING_MOVIE_API, TMDB_BACKDROP_ORIGIN } from 'src/constants/apiConstants'
+import { TMDB_NOW_PLAYING_MOVIE_API, TMDB_BACKDROP_ORIGIN, TMDB_TRENDING_TV_API, API_KEY } from 'src/constants/apiConstants'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper'
 import { Tags } from '../utilities/Button'
@@ -9,9 +9,10 @@ import playButton from 'src/assets/img/play-button.png'
 import useAuthContext from 'src/hooks/useAuthContext'
 
 const Carousel = () => {
-  const { loading, error, data: nowPlayingMovies } = useQuery(TMDB_NOW_PLAYING_MOVIE_API)
   const swiperRef = useRef()
-  const { genres } = useAuthContext()
+  const { genres, homepageTab } = useAuthContext()
+  const api = homepageTab === 1 ? TMDB_TRENDING_TV_API : TMDB_NOW_PLAYING_MOVIE_API
+  const { loading, error, data: nowPlayingMovies } = useQuery(api, { query: { api_key: API_KEY } })
 
 
   // I don't want the Carousel autoplay while I've been doing other stuff
@@ -80,10 +81,10 @@ const Carousel = () => {
       >
         { movies.map((movie, index) => (
           <SwiperSlide className='w-full group' key={ index }>
-            <Image src={ TMDB_BACKDROP_ORIGIN + movie.backdrop_path } alt={ movie.title } className='object-cover' />
+            <Image src={ TMDB_BACKDROP_ORIGIN + movie.backdrop_path } alt={ homepageTab === 1 ? movie.name : movie.title } className='object-cover' />
             <div className='absolute flex flex-col bottom-5 left-8 right-8 md:left-20 md:right-20 md:bottom-16 z-10'>
               <div className='text-2xl md:text-3xl font-semibold text-shadow shadow-black md:mb-6'>
-                { movie.title }
+                { homepageTab === 1 ? movie.name : movie.title }
               </div>
               <div className='hidden text-xs md:text-sm lg:text-base sm:block text-shadow shadow-black lg:mb-4'>
                 { movie.overview }

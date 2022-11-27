@@ -3,9 +3,9 @@ import useQuery from 'lib/hooks/useQuery'
 import useAuthContext from 'src/hooks/useAuthContext'
 import { TMDB_MULTI_SEARCH_API } from 'src/constants/apiConstants'
 import VerticalMovie from 'src/component/movie/VerticalMovie'
+import { ACCOUNT_TAB } from 'src/component/layout/constant'
 
 const Search = () => {
-  const ACCOUNT_TAB = 3
   const { setHomepageTab } = useAuthContext()
 
   useEffect(() => {
@@ -24,10 +24,10 @@ const Search = () => {
 
   return (
     <div className='w-full xl:w-5/6 xl:ml-[16.67%] text-white pt-12'>
-      <h1 className='p-4'>Search Result</h1>
+      <h2 className='p-4'>{ `Search Result for ${ searchKeyword }` }</h2>
       <div className='flex flex-wrap'>
         { movies.map(movie => (
-          <VerticalMovie key={ movie.id } movie={ movie } className='w-1/5'>
+          <VerticalMovie key={ movie.id } movie={ movie } className='w-1/4 lg:w-1/5'>
             { movie.title }
           </VerticalMovie>
         )) }

@@ -1,12 +1,13 @@
 import React, { createContext, useState } from 'react'
 import useQuery from 'lib/hooks/useQuery'
-import { TMDB_GENRES_API } from 'src/constants/apiConstants'
+import { TMDB_MOVIE_GENRES_API, TMDB_TV_GENRES_API } from 'src/constants/apiConstants'
 
 export const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
-  const { loading, error, data } = useQuery(TMDB_GENRES_API)
-  const [ homepageTab, setHomepageTab ] = useState(NaN)
+  const [ homepageTab, setHomepageTab ] = useState(JSON.parse(localStorage.getItem('menuTab')) || NaN)
+  const genresApi = homepageTab === 1 ? TMDB_TV_GENRES_API : TMDB_MOVIE_GENRES_API
+  const { loading, error, data } = useQuery(genresApi)
 
   if (loading || error) {
     return

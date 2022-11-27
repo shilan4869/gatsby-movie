@@ -49,8 +49,8 @@ const UserPlaceholder = ({ className }) => {
   }, [ homepageTab ])
 
   return (
-    <div className={ clsx('flex flex-col border-b md:border-0 xl:border-b border-light-gray group text-shadow cursor-pointer', className) }>
-      <div className='flex items-center pl-4 mb-4 md:mb-0 xl:mb-4 md:ml-auto xl:ml-0'>
+    <div className={ clsx('flex flex-col border-b md:border-0 xl:border-b-2 border-dark-gray group text-shadow cursor-pointer', className) }>
+      <div className='flex items-center pl-6 mb-4 md:mb-0 xl:mb-4 md:ml-auto xl:ml-0'>
         <div className='rounded-md overflow-hidden border border-white p-2'>
           <FontAwesome icon={ fasFaUserAlt } className='w-6 h-6' />
         </div>
