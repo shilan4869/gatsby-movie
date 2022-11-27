@@ -22,7 +22,6 @@ const Carousel = () => {
     }
 
     swiperRef.current.autoplay.start()
-    console.log('resume')
   }
 
   const handleWindowBlur = () => {
@@ -31,7 +30,6 @@ const Carousel = () => {
     }
 
     swiperRef.current.autoplay.stop()
-    console.log('pause')
   }
 
 

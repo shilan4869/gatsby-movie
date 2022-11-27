@@ -18,6 +18,7 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
   const { homepageTab, setHomepageTab } = useAuthContext()
   const menuTab = homepageTab || TV_TAB
   const menu = useRef()
+  const menuIcon = useRef()
   const tvBar = useRef()
   const tvText = useRef()
   const moviesBar = useRef()
@@ -71,16 +72,32 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
     setGenresOpened(false)
   }
 
-  const openMenu = () => {
+  const toggleMenu = () => {
     setMobileMenuOpened(!mobileMenuOpened)
   }
 
+
   useEffect(() => {
+    const closeMenu = e => {
+      if (!menu.current.contains(e.target) && (!menuIcon.current.contains(e.target))) {
+        setMobileMenuOpened(false)
+        console.log('ok')
+      }
+    }
+
+    window.addEventListener('click', closeMenu)
+
+    if (isMdScreen) {
+      window.removeEventListener('click', closeMenu)
+    }
+
     if (mobileMenuOpened || isMdScreen) {
       menu.current.style.left = '0'
     } else {
       menu.current.style.left = '-100%'
     }
+
+    return () => window.removeEventListener('click', closeMenu)
   }, [ mobileMenuOpened, isMdScreen ])
 
   useEffect(() => {
@@ -93,7 +110,9 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
 
   return (
     <>
-      <FontAwesome icon={ falFaBars } className='fixed w-12 p-3 md:hidden cursor-pointer z-50' onClick={ openMenu } />
+      <div className='fixed px-4 py-3 w-14 md:hidden cursor-pointer z-50' onClick={ toggleMenu } ref={ menuIcon }>
+        <FontAwesome icon={ falFaBars } />
+      </div>
       <div
         className={ clsx('mt-1 p-2 bg xl:border-r-2 border-dark-gray h-screen md:h-16 xl:h-screen md:bg-transparent xl:bg-black-10 -left-full md:ml-52 xl:ml-0 z-10 md:z-20 xl:z-10 text-shadow duration-300', className) }
         ref={ menu }
@@ -119,7 +138,7 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
             className='py-4 md:py-1 xl:py-4 px-4 flex md:flex-col-reverse xl:flex-row hover:no-underline cursor-pointer'
             ref={ genresRef }
             onMouseEnter={ handleOpenGenres }
-            onActive={ handleOpenGenres }
+            onFocus={ handleOpenGenres }
             onMouseLeave={ handleCloseGenres }
             onBlur={ handleCloseGenres }
           >

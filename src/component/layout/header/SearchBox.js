@@ -19,8 +19,6 @@ const SearchBox = ({ className, actived }) => {
   const handleEnterKeyword = e => {
     const newKeyword = e.target.value
 
-    console.log(newKeyword)
-
     setKeyword(newKeyword)
   }
   const handleFormSubmit = e => {
@@ -30,11 +28,11 @@ const SearchBox = ({ className, actived }) => {
 
   useEffect(() => {
     if (focused || actived) {
-      searchIcon.current.style.left = '3%'
+      searchIcon.current.style.right = '80%'
       searchInput.current.style.width = '100%'
       searchInput.current.style.opacity = '100%'
     } else {
-      searchIcon.current.style.left = '100%'
+      searchIcon.current.style.right = '1rem'
       searchInput.current.style.width = '0px'
       searchInput.current.style.opacity = '0%'
     }
@@ -53,7 +51,7 @@ const SearchBox = ({ className, actived }) => {
         ref={ searchBox }
       >
         <label
-          className='absolute left-full w-12 h-12 p-3 cursor-pointer hover:scale-105 duration-500 delay-200 z-20'
+          className='absolute right-4 w-12 h-12 p-3 cursor-pointer hover:scale-105 duration-500 delay-200 z-20'
           htmlFor={ 'search-input' }
           ref={ searchIcon }
         >
@@ -65,7 +63,7 @@ const SearchBox = ({ className, actived }) => {
           type='text'
           name='search'
           id='search-input'
-          className='block h-12 text-white outline-none rounded-full pl-16 pr-12 border border-white bg-black-50 opacity-0 duration-500 delay-200'
+          className='block h-12 text-white outline-none rounded-full pl-14 pr-4 border border-white bg-black-50 opacity-0 duration-500 delay-200'
           placeholder='Enter movie, actor or genres'
           onChange={ handleEnterKeyword }
           ref={ searchInput }
