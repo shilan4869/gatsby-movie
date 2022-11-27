@@ -12,8 +12,14 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
   const MOVIES_TAB = 2
   const [ mobileMenuOpened, setMobileMenuOpened ] = useState(false)
   const [ genresOpened, setGenresOpened ] = useState(false)
-
   const { homepageTab, setHomepageTab } = useAuthContext()
+  let localTab = NaN
+
+  if (typeof window !== 'undefined') {
+    localTab = JSON.parse(localStorage.getItem('menuTab'))
+  }
+
+  const menuTab = homepageTab || localTab || TV_TAB
   const menu = useRef()
   const tvBar = useRef()
   const tvText = useRef()
@@ -24,8 +30,6 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
   const genresText = useRef()
 
   useEffect(() => {
-    const menuTab = homepageTab || JSON.parse(localStorage.getItem('menuTab')) || TV_TAB
-
     setGenresOpened(false)
     moviesBar.current.style.opacity = '0%'
     tvBar.current.style.opacity = '0%'
@@ -49,7 +53,7 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
         break
       }
     }
-  }, [ homepageTab ])
+  }, [ menuTab ])
 
 
   const tvMenuSelect = () => {
