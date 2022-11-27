@@ -13,13 +13,7 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
   const [ mobileMenuOpened, setMobileMenuOpened ] = useState(false)
   const [ genresOpened, setGenresOpened ] = useState(false)
   const { homepageTab, setHomepageTab } = useAuthContext()
-  let localTab = NaN
-
-  if (typeof window !== 'undefined') {
-    localTab = JSON.parse(localStorage.getItem('menuTab'))
-  }
-
-  const menuTab = homepageTab || localTab || TV_TAB
+  const menuTab = homepageTab || TV_TAB
   const menu = useRef()
   const tvBar = useRef()
   const tvText = useRef()

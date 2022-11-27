@@ -5,7 +5,13 @@ import { TMDB_MOVIE_GENRES_API, TMDB_TV_GENRES_API } from 'src/constants/apiCons
 export const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
-  const [ homepageTab, setHomepageTab ] = useState(JSON.parse(localStorage.getItem('menuTab')) || NaN)
+  let localTab = NaN
+
+  if (typeof window !== 'undefined') {
+    localTab = JSON.parse(localStorage.getItem('menuTab'))
+  }
+
+  const [ homepageTab, setHomepageTab ] = useState(localTab || NaN)
   const genresApi = homepageTab === 1 ? TMDB_TV_GENRES_API : TMDB_MOVIE_GENRES_API
   const { loading, error, data } = useQuery(genresApi)
 
