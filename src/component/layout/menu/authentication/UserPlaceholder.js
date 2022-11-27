@@ -7,7 +7,7 @@ import { fasFaUserAlt } from 'lib/fontawesome/fontawesome'
 import Link from 'lib/components/Link'
 import Setting from 'src/assets/icon/Setting.svg'
 import Favorite from 'src/assets/icon/Favorite.svg'
-import Logout from 'src/assets/icon/Exit-right.svg'
+import Logout from 'src/assets/icon/Logout.svg'
 
 const UserPlaceholder = ({ className }) => {
   const { homepageTab } = useAuthContext()
