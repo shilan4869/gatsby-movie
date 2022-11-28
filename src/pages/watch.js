@@ -10,7 +10,8 @@ const Watch = () => {
   const apiURL = EMBED_MOVIE_API + id
 
   const removeAds = useCallback(e => {
-    e.target.querySelectorAll('a[target="_blank"]').forEach(e => e.remove())
+    console.log('ads removed!')
+    document.querySelectorAll('a[target="_blank"]').forEach(e => e.remove())
   }, [])
 
   return (
