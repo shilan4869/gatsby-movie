@@ -1,27 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useRef, useCallback } from 'react'
 import Movies from 'src/component/home/Movies'
 import { EMBED_MOVIE_API } from 'src/constants/apiConstants'
 import RightSide from 'src/component/home/RightSide'
 
 const Watch = () => {
+  const playerRef = useRef()
   const params = new URLSearchParams(location.search)
   const id = params.get('id')
   const apiURL = EMBED_MOVIE_API + id
 
-  const removeAds = () => {
-    document.querySelectorAll('a[target="_blank"]').forEach(e => e.remove())
-  }
-
-  useEffect(() => {
-    window.addEventListener('DOMContentLoaded', removeAds)
-
-    return () => window.removeEventListener('DOMContentLoaded', removeAds)
+  const removeAds = useCallback(e => {
+    e.target.querySelectorAll('a[target="_blank"]').forEach(e => e.remove())
   }, [])
 
   return (
     <div className='flex bg min-h-96'>
       <div className='w-full md:mt-0 xl:w-4/6 mx-auto'>
-        <div className='aspect-ratio aspect-w-16 aspect-h-9'>
+        <div
+          className='aspect-ratio aspect-w-16 aspect-h-9'
+          ref={ playerRef }
+          onMouseEnter={ removeAds }
+          onMouseDown={ removeAds }
+        >
           <iframe id='iframe' src={ apiURL } width='100%' height='100%' frameBorder='0' className='absolute px-4 pt-8' allowFullScreen />
         </div>
         <Movies />
