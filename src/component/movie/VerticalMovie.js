@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'lib/utilities/clsx'
 import Image from 'lib/components/Image'
-import Link from 'lib/components/Link'
+import { Link } from 'gatsby'
 import { PrimaryButton, SecondaryButton } from '../utilities/Button'
 import { TMDB_POSTER_ORIGIN } from 'src/constants/apiConstants'
 import Star from 'src/assets/icon/Star.svg'

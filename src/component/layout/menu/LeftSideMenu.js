@@ -114,7 +114,7 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
         <FontAwesome icon={ falFaBars } />
       </div>
       <div
-        className={ clsx('mt-1 p-2 bg xl:border-r-2 border-dark-gray h-screen md:h-16 xl:h-screen md:bg-transparent xl:bg-black-10 -left-full md:ml-52 xl:ml-0 z-10 md:z-20 xl:z-10 text-shadow duration-300', className) }
+        className={ clsx('mt-1 p-2 bg-sub xl:border-r-2 border-dark-gray h-screen md:h-16 xl:h-screen md:bg-transparent xl:bg-sub -left-full md:ml-44 xl:ml-0 z-10 md:z-20 xl:z-10 text-shadow duration-300', className) }
         ref={ menu }
       >
         <UserPlaceholder className='absolute top-20 left-0 w-full md:hidden xl:block' />

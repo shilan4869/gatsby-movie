@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Movies from 'src/component/home/Movies'
 import { EMBED_MOVIE_API } from 'src/constants/apiConstants'
 import RightSide from 'src/component/home/RightSide'
@@ -7,6 +7,16 @@ const Watch = () => {
   const params = new URLSearchParams(location.search)
   const id = params.get('id')
   const apiURL = EMBED_MOVIE_API + id
+
+  const removeAds = () => {
+    document.querySelectorAll('a[target="_blank"]').forEach(e => e.remove())
+  }
+
+  useEffect(() => {
+    window.addEventListener('DOMContentLoaded', removeAds)
+
+    return () => window.removeEventListener('DOMContentLoaded', removeAds)
+  }, [])
 
   return (
     <div className='flex bg min-h-96'>

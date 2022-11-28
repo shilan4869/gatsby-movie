@@ -4,7 +4,7 @@ import clsx from 'lib/utilities/clsx'
 
 
 const RightSide = ({ className }) => (
-  <div className={ clsx('h-screen', className) }>
+  <div className={ clsx('h-screen bg-sub', className) }>
     <RecommenedMovies />
   </div>
 )

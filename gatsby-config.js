@@ -1,5 +1,11 @@
 require('./env')
 module.exports = {
+  siteMetadata: {
+    title: `Movie Cinema`,
+    description: `This is my first product on ReactJS, enjoy!`,
+    image: `/divine-icon.png`,
+    siteUrl: `https://movie.tienlm.tech`,
+  },
   pathPrefix: '/gatsby-movie',
   plugins: [
     'gatsby-plugin-jsconfig',

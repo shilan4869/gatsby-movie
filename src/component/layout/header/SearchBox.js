@@ -63,7 +63,7 @@ const SearchBox = ({ className, actived }) => {
           type='text'
           name='search'
           id='search-input'
-          className='block h-12 text-white outline-none rounded-full pl-14 pr-4 border border-white bg-black-50 opacity-0 duration-500 delay-200'
+          className='block h-12 text-white outline-none rounded-full pl-16 pr-4 border border-white bg-black-50 opacity-0 duration-500 delay-200'
           placeholder='Enter movie, actor or genres'
           onChange={ handleEnterKeyword }
           ref={ searchInput }
