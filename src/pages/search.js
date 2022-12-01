@@ -5,10 +5,10 @@ import VerticalMovie from 'src/component/movie/VerticalMovie'
 
 const Search = () => {
   const searchKeyword = window.history.state?.keyword || ''
-  const { loading, data: searchResult, next } = useQueryInfinite(TMDB_MULTI_SEARCH_API, { query: { query: searchKeyword, language: 'en-US', api_key: API_KEY } })
+  const { loading, data: searchResultArray, next } = useQueryInfinite(TMDB_MULTI_SEARCH_API, { query: { query: searchKeyword, language: 'en-US', api_key: API_KEY } })
 
   const observer = useRef()
-  const observerRef = useCallback(node => {
+  const observedRef = useCallback(node => {
     if (loading) {
       return
     }
@@ -29,10 +29,10 @@ const Search = () => {
     }
   }, [ loading, next ])
 
-  const movies = searchResult.reduce((movs, data) => {
-    const newMovies = data.results
+  const movies = searchResultArray.reduce((mergedMovies, searchResultData) => {
+    const newMovies = searchResultData.results
 
-    return [ ...movs, ...newMovies ]
+    return [ ...mergedMovies, ...newMovies ]
   }, [])
 
   return (
@@ -42,7 +42,7 @@ const Search = () => {
         { movies.map((movie, index) => {
           if (index + 10 === movies.length) {
             return (
-              <div className='w-1/4 lg:w-1/5' key={ movie.id } ref={ observerRef }>
+              <div className='w-1/4 lg:w-1/5' key={ movie.id } ref={ observedRef }>
                 <VerticalMovie movie={ movie }>
                   { movie.title }
                 </VerticalMovie>

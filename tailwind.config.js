@@ -186,6 +186,7 @@ module.exports = {
       },
       width: (theme, { breakpoints }) => ({
         ...breakpoints(theme('screens')),
+        '1/7': '14,28%',
       }),
       minWidth: theme => ({
         ...theme('spacing'),

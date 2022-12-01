@@ -23,6 +23,7 @@ const HorizontalList = ({ movies, heading, className }) => {
             slidesPerGroup: 5,
           },
         } }
+        touchStartPreventDefault={ false }
         modules={ [ Navigation ] }
         className='w-full'
       >

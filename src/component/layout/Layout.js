@@ -16,7 +16,25 @@ const Layout = ({ children }) => {
     setIsMdScreen(initialWidth >= MD_SCREEN)
     setIsXlScreen(initialWidth >= XL_SCREEN)
 
+    const throttle = (cb, delay = 300) => {
+      let shouldWait
+
+      return () => {
+        if (shouldWait) {
+          return
+        }
+
+        shouldWait = true
+        setTimeout(() => {
+          cb()
+          shouldWait = false
+        }, delay)
+      }
+    }
+
     const checkWindowWidth = () => {
+      console.log('checking width...')
+
       if (window.innerWidth >= XL_SCREEN) {
         setIsXlScreen(true)
       } else {
@@ -30,9 +48,9 @@ const Layout = ({ children }) => {
       }
     }
 
-    window.addEventListener('resize', checkWindowWidth)
+    window.addEventListener('resize', throttle(checkWindowWidth))
 
-    return () => window.removeEventListener('resize', checkWindowWidth)
+    return () => window.removeEventListener('resize', throttle(checkWindowWidth))
   }, [])
 
   return (
