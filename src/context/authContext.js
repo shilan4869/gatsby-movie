@@ -22,8 +22,8 @@ const AuthProvider = ({ children }) => {
   const genresArray = data.genres
   const genres = new Map()
 
-  genresArray.forEach(genre => genres.set(genre.id, genre.name))
   // [{id: 1, name: 'a'}]
+  genresArray.forEach(genre => genres.set(genre.id, genre.name))
 
   const authData = {
     genres,

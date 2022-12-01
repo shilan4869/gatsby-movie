@@ -28,11 +28,11 @@ const SearchBox = ({ className, actived }) => {
 
   useEffect(() => {
     if (focused || actived) {
-      searchIcon.current.style.right = '80%'
+      searchIcon.current.style.left = '1rem'
       searchInput.current.style.width = '100%'
       searchInput.current.style.opacity = '100%'
     } else {
-      searchIcon.current.style.right = '1rem'
+      searchIcon.current.style.left = '83.33333%'
       searchInput.current.style.width = '0px'
       searchInput.current.style.opacity = '0%'
     }
@@ -47,11 +47,11 @@ const SearchBox = ({ className, actived }) => {
       onSubmit={ handleFormSubmit }
     >
       <div
-        className='relative flex items-center w-full lg:w-full justify-end'
+        className='relative flex items-center w-full justify-end'
         ref={ searchBox }
       >
         <label
-          className='absolute right-4 w-12 h-12 p-3 cursor-pointer hover:scale-105 duration-500 delay-200 z-20'
+          className='absolute left-5/6 w-8 h-8 p-1 cursor-pointer duration-500 delay-200 z-20'
           htmlFor={ 'search-input' }
           ref={ searchIcon }
         >

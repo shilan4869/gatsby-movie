@@ -26,7 +26,7 @@ const HorizontalList = ({ movies, heading, className }) => {
         modules={ [ Navigation ] }
         className='w-full'
       >
-        <div className='swiper-wrapper '>
+        <div className='swiper-wrapper'>
           { movies.map((movie, index) => (
             <SwiperSlide className='w-1/4 lg:w-1/5 cursor-pointer' key={ index }>
               <VerticalMovie className='w-full' movie={ movie } />

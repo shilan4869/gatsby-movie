@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper'
 import { Tags } from '../utilities/Button'
 import Image from 'lib/components/Image'
+import Link from 'lib/components/Link'
 import playButton from 'src/assets/img/play-button.png'
 import useAuthContext from 'src/hooks/useAuthContext'
 
@@ -31,7 +32,6 @@ const Carousel = () => {
 
     swiperRef.current.autoplay.stop()
   }
-
 
   useEffect(() => {
     window.addEventListener('blur', handleWindowBlur)
@@ -69,7 +69,7 @@ const Carousel = () => {
       <Swiper
         centeredSlides
         autoplay={ {
-          delay: 1000,
+          delay: 3000,
           disableOnInteraction: false,
         } }
         loop
@@ -94,10 +94,14 @@ const Carousel = () => {
                   </Tags>)) }
               </div>
             </div>
-            <div className='absolute gradient-bottom left-0 right-0 top-0 bottom-0' />
-            <div className='absolute opacity-0 group-hover:opacity-100 transition-opacity bg-black-25 left-0 top-0 bottom-0 right-0 flex items-center justify-center'>
+
+            <div className='absolute gradient-bottom inset-0' />
+            <Link
+              className='absolute opacity-0 group-hover:opacity-100 transition-opacity bg-black-25 inset-0 flex items-center justify-center'
+              to={ `/watch?id=${ movie.id }` }
+            >
               <img src={ playButton } alt='play' className='h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 opacity-100' />
-            </div>
+            </Link>
           </SwiperSlide>
         )) }
       </Swiper>

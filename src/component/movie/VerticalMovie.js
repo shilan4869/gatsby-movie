@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import clsx from 'lib/utilities/clsx'
 import Image from 'lib/components/Image'
 import { Link } from 'gatsby'
@@ -37,4 +37,4 @@ const VerticalMovie = ({ className, movie }) => {
   )
 }
 
-export default VerticalMovie
+export default memo(VerticalMovie)

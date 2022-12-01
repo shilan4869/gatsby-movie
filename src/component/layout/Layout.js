@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import AuthProvider from 'src/context/authContext'
 import Header from 'src/component/layout/header/Header'
 import LeftSideMenu from 'src/component/layout/menu/LeftSideMenu'
@@ -36,14 +36,16 @@ const Layout = ({ children }) => {
   }, [])
 
   return (
-    <AuthProvider>
-      <div className='bg w-full relative min-h-screen text-white'>
+
+    <div className='bg w-full relative min-h-screen text-white'>
+      <AuthProvider>
         <LeftSideMenu className='fixed w-1/2 xl:w-1/6 text-base' isMdScreen={ isMdScreen } />
         <Header isXlScreen={ isXlScreen } />
         { children }
-      </div>
-    </AuthProvider>
+      </AuthProvider>
+    </div>
+
   )
 }
 
-export default Layout
+export default memo(Layout)

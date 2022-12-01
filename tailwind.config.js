@@ -178,6 +178,12 @@ module.exports = {
         warning: '#fa8c16',
         danger: '#DC3545',
       },
+      inset: {
+        '5/6': '83.33333%',
+      },
+      margin: {
+        '1/6': '16.66667%',
+      },
       width: (theme, { breakpoints }) => ({
         ...breakpoints(theme('screens')),
       }),
