@@ -20,11 +20,11 @@ const VerticalMovie = ({ className, movie }) => {
 
   return (
     <Link
-      className={ clsx('block p-1 mb-12 md:p-3 group', className) }
+      className={ clsx('block p-1 mb-12 md:p-3 group ', className) }
       to={ `/watch/?id=${ id }` }
       onPrefetch={ preFecthMovie }
     >
-      <div className='relative transform-none group-hover:scale-105 group-hover:z-50 group-hover:animate-sharpen duration-300'>
+      <div className='relative transform-none group-hover:scale-105 group-hover:z-50 group-hover:animate-sharpen duration-300 shadow-lg shadow-light-gray'>
         <div className='aspect-ratio aspect-h-3 aspect-w-2 overflow-hidden rounded-t-xl'>
           <Image src={ TMDB_POSTER_ORIGIN + (posterPath || '/aPqcQwu4VGEewPhagWNncDbJ9Xp.jpg') } alt='movie' className='swiper-lazy object-cover' />
         </div>

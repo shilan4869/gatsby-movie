@@ -23,7 +23,7 @@ const HorizontalMovie = ({ className, movie }) => {
       to={ `/watch/?id=${ id }` }
       onPrefetch={ preFecthMovie }
     >
-      <div className='relative transform-none group-hover:scale-105 group-hover:z-50 group-hover:animate-sharpen duration-300'>
+      <div className='relative transform-none group-hover:scale-105 group-hover:z-50 group-hover:animate-sharpen duration-300 shadow-lg shadow-light-gray'>
         <div className='aspect-ratio aspect-h-9 aspect-w-16 rounded-t-xl overflow-hidden'>
           <img src={ TMDB_SMALL_BACKDROP_ORIGIN + (backdropPath || '/olPXihyFeeNvnaD6IOBltgIV1FU.jpg') } alt='movie' className='swiper-lazy object-cover' />
         </div>

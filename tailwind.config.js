@@ -175,7 +175,7 @@ module.exports = {
     extend: {
       colors: {
         'primary-cyan': '#00B9AE',
-        'light-gray': 'rgba(249, 249, 249, 0.1)',
+        'light-gray': 'rgba(220, 220, 220, 0.1)',
         'dark-gray': 'rgba(0, 0, 0, 0.2)',
         success: '#29B474',
         warning: '#fa8c16',
