@@ -34,7 +34,7 @@ const Header = ({ isXlScreen }) => {
           <img src={ NetflixLogo } alt='netfix' className='w-24' />
         </Link>
         <UserPlaceholder className='absolute top-3 right-4 w-1/4 hidden md:flex xl:hidden' />
-        <SearchBox className='w-1/2 md:w-1/3 absolute top-0 right-0 md:right-14 p-2 xl:right-0 xl:w-1/6' actived={ isXlScreen } />
+        <SearchBox className='w-1/2 md:w-1/3 xl:w-1/6 absolute top-0 right-0 md:right-14 xl:right-0 p-2' actived={ isXlScreen } />
       </div>
     </div>
   )

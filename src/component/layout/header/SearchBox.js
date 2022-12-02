@@ -12,10 +12,10 @@ const AutoComplete = ({ suggestions }) => {
   }
 
   return (
-    <div className='absolute top-14 flex flex-col overflow-hidden py-1 bg text-shadow-sm w-full rounded-3xl animate-shrink'>
+    <div className='fixed w-1/2 md:w-1/3 xl:w-1/6 top-16 right-0 md:right-14 xl:right-0 p-2 flex flex-col overflow-hidden py-1 bg-sub text-shadow-sm rounded-xl animate-shrink shadow-lg shadow-black'>
       { suggestions.map((suggest, index) => (
         <Link
-          className='block px-4 py-2 hover:no-underline bg-black-10 opacity-60 hover:opacity-100'
+          className='block px-4 py-2 hover:no-underline opacity-60 hover:opacity-100'
           key={ index }
           to={ `/watch?id=${ suggest.id }` }
         >{ suggest.name || suggest.title }
