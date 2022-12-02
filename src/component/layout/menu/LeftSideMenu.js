@@ -122,7 +122,7 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
       >
         <UserPlaceholder className='absolute top-20 left-0 w-full md:hidden xl:block' />
         <div className='mt-80 md:mt-0 xl:mt-80 md:flex xl:block'>
-          <div className='text-lg xl:text-lg py-4 md:px-4 md:hidden xl:block font-medium'>Browse your movies</div>
+          <div className='text-lg xl:text-lg py-4 px-1 md:px-4 md:hidden xl:block font-medium'>Browse your movies</div>
           <Link className='hover:no-underline' to='/'>
             <div className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4' onClick={ tvMenuSelect }>
               <div className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto' ref={ tvBar } />

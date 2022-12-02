@@ -37,8 +37,13 @@
 
   html {
     font-size: 0.875em;
-
+    overflow: hidden;
+    width: 100vh;
     --tw-skeleton: url("lib/styles/placeholder.svg");
+  }
+
+  body {
+    width: 100%;
   }
 
   h1,

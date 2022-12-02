@@ -45,7 +45,7 @@ const Browse = () => {
 
 
   return (
-    <div className='w-full xl:w-5/6 xl:ml-1/6 text-white pt-16'>
+    <div className='min-h-screen xl:w-5/6 xl:ml-1/6 text-white pt-16'>
       <h3 className='p-4 text-shadow'>Select your favorite { genre } { homepageTab === 1 ? 'TV shows' : 'movies' }.</h3>
       <div className='flex flex-wrap'>
         { movies.map((movie, index) => {
