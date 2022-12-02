@@ -1,7 +1,29 @@
 import React, { useRef, useState, useEffect } from 'react'
+import request from 'lib/utilities/request'
+import { TMDB_MULTI_SEARCH_API, API_KEY } from 'src/constants/apiConstants'
 import FontAwesome from 'lib/components/FontAwesome'
 import { farFaSearch } from 'lib/fontawesome/fontawesome'
 import { navigate } from 'gatsby'
+import Link from 'lib/components/Link'
+
+const AutoComplete = ({ suggestions }) => {
+  if (suggestions.length === 0) {
+    return
+  }
+
+  return (
+    <div className='absolute top-14 flex flex-col overflow-hidden py-1 bg text-shadow-sm w-full rounded-3xl animate-shrink'>
+      { suggestions.map((suggest, index) => (
+        <Link
+          className='block px-4 py-2 hover:no-underline bg-black-10 opacity-60 hover:opacity-100'
+          key={ index }
+          to={ `/watch?id=${ suggest.id }` }
+        >{ suggest.name || suggest.title }
+        </Link>
+      )) }
+    </div>
+  )
+}
 
 const SearchBox = ({ className, actived }) => {
   const searchBox = useRef()
@@ -9,17 +31,42 @@ const SearchBox = ({ className, actived }) => {
   const searchIcon = useRef()
   const [ keyword, setKeyword ] = useState('')
   const [ focused, setFocused ] = useState(false)
+  const [ suggestions, setSuggestions ] = useState([])
+  let debounceSearchTimeout
 
   const handleFormFocus = () => {
     setFocused(true)
   }
   const handleFormBlur = () => {
-    setFocused(false)
+    setTimeout(() => setFocused(false), 100)
   }
-  const handleEnterKeyword = e => {
-    const newKeyword = e.target.value
 
-    setKeyword(newKeyword)
+  const debounce = (cb, timer = 500) => {
+    clearTimeout(debounceSearchTimeout)
+    debounceSearchTimeout = setTimeout(cb, timer)
+  }
+
+  const handleEnterKeyword = e => {
+    debounce(() => {
+      const newKeyword = e.target.value
+
+      if (newKeyword !== '') {
+        request(TMDB_MULTI_SEARCH_API, { query: newKeyword, api_key: API_KEY })
+          .then(data => {
+            if (data.results.length === 0) {
+              setSuggestions([])
+
+              return
+            }
+
+            setSuggestions(data.results)
+          })
+      } else {
+        setSuggestions([])
+      }
+
+      setKeyword(newKeyword)
+    })
   }
   const handleFormSubmit = e => {
     e.preventDefault()
@@ -68,6 +115,7 @@ const SearchBox = ({ className, actived }) => {
           onChange={ handleEnterKeyword }
           ref={ searchInput }
         />
+        { focused && <AutoComplete suggestions={ suggestions } /> }
       </div>
     </form>
   )

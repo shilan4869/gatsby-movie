@@ -12,7 +12,7 @@ const VerticalList = ({ movies, heading, className }) => {
 
   return (
     <div className={ clsx('w-full flex flex-col h-full  border-l-2 border-dark-gray p-2', className) }>
-      <div className='text-xl lg:text-2xl font-medium p-3'>{ heading }</div>
+      <div className='text-xl lg:text-2xl font-medium p-3 text-shadow'>{ heading }</div>
       <Swiper
         slidesPerView={ 5 }
         slidesPerGroup={ 5 }

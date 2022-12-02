@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo } from 'react'
+import React, { useEffect, useRef } from 'react'
 import SearchBox from './SearchBox'
 import UserPlaceholder from 'src/component/layout/menu/authentication/UserPlaceholder'
 import NetflixLogo from 'src/assets/img/netflix.png'
@@ -40,4 +40,4 @@ const Header = ({ isXlScreen }) => {
   )
 }
 
-export default memo(Header)
+export default Header

@@ -77,8 +77,11 @@ module.exports = {
           transform: 'translateY(-20%)',
           opacity: '0%',
         },
-        '50%': {
-          transform: 'translateY(5%)',
+        '30%': {
+          opacity: '0%',
+        },
+        '100%': {
+          transform: 'translateY(0%)',
           opacity: '100%',
         },
       },
@@ -200,6 +203,9 @@ module.exports = {
         sm: '0 1px 2px var(--tw-shadow-color)',
         DEFAULT: '0 2px 4px var(--tw-shadow-color)',
         lg: '0 8px 16px var(--tw-shadow-color)',
+      },
+      zIndex: {
+        5: '5',
       },
     },
     backgroundImage: {

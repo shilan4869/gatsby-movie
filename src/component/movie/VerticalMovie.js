@@ -41,8 +41,8 @@ const VerticalMovie = ({ className, movie }) => {
         <SecondaryButton className='opacity-0 md:group-hover:opacity-100 absolute left-12 bottom-12 sm:left-4 sm:bottom-4'>
           Add
         </SecondaryButton>
-        <div className='duration-500 absolute -bottom-11 left-0 right-0 py-3 flex justify-center rounded-b-xl bg-black-10'>
-          <div className='max-w-64 px-2 text-ellipsis whitespace-nowrap overflow-hidden text-shadow opacity-80 group-hover:opacity-100'>{ movie.title || movie.name || movie.original_name }</div>
+        <div className='md:block duration-500 absolute -bottom-11 left-0 right-0 py-3 flex justify-center rounded-b-xl bg-black-10'>
+          <div className='max-w-64 px-2 lg:px-4 text-ellipsis whitespace-nowrap overflow-hidden text-shadow opacity-80 group-hover:opacity-100'>{ movie.title || movie.name || movie.original_name }</div>
         </div>
       </div>
     </Link>

@@ -11,7 +11,7 @@ const HorizontalList = ({ movies, heading, className }) => {
 
   return (
     <div className={ clsx('w-full flex flex-col', className) }>
-      <div className='text-xl lg:text-2xl font-medium p-3 mt-2'>{ heading }</div>
+      <div className='text-xl lg:text-2xl font-medium p-3 mt-2 text-shadow'>{ heading }</div>
       <Swiper
         slidesPerView={ 4 }
         slidesPerGroup={ 4 }

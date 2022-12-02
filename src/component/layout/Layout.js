@@ -55,9 +55,9 @@ const Layout = ({ children }) => {
 
   return (
 
-    <div className='bg w-full relative min-h-screen text-white'>
+    <div className='bg w-full relative min-h-screen text-white '>
       <AuthProvider>
-        <LeftSideMenu className='fixed w-1/2 xl:w-1/6 text-base' isMdScreen={ isMdScreen } />
+        <LeftSideMenu className='fixed w-1/2 xl:w-1/6 text-base text-shadow shadow-black' isMdScreen={ isMdScreen } />
         <Header isXlScreen={ isXlScreen } />
         { children }
       </AuthProvider>
