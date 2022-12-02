@@ -35,10 +35,10 @@ const VerticalMovie = ({ className, movie }) => {
           </span>
         </div>
         <div className='absolute inset-0 gradient-bottom' />
-        <PrimaryButton className='opacity-0 md:group-hover:opacity-100 absolute right-12 bottom-12 sm:right-4 sm:bottom-4'>
+        <PrimaryButton className='opacity-0 md:group-hover:opacity-100 hidden md:block absolute right-12 bottom-12 sm:right-4 sm:bottom-4'>
           Watch
         </PrimaryButton>
-        <SecondaryButton className='opacity-0 md:group-hover:opacity-100 absolute left-12 bottom-12 sm:left-4 sm:bottom-4'>
+        <SecondaryButton className='opacity-0 md:group-hover:opacity-100 hidden md:block absolute left-12 bottom-12 sm:left-4 sm:bottom-4'>
           Add
         </SecondaryButton>
         <div className='md:block duration-500 absolute -bottom-11 left-0 right-0 py-3 flex justify-center rounded-b-xl bg-black-10'>
