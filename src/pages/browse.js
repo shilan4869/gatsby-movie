@@ -2,14 +2,17 @@ import React, { useRef, useCallback } from 'react'
 import useQueryInfinite from 'lib/hooks/useQueryInfinite'
 import useAuthContext from 'src/hooks/useAuthContext'
 import { TMDB_DISCOVER_MOVIE, TMDB_DISCOVER_TV } from 'src/constants/apiConstants'
+import Filters from 'src/component/browse/Filters'
 import VerticalMovie from 'src/component/movie/VerticalMovie'
 
 const Browse = () => {
-  const { homepageTab } = useAuthContext()
+  const { homepageTab, genres } = useAuthContext()
   const params = new URLSearchParams(location.search)
-  const genre = params.get('genre')
+  const genreId = params.get('genre')
   const apiURL = homepageTab === 1 ? TMDB_DISCOVER_TV : TMDB_DISCOVER_MOVIE
-  const { loading, error, data: moviePages, next, retry } = useQueryInfinite(apiURL, { query: { with_genres: genre, language: 'en-US', api_key: 'c298c2cccf3f21af1e7a841e1034f72e', sort_by: 'popularity.desc' } })
+  const { loading, error, data: moviePages, next, retry } = useQueryInfinite(apiURL, { query: { with_genres: genreId, language: 'en-US', api_key: 'c298c2cccf3f21af1e7a841e1034f72e', sort_by: 'popularity.desc' } })
+
+  console.log(genres)
 
   const observer = useRef()
   const observedRef = useCallback(node => {
@@ -46,7 +49,7 @@ const Browse = () => {
 
   return (
     <div className='min-h-screen xl:w-5/6 xl:ml-1/6 text-white pt-16'>
-      <h3 className='p-4 text-shadow'>Select your favorite { genre } { homepageTab === 1 ? 'TV shows' : 'movies' }.</h3>
+      <h3 className='p-4 text-shadow'>Select your favorite { genres.get(Number(genreId)) } { homepageTab === 1 ? 'TV shows' : 'movies' }.</h3>
       <div className='flex flex-wrap'>
         { movies.map((movie, index) => {
           if (index + 10 === movies.length) {

@@ -9,10 +9,10 @@ import Star from 'src/assets/icon/Star.svg'
 import useAuthContext from 'src/hooks/useAuthContext'
 
 const VerticalMovie = ({ className, movie }) => {
-  const { homePageTab } = useAuthContext()
+  const { homepageTab } = useAuthContext()
   const { poster_path: posterPath, vote_average: voteAverage, id } = movie
   const numberOfStar = Math.floor(Number(voteAverage) * 10) / 10 || 5
-  const apiURL = homePageTab === 1 ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
+  const apiURL = homepageTab === 1 ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
   const preFecthMovie = () => {
     prefetch(apiURL, { api_key: API_KEY })
   }

@@ -89,7 +89,7 @@ const Carousel = () => {
               </div>
               <div className='hidden lg:flex flex-wrap -ml-1'>
                 { movie?.genre_ids?.map(genreId => (
-                  <Tags key={ genreId } className='mt-2 mr-2' to={ `/browse?genre=${ genres.get(genreId) }` }>
+                  <Tags key={ genreId } className='mt-2 mr-2' to={ `/browse?genre=${ genreId }` }>
                     { genres.get(genreId) }
                   </Tags>)) }
               </div>

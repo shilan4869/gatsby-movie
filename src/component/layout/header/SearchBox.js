@@ -32,44 +32,58 @@ const SearchBox = ({ className, actived }) => {
   const [ keyword, setKeyword ] = useState('')
   const [ focused, setFocused ] = useState(false)
   const [ suggestions, setSuggestions ] = useState([])
-  let debounceSearchTimeout
+  const debounceSearchTimeout = useRef()
+
+  const resetSuggestions = () => {
+    setSuggestions([])
+  }
+
+  const unFocus = () => setTimeout(() => setFocused(false), 100)
+  const suggestKeyword = newKeyword => {
+    if (newKeyword !== '') {
+      request(TMDB_MULTI_SEARCH_API, { query: newKeyword, api_key: API_KEY })
+        .then(data => {
+          if (data.results.length === 0) {
+            resetSuggestions()
+
+            return
+          }
+
+          setSuggestions(data.results)
+        })
+    } else {
+      resetSuggestions()
+    }
+  }
 
   const handleFormFocus = () => {
+    const newKeyword = searchInput.current.value
+
+    suggestKeyword(newKeyword)
     setFocused(true)
   }
   const handleFormBlur = () => {
-    setTimeout(() => setFocused(false), 100)
+    unFocus()
   }
 
-  const debounce = (cb, timer = 500) => {
-    clearTimeout(debounceSearchTimeout)
-    debounceSearchTimeout = setTimeout(cb, timer)
+  const debounce = (cb, timer = 300) => {
+    clearTimeout(debounceSearchTimeout.current)
+    debounceSearchTimeout.current = setTimeout(cb, timer)
   }
 
   const handleEnterKeyword = e => {
-    debounce(() => {
-      const newKeyword = e.target.value
+    const newKeyword = e.target.value
 
-      if (newKeyword !== '') {
-        request(TMDB_MULTI_SEARCH_API, { query: newKeyword, api_key: API_KEY })
-          .then(data => {
-            if (data.results.length === 0) {
-              setSuggestions([])
-
-              return
-            }
-
-            setSuggestions(data.results)
-          })
-      } else {
-        setSuggestions([])
-      }
-
-      setKeyword(newKeyword)
-    })
+    debounce(() => suggestKeyword(newKeyword))
+    setKeyword(newKeyword)
   }
+
   const handleFormSubmit = e => {
     e.preventDefault()
+    clearTimeout(debounceSearchTimeout.current)
+    setKeyword('')
+    unFocus()
+    resetSuggestions()
     navigate('/search', { state: { keyword } })
   }
 
@@ -113,6 +127,7 @@ const SearchBox = ({ className, actived }) => {
           className='block h-12 text-white outline-none rounded-full pl-16 pr-4 border border-white bg-black-50 opacity-0 duration-500 delay-200'
           placeholder='Enter movie, actor or genres'
           onChange={ handleEnterKeyword }
+          value={ keyword }
           ref={ searchInput }
         />
         { focused && <AutoComplete suggestions={ suggestions } /> }
