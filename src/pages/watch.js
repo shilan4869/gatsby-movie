@@ -16,7 +16,7 @@ const Watch = () => {
   const { homepageTab } = useAuthContext()
   const apiURL = homepageTab === 1 ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
   const { loading, data: movieDetail } = useQuery(apiURL, { query: { api_key: API_KEY } })
-  const numberOfStar = (!loading ? (Math.floor(Number(movieDetail.vote_average) * 10) / 10) : 5) || 5
+  const numberOfStar = (!loading ? (Math.floor(Number(movieDetail?.vote_average) * 10) / 10) : 5) || 5
 
   return (
     <div className='flex bg'>
@@ -37,23 +37,23 @@ const Watch = () => {
         { (
           <div className='p-4 text-shadow-sm mb-4'>
             <h3 className='my-4'>
-              { loading ? 'Movie Title' : movieDetail.title || movieDetail.name }
+              { loading ? 'Movie Title' : movieDetail?.title || movieDetail?.name }
             </h3>
             { loading ? 'This is movies tagline'
-              : movieDetail.tagline !== '' && <p className='opacity-70 italic text-sm my-4'> { movieDetail.tagline } </p> }
+              : movieDetail?.tagline !== '' && <p className='opacity-70 italic text-sm my-4'> { movieDetail?.tagline } </p> }
             <div className='hidden md:flex opacity-70 mb-6'>
               <Star className='w-2 h-2 md:w-4 md:h-4 mt-1 mr-1 fill-primary-cyan' />
               { numberOfStar }
               <Calender className='w-2 h-2 md:w-4 md:h-4 mt-1 mx-2 fill-primary-cyan' />
-              { loading ? '2022' : movieDetail.release_date }
+              { loading ? '2022' : movieDetail?.release_date }
             </div>
-            { !loading && movieDetail.genres.map(genre => (
+            { !loading && movieDetail?.genres.map(genre => (
               <Tags key={ genre.id } className='mt-4 mr-1 md:mr-2' to={ `/browse?genre=${ genre.id }` }>
                 { genre.name }
               </Tags>
             )) }
             <h4 className='mt-6 mb-4'>Overview</h4>
-            <p>{ loading ? 'Some overview of this movie' : movieDetail.overview }</p>
+            <p>{ loading ? 'Some overview of this movie' : movieDetail?.overview }</p>
           </div>
         ) }
         <Movies />
