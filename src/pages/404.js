@@ -22,7 +22,7 @@ const codeStyles = {
 
 const NotFoundPage = () => (
   <main style={ pageStyles } className='xl:ml-1/6 text-white'>
-    <h1 style={ headingStyles }>Page not found</h1>
+    <h1 style={ headingStyles }>You are lost!</h1>
     <p style={ paragraphStyles }>
       Sorry 😔, we couldn’t find what you were looking for.
       <br />
@@ -34,7 +34,7 @@ const NotFoundPage = () => (
         </>
       ) : null }
       <br />
-      <Link to='/'>Go home</Link>.
+      <Link to='/'>Go to Homepage</Link>.
     </p>
   </main>
 )
