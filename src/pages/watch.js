@@ -4,6 +4,8 @@ import Star from 'src/assets/icon/Star.svg'
 import Calender from 'src/assets/icon/Calender.svg'
 import { Tags } from 'src/component/utilities/Button'
 import Movies from 'src/component/home/Movies'
+import TvShows from 'src/component/home/TvShows'
+import { TV_TAB } from 'src/component/layout/constant'
 import { EMBED_MOVIE_API, TMDB_MOVIE_ORIGIN, TMDB_TV_ORIGIN, API_KEY } from 'src/constants/apiConstants'
 import SimilarMovies from 'src/component/watch/SimilarMovies'
 import useAuthContext from 'src/hooks/useAuthContext'
@@ -15,6 +17,7 @@ const Watch = () => {
   const id = isClient ? params?.get('id') : ''
   const embedMovieURL = EMBED_MOVIE_API + id
   const { homepageTab } = useAuthContext()
+  const MainContent = (homepageTab === TV_TAB) ? () => <TvShows /> : () => <Movies />
   const apiURL = homepageTab === 1 ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
   const { loading, error, data: movieDetail } = useQuery(apiURL, { query: { api_key: API_KEY } })
   const numberOfStar = (!loading ? (Math.floor(Number(movieDetail?.vote_average) * 10) / 10) : 5) || 5
@@ -63,7 +66,7 @@ const Watch = () => {
             <p>{ loading ? 'Some overview of this movie' : movieDetail?.overview }</p>
           </div>
         ) }
-        <Movies />
+        <MainContent />
       </div>
       <SimilarMovies className='fixed right-0 hidden xl:flex flex-col w-1/6 h-screen pt-9' id={ id } />
     </div>
