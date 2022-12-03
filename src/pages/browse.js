@@ -3,12 +3,13 @@ import useQueryInfinite from 'lib/hooks/useQueryInfinite'
 import useAuthContext from 'src/hooks/useAuthContext'
 import { TMDB_DISCOVER_MOVIE, TMDB_DISCOVER_TV } from 'src/constants/apiConstants'
 import Filters from 'src/component/browse/Filters'
+import { isClient } from 'lib/utilities/is'
 import VerticalMovie from 'src/component/movie/VerticalMovie'
 
 const Browse = () => {
   const { homepageTab, genres } = useAuthContext()
-  const params = new URLSearchParams(location.search)
-  const genreId = params.get('genre')
+  const params = isClient ? new URLSearchParams(location.search) : null
+  const genreId = isClient ? params.get('genre') : ''
   const apiURL = homepageTab === 1 ? TMDB_DISCOVER_TV : TMDB_DISCOVER_MOVIE
   const { loading, error, data: moviePages, next, retry } = useQueryInfinite(apiURL, { query: { with_genres: genreId, language: 'en-US', api_key: 'c298c2cccf3f21af1e7a841e1034f72e', sort_by: 'popularity.desc' } })
 

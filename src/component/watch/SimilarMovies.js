@@ -8,7 +8,7 @@ import VerticalList from 'src/component/list/vertical/VerticalList'
 
 const SimilarMovies = ({ className, id }) => {
   const { homepageTab } = useAuthContext()
-  const menuTab = homepageTab || localStorage.getItem('menuTab') || MOVIES_TAB
+  const menuTab = homepageTab
   const ApiEndpoint = menuTab === MOVIES_TAB ? `${ TMDB_GET_SIMILAR }movie/${ id }/similar` : `${ TMDB_GET_SIMILAR }tv/${ id }/similar`
   const { loading, error, data: similarMovies } = useQuery(ApiEndpoint, { query: { api_key: API_KEY } })
 

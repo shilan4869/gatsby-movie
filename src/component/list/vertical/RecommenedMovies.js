@@ -7,7 +7,7 @@ import VerticalList from './VerticalList'
 
 const RecommenedMovies = ({ className }) => {
   const { homepageTab } = useAuthContext()
-  const menuTab = homepageTab || localStorage.getItem('menuTab') || MOVIES_TAB
+  const menuTab = homepageTab
   const ApiEndpoint = menuTab === MOVIES_TAB ? TMDB_TRENDING_MOVIE_API : TMDB_TRENDING_TV_API
   const { loading, error, data: popularMoviesOrTVShows } = useQuery(ApiEndpoint, { query: { api_key: API_KEY } })
 
