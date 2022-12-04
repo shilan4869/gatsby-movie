@@ -6,7 +6,7 @@ import { Tags } from 'src/component/utilities/Button'
 import Movies from 'src/component/home/Movies'
 import TvShows from 'src/component/home/TvShows'
 import { TV_TAB } from 'src/component/layout/constant'
-import { EMBED_MOVIE_API, TMDB_MOVIE_ORIGIN, TMDB_TV_ORIGIN, API_KEY } from 'src/constants/apiConstants'
+import { EMBED_MOVIE_API, EMBED_TV_API, TMDB_MOVIE_ORIGIN, TMDB_TV_ORIGIN, API_KEY } from 'src/constants/apiConstants'
 import SimilarMovies from 'src/component/watch/SimilarMovies'
 import useAuthContext from 'src/hooks/useAuthContext'
 import { isClient } from 'lib/utilities/is'
@@ -15,9 +15,9 @@ import { navigate } from 'gatsby'
 const Watch = () => {
   const params = isClient ? new URLSearchParams(location.search) : null
   const id = isClient ? params?.get('id') : ''
-  const embedMovieURL = EMBED_MOVIE_API + id
   const { homepageTab } = useAuthContext()
   const MainContent = (homepageTab === TV_TAB) ? () => <TvShows /> : () => <Movies />
+  const embedMovieURL = homepageTab === 1 ? `${ EMBED_TV_API }?id=${ id }&s=1&e=1` : `${ EMBED_MOVIE_API }?id=${ id }`
   const apiURL = homepageTab === 1 ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
   const { loading, error, data: movieDetail } = useQuery(apiURL, { query: { api_key: API_KEY } })
   const numberOfStar = (!loading ? (Math.floor(Number(movieDetail?.vote_average) * 10) / 10) : 5) || 5
