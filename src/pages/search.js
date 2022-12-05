@@ -49,7 +49,7 @@ const Search = () => {
 
 
   return (
-    <Seo title={ `Search for ${ searchKeyword }` }>
+    <Seo title={ `Search ${ searchKeyword }` }>
       <div className='min-h-screen xl:w-5/6 xl:ml-1/6 text-white pt-16'>
         <h3 className='p-4 text-shadow'>{ results !== 0 ? `Search Result for ${ searchKeyword }` : `There is no result for ${ searchKeyword }...` }</h3>
         <div className='flex flex-wrap'>

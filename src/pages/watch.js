@@ -33,7 +33,7 @@ const Watch = () => {
     <Seo
       title={ movieDetail?.title || movieDetail?.name }
       description={ `Watch ${ movieDetail?.title || movieDetail?.name } online!` }
-      image={ movieDetail.poster_path }
+      image={ movieDetail?.poster_path }
     >
       <div className='flex bg'>
         <div className='w-full xl:w-4/6 mx-auto'>
