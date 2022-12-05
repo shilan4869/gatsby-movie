@@ -61,7 +61,7 @@ const Watch = () => {
                 <Star className='w-2 h-2 md:w-4 md:h-4 mt-1 mr-1 fill-primary-cyan' />
                 { numberOfStar }
                 <Calender className='w-2 h-2 md:w-4 md:h-4 mt-1 mx-2 fill-primary-cyan' />
-                { loading ? '2022' : movieDetail?.release_date }
+                { loading ? '2022' : movieDetail?.release_date || movieDetail?.first_air_date }
               </div>
               { !loading && movieDetail?.genres.map(genre => (
                 <Tags key={ genre.id } className='mt-4 mr-1 md:mr-2' to={ `/browse?genre=${ genre.id }` }>
