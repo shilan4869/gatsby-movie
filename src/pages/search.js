@@ -3,6 +3,7 @@ import { isClient } from 'lib/utilities/is'
 import useQueryInfinite from 'lib/hooks/useQueryInfinite'
 import { TMDB_MULTI_SEARCH_API, API_KEY, TMDB_TRENDING_MOVIE_API } from 'src/constants/apiConstants'
 import VerticalMovie from 'src/component/movie/VerticalMovie'
+import { SEO as Seo } from 'src/component/seo/seo'
 
 const Search = () => {
   const searchKeyword = isClient ? window.history.state?.keyword : ''
@@ -48,55 +49,57 @@ const Search = () => {
 
 
   return (
-    <div className='min-h-screen xl:w-5/6 xl:ml-1/6 text-white pt-16'>
-      <h3 className='p-4 text-shadow'>{ results !== 0 ? `Search Result for ${ searchKeyword }` : `There is no result for ${ searchKeyword }...` }</h3>
-      <div className='flex flex-wrap'>
-        { searcheMovies.map((movie, index) => {
-          if (index + 10 === searcheMovies.length && results > 20) {
-            return (
-              <div className='w-1/2 md:w-1/4 lg:w-1/5' key={ movie.id } ref={ observedRef }>
-                <VerticalMovie movie={ movie }>
-                  { movie.title }
-                </VerticalMovie>
-              </div>
-            )
-          }
-
-          return (
-            <VerticalMovie key={ movie.id } movie={ movie } className='w-1/4 lg:w-1/5'>
-              { movie.title }
-            </VerticalMovie>
-          )
-        }) }
-      </div>
-      { results > 20
-        ? null
-        : (
-          <>
-            <h3 className='p-4 text-shadow mt-4'>Recommends for you</h3>
-            <div className='flex flex-wrap'>
-              { recommendMovies.map((movie, index) => {
-                if (index + 10 === recommendMovies.length) {
-                  return (
-                    <div className='w-1/2 md:w-1/4 lg:w-1/5' key={ movie.id } ref={ observedRef }>
-                      <VerticalMovie movie={ movie }>
-                        { movie.title }
-                      </VerticalMovie>
-                    </div>
-                  )
-                }
-
-                return (
-                  <VerticalMovie key={ movie.id } movie={ movie } className='w-1/4 lg:w-1/5'>
+    <Seo title={ `Search for ${ searchKeyword }` }>
+      <div className='min-h-screen xl:w-5/6 xl:ml-1/6 text-white pt-16'>
+        <h3 className='p-4 text-shadow'>{ results !== 0 ? `Search Result for ${ searchKeyword }` : `There is no result for ${ searchKeyword }...` }</h3>
+        <div className='flex flex-wrap'>
+          { searcheMovies.map((movie, index) => {
+            if (index + 10 === searcheMovies.length && results > 20) {
+              return (
+                <div className='w-1/2 md:w-1/4 lg:w-1/5' key={ movie.id } ref={ observedRef }>
+                  <VerticalMovie movie={ movie }>
                     { movie.title }
                   </VerticalMovie>
-                )
-              }) }
-            </div>
-          </>
-        ) }
+                </div>
+              )
+            }
 
-    </div>
+            return (
+              <VerticalMovie key={ movie.id } movie={ movie } className='w-1/4 lg:w-1/5'>
+                { movie.title }
+              </VerticalMovie>
+            )
+          }) }
+        </div>
+        { results > 20
+          ? null
+          : (
+            <>
+              <h3 className='p-4 text-shadow mt-4'>Recommends for you</h3>
+              <div className='flex flex-wrap'>
+                { recommendMovies.map((movie, index) => {
+                  if (index + 10 === recommendMovies.length) {
+                    return (
+                      <div className='w-1/2 md:w-1/4 lg:w-1/5' key={ movie.id } ref={ observedRef }>
+                        <VerticalMovie movie={ movie }>
+                          { movie.title }
+                        </VerticalMovie>
+                      </div>
+                    )
+                  }
+
+                  return (
+                    <VerticalMovie key={ movie.id } movie={ movie } className='w-1/4 lg:w-1/5'>
+                      { movie.title }
+                    </VerticalMovie>
+                  )
+                }) }
+              </div>
+            </>
+          ) }
+
+      </div>
+    </Seo>
   )
 }
 

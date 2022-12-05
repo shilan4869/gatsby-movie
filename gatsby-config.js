@@ -3,7 +3,7 @@ module.exports = {
   siteMetadata: {
     title: `Movie Cinema`,
     description: `This is my first product on ReactJS, enjoy!`,
-    image: `/divine-icon.png`,
+    image: `/favicon.png`,
     siteUrl: `https://movie.tienlm.tech`,
   },
   pathPrefix: '/gatsby-movie',
@@ -22,6 +22,18 @@ module.exports = {
         rule: {
           include: /icon/,
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `GatsbyJS`,
+        short_name: `GatsbyJS`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: `static/favicon.png`,
       },
     },
     process.env.NODE_ENV !== 'development' && [
