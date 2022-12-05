@@ -11,6 +11,7 @@
     height: var(--swiper-navigation-size);
     margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
     z-index: 10;
+    padding: 20px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -44,7 +45,7 @@
 }
 *>.swiper-button-prev,
 .swiper-rtl .swiper-button-next {
-    left: 10px;
+    left: -5px;
     right: auto;
 }
 *>.swiper-button-prev:after,
@@ -53,7 +54,7 @@
 }
 *>.swiper-button-next,
 .swiper-rtl .swiper-button-prev {
-    right: 10px;
+    right: -5px;
     left: auto;
 }
 *>.swiper-button-next:after,

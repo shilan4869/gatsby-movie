@@ -81,9 +81,6 @@ const SearchBox = ({ className, actived }) => {
   const handleFormSubmit = e => {
     e.preventDefault()
     clearTimeout(debounceSearchTimeout.current)
-    setKeyword('')
-    unFocus()
-    resetSuggestions()
     navigate('/search', { state: { keyword } })
   }
 
