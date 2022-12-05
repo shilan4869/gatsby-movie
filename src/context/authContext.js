@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const localTab = isClient ? JSON.parse(localStorage.getItem('menuTab')) : NaN
 
 
-  const [ homepageTab, setHomepageTab ] = useState(localTab || NaN)
+  const [ homepageTab, setHomepageTab ] = useState(localTab)
   const genresApi = homepageTab === 1 ? TMDB_TV_GENRES_API : TMDB_MOVIE_GENRES_API
   const { loading, error, data } = useQuery(genresApi)
 
