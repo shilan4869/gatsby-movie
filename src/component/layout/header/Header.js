@@ -28,7 +28,7 @@ const Header = ({ isXlScreen }) => {
     <div className='fixed left-0 right-0 top-0 h-16 gradient-top z-20 md:z-10 duration-500' ref={ headerRef }>
       <div className='xl:max-w-full relative'>
         <Link
-          className='absolute top-4 left-16 md:left-6 right-6 justify-start w-24'
+          className='absolute top-3 md:top-4 left-14 md:left-6 right-6 justify-start w-24'
           to='/'
         >
           <img src={ NetflixLogo } alt='netfix' className='w-24' />
