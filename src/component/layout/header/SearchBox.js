@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
 import request from 'lib/utilities/request'
-import useAuthContext from 'src/hooks/useAuthContext'
 import { TMDB_MULTI_SEARCH_API, API_KEY } from 'src/constants/apiConstants'
 import FontAwesome from 'lib/components/FontAwesome'
 import { farFaSearch } from 'lib/fontawesome/fontawesome'

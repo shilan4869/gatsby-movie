@@ -5,8 +5,8 @@ import { EMBED_TV_API } from 'src/constants/apiConstants'
 const Iframe = () => {
   const params = isClient ? new URLSearchParams(location.search) : null
   const id = isClient ? params?.get('id') : ''
-  const season = isClient ? params.get('season') : 1
-  const episode = isClient ? params.get('episode') : 1
+  const season = isClient ? params.get('season') || 1 : 1
+  const episode = isClient ? params.get('episode') || 1 : 1
   const embedMovieURL = `${ EMBED_TV_API }?id=${ id }&s=${ season }&e=${ episode }`
 
   console.log(embedMovieURL)
