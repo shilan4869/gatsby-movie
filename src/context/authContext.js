@@ -6,7 +6,7 @@ import { TMDB_MOVIE_GENRES_API, TMDB_TV_GENRES_API } from 'src/constants/apiCons
 export const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
-  const localTab = isClient ? JSON.parse(localStorage.getItem('menuTab')) : NaN
+  const localTab = isClient ? JSON.parse(localStorage.getItem('menuTab')) : 1
 
 
   const [ homepageTab, setHomepageTab ] = useState(localTab)
