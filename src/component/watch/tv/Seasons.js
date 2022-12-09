@@ -62,7 +62,7 @@ const Seasons = ({ seasonsCount, id, defaultBackdrop }) => {
       </div>
       <div className='flex relative w-full justify-between px-4 mt-6'>
         <SeasonSelectBox seasons={ seasonsDetails } onChange={ e => setSelectedSeason(Number(e.target.value)) } />
-        { seasonsDetails.map((season, index) => selectedSeason === index && <SeasonMoviesList movies={ season.episodes } poster={ defaultBackdrop } />) }
+        { seasonsDetails.map((season, index) => selectedSeason === index && <SeasonMoviesList movies={ season.episodes } poster={ defaultBackdrop } key={ index } />) }
       </div>
     </>
   )
