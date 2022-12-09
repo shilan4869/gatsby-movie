@@ -4,9 +4,9 @@ import PopularMovies from 'src/component/list/horizontal/PopularMovies'
 import TrendingMovies from 'src/component/list/horizontal/TrendingMovies'
 import ToprateMovies from 'src/component/list/horizontal/ToprateMovies'
 
-const Movies = () => (
+const Movies = ({ className }) => (
   <>
-    <PopularMovies />
+    <PopularMovies className={ className } />
     <TrendingMovies />
     <ToprateMovies />
     <UpcomingMovies />

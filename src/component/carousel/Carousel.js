@@ -98,7 +98,7 @@ const Carousel = () => {
             <div className='absolute gradient-bottom inset-0' />
             <Link
               className='absolute opacity-0 group-hover:opacity-100 transition-opacity bg-black-25 inset-0 flex items-center justify-center'
-              to={ `/watch?id=${ movie.id }` }
+              to={ homepageTab === 1 ? `/watch/tv?id=${ movie.id }` : `/watch/movie?id=${ movie.id }` }
             >
               <img src={ playButton } alt='play' className='h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 opacity-100' />
             </Link>

@@ -8,10 +8,11 @@ import Link from 'lib/components/Link'
 import useAuthContext from 'src/hooks/useAuthContext'
 
 const HorizontalMovie = ({ className, movie }) => {
-  const { homePageTab } = useAuthContext()
+  const { homepageTab } = useAuthContext()
   const { poster_path: backdropPath, vote_average: voteAverage, id } = movie
   const numberOfStar = Math.floor(Number(voteAverage) * 10) / 10 || 5
-  const apiURL = homePageTab === 1 ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
+  const apiURL = homepageTab === 1 ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
+  const watchUrl = homepageTab === 1 ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
   const preFecthMovie = () => {
     prefetch(apiURL, { api_key: API_KEY })
   }
@@ -20,7 +21,7 @@ const HorizontalMovie = ({ className, movie }) => {
   return (
     <Link
       className={ clsx('block m-2 group cursor-pointer', className) }
-      to={ `/watch/?id=${ id }` }
+      to={ watchUrl }
       onPrefetch={ preFecthMovie }
     >
       <div className='relative transform-none group-hover:scale-105 group-hover:z-50 group-hover:animate-sharpen duration-300 shadow-lg shadow-light-gray'>

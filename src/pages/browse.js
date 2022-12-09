@@ -4,7 +4,7 @@ import useAuthContext from 'src/hooks/useAuthContext'
 import { TMDB_DISCOVER_MOVIE, TMDB_DISCOVER_TV } from 'src/constants/apiConstants'
 import { isClient } from 'lib/utilities/is'
 import VerticalMovie from 'src/component/movie/VerticalMovie'
-import { SEO as Seo } from 'src/component/seo/seo'
+import Head from 'src/component/head/head'
 
 const Browse = () => {
   const { homepageTab, genres } = useAuthContext()
@@ -48,7 +48,7 @@ const Browse = () => {
 
 
   return (
-    <Seo title={ `${ genre } movies` }>
+    <Head title={ `${ genre } movies` }>
       <div className='min-h-screen xl:w-5/6 xl:ml-1/6 text-white pt-16'>
         <h3 className='p-4 text-shadow'>Select your favorite { genre } { homepageTab === 1 ? 'TV shows' : 'movies' }.</h3>
         <div className='flex flex-wrap'>
@@ -71,7 +71,7 @@ const Browse = () => {
           }) }
         </div>
       </div>
-    </Seo>
+    </Head>
   )
 }
 

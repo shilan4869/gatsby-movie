@@ -4,9 +4,9 @@ import OnTheAirTVShows from '../list/horizontal/OnTheAirTVShows'
 import PopularTVShows from '../list/horizontal/PopularTVShows'
 import ToprateTVShows from '../list/horizontal/ToprateTVShows'
 
-const TvShows = () => (
+const TvShows = ({ className }) => (
   <>
-    <PopularTVShows />
+    <PopularTVShows className={ className } />
     <TrendingTVShows />
     <ToprateTVShows />
     <OnTheAirTVShows />

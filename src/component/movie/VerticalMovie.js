@@ -13,6 +13,7 @@ const VerticalMovie = ({ className, movie }) => {
   const { poster_path: posterPath, vote_average: voteAverage, id } = movie
   const numberOfStar = Math.floor(Number(voteAverage) * 10) / 10 || 5
   const apiURL = homepageTab === 1 ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
+  const watchURL = homepageTab === 1 ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
   const preFecthMovie = () => {
     prefetch(apiURL, { api_key: API_KEY })
   }
@@ -21,7 +22,7 @@ const VerticalMovie = ({ className, movie }) => {
   return (
     <Link
       className={ clsx('block p-1 mb-12 md:p-3 group ', className) }
-      to={ `/watch/?id=${ id }` }
+      to={ watchURL }
       onPrefetch={ preFecthMovie }
     >
       <div className='relative transform-none group-hover:scale-105 group-hover:z-50 group-hover:animate-sharpen duration-300 shadow-lg shadow-light-gray'>

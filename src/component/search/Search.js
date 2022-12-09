@@ -3,7 +3,7 @@ import { isClient } from 'lib/utilities/is'
 import useQueryInfinite from 'lib/hooks/useQueryInfinite'
 import { TMDB_MULTI_SEARCH_API, API_KEY, TMDB_TRENDING_MOVIE_API } from 'src/constants/apiConstants'
 import VerticalMovie from 'src/component/movie/VerticalMovie'
-import { SEO as Seo } from 'src/component/seo/seo'
+import Head from '../head/head'
 
 const Search = () => {
   const searchKeyword = isClient ? window.history.state?.keyword : ''
@@ -49,7 +49,7 @@ const Search = () => {
 
 
   return (
-    <Seo title={ `Search ${ searchKeyword }` }>
+    <Head title={ `Search ${ searchKeyword }` }>
       <div className='min-h-screen xl:w-5/6 xl:ml-1/6 text-white pt-16'>
         <h3 className='p-4 text-shadow'>{ results !== 0 ? `Search Result for ${ searchKeyword }` : `There is no result for ${ searchKeyword }...` }</h3>
         <div className='flex flex-wrap'>
@@ -99,7 +99,7 @@ const Search = () => {
           ) }
 
       </div>
-    </Seo>
+    </Head>
   )
 }
 
