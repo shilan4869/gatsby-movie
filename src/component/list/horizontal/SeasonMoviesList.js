@@ -36,10 +36,15 @@ const SeasonMoviesList = ({ movies, poster }) => {
   }
 
   return (
-    <div className='w-full absolute left-0 right-0 top-10 mb-16 px-0 md:px-3'>
+    <div className='w-full absolute left-0 right-0 top-12 mb-16 px-0 md:px-3'>
       <Swiper
-        slidesPerView='auto'
-        navigation
+        slidesPerView={ 2 }
+        breakpoints={ {
+          768: {
+            slidesPerView: 'auto',
+            navigation: true,
+          },
+        } }
         freeMode
         touchStartPreventDefault={ false }
         modules={ [ Navigation ] }

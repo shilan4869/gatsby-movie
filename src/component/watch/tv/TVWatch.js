@@ -58,7 +58,7 @@ const TVWatch = () => {
             </div>
           ) }
           <Seasons seasonsCount={ seasonsCount } id={ id } />
-          <TvShows className='mt-20 sm:mt-28 md:mt-36 lg:mt-44' />
+          <TvShows className='mt-56 md:mt-36 lg:mt-44' />
         </div>
         <SimilarMovies className='fixed right-0 hidden xl:flex flex-col w-1/6 h-screen pt-9' id={ id } />
       </div>
