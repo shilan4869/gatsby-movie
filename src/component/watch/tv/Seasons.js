@@ -21,7 +21,7 @@ const SeasonSelectBox = memo(({ seasons, onChange }) => (
   </select>
 ))
 
-const Seasons = ({ seasonsCount, id }) => {
+const Seasons = ({ seasonsCount, id, defaultBackdrop }) => {
   const [ seasonsDetails, setSeasonDetails ] = useState([])
   const [ selectedSeason, setSelectedSeason ] = useState(0)
 
@@ -53,7 +53,6 @@ const Seasons = ({ seasonsCount, id }) => {
     }
   }, [ seasonsCount, id ])
 
-  console.log(selectedSeason)
 
   return (
     <>
@@ -63,7 +62,7 @@ const Seasons = ({ seasonsCount, id }) => {
       </div>
       <div className='flex relative w-full justify-between px-4 mt-6'>
         <SeasonSelectBox seasons={ seasonsDetails } onChange={ e => setSelectedSeason(Number(e.target.value)) } />
-        { seasonsDetails.map((season, index) => selectedSeason === index && <SeasonMoviesList movies={ season.episodes } poster={ season.poster_path } />) }
+        { seasonsDetails.map((season, index) => selectedSeason === index && <SeasonMoviesList movies={ season.episodes } poster={ defaultBackdrop } />) }
       </div>
     </>
   )
