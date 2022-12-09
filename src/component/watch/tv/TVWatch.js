@@ -50,11 +50,13 @@ const TVWatch = () => {
                 <CalenderIcon className='w-2 h-2 md:w-4 md:h-4 mt-1 mx-2 fill-primary-cyan' />
                 { loading ? '2022' : movieDetail?.release_date || movieDetail?.first_air_date }
               </div>
-              { !loading && movieDetail?.genres.map(genre => (
-                <Tags key={ genre.id } className='mt-4 mr-1 md:mr-2' to={ `/browse?genre=${ genre.id }` }>
-                  { genre.name }
-                </Tags>
-              )) }
+              <div className='flex flex-wrap w-full px-1'>
+                { !loading && movieDetail?.genres.map(genre => (
+                  <Tags key={ genre.id } className='mt-4 mr-1 md:mr-2' to={ `/browse?genre=${ genre.id }` }>
+                    { genre.name }
+                  </Tags>
+                )) }
+              </div>
             </div>
           ) }
           <Seasons seasonsCount={ seasonsCount } id={ id } />
