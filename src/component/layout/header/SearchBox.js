@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import request from 'lib/utilities/request'
+import useAuthContext from 'src/hooks/useAuthContext'
 import { TMDB_MULTI_SEARCH_API, API_KEY } from 'src/constants/apiConstants'
 import FontAwesome from 'lib/components/FontAwesome'
 import { farFaSearch } from 'lib/fontawesome/fontawesome'
@@ -7,9 +8,13 @@ import { navigate } from 'gatsby'
 import Link from 'lib/components/Link'
 
 const AutoComplete = ({ suggestions }) => {
+  const { homepageTab } = useAuthContext()
+
   if (suggestions.length === 0) {
     return
   }
+
+  const watchUrl = homepageTab === 1 ? `/watch/tv?id=${ suggest.id }` : `/watch/movie?id=${ suggest.id }`
 
   return (
     <div className='fixed w-1/2 md:w-1/3 xl:w-1/6 top-16 right-0 md:right-14 xl:right-0 p-2 flex flex-col overflow-hidden py-1 bg-sub text-shadow-sm rounded-xl animate-shrink shadow-lg shadow-black'>
@@ -17,7 +22,7 @@ const AutoComplete = ({ suggestions }) => {
         <Link
           className='block px-4 py-2 hover:no-underline opacity-60 hover:opacity-100'
           key={ index }
-          to={ `/watch?id=${ suggest.id }` }
+          to={ watchUrl }
         >{ suggest.name || suggest.title }
         </Link>
       )) }

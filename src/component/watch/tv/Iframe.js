@@ -9,6 +9,8 @@ const Iframe = () => {
   const episode = isClient ? params.get('episode') : 1
   const embedMovieURL = `${ EMBED_TV_API }?id=${ id }&s=${ season }&e=${ episode }`
 
+  console.log(embedMovieURL)
+
   return (
     <div
       className='aspect-ratio aspect-w-16 aspect-h-9 mt-16 md:mt-8 rounded-lg overflow-hidden'
