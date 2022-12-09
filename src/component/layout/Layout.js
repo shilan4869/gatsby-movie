@@ -33,8 +33,6 @@ const Layout = ({ children }) => {
     }
 
     const checkWindowWidth = () => {
-      console.log('checking width...')
-
       if (window.innerWidth >= XL_SCREEN) {
         setIsXlScreen(true)
       } else {
@@ -57,7 +55,10 @@ const Layout = ({ children }) => {
 
     <div className='bg w-full relative min-h-screen text-white '>
       <AuthProvider>
-        <LeftSideMenu className='fixed w-1/2 xl:w-1/6 text-base text-shadow shadow-black' isMdScreen={ isMdScreen } />
+        <LeftSideMenu
+          className='fixed w-1/2 xl:w-1/6 text-base text-shadow shadow-black'
+          isMdScreen={ isMdScreen }
+        />
         <Header isXlScreen={ isXlScreen } />
         { children }
       </AuthProvider>

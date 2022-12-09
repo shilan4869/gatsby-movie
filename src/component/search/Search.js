@@ -6,7 +6,7 @@ import VerticalMovie from 'src/component/movie/VerticalMovie'
 import Head from '../head/head'
 
 const Search = () => {
-  const searchKeyword = isClient ? window.history.state?.keyword : ''
+  const searchKeyword = isClient ? window.history.state?.keyword || '' : ''
   const { loading: loadingSearch, data: searchPages, next: nextSearch } = useQueryInfinite(TMDB_MULTI_SEARCH_API, { query: { query: searchKeyword, language: 'en-US', api_key: API_KEY } })
   const { loading: loadingRecommend, data: recommendsPages, next: nextRecommend } = useQueryInfinite(TMDB_TRENDING_MOVIE_API, { query: { language: 'en-US', api_key: API_KEY } })
   const results = searchPages[ 0 ]?.total_results
