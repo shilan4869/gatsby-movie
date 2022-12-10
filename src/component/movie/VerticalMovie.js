@@ -25,7 +25,7 @@ const VerticalMovie = ({ className, movie }) => {
     watchURL = media === 'tv' ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
   } else {
     apiURL = homepageTab === TV_TAB ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
-    watchURL = media === MOVIES_TAB ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
+    watchURL = homepageTab === TV_TAB ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
   }
 
   const preFecthMovie = () => {
@@ -41,7 +41,7 @@ const VerticalMovie = ({ className, movie }) => {
     >
       <div className='relative transform-none group-hover:scale-105 group-hover:z-50 group-hover:animate-sharpen duration-300 shadow-lg shadow-light-gray'>
         <div className='aspect-ratio aspect-h-3 aspect-w-2 overflow-hidden rounded-t-xl'>
-          <Image src={ TMDB_POSTER_ORIGIN + (posterPath || '/aPqcQwu4VGEewPhagWNncDbJ9Xp.jpg') } alt='movie' className='swiper-lazy object-cover' />
+          <Image src={ TMDB_POSTER_ORIGIN + posterPath } alt='movie' className='swiper-lazy object-cover' />
         </div>
         <div className='absolute left-2 md:left-4 top-2 md:top-4 px-2 md:px-3 md:py-1 flex items-center bg-primary-cyan text-white rounded-2xl hover:scale-125 transition-all'>
           <p className='text-sm md:text-base mt-1 md:mt-px mr-1'>{ numberOfStar }</p>
