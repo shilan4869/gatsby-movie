@@ -5,7 +5,7 @@ import CalenderIcon from 'src/assets/icon/Calender.svg'
 import { Tags } from 'src/component/utilities/Button'
 import TvShows from 'src/component/home/TvShows'
 import { TMDB_TV_ORIGIN, API_KEY } from 'src/constants/apiConstants'
-import SimilarMovies from 'src/component/watch/SimilarMovies'
+import SimilarTVShows from './SimiliarTVShows'
 import Seasons from './Seasons'
 import Iframe from './Iframe'
 import { isClient } from 'lib/utilities/is'
@@ -62,7 +62,7 @@ const TVWatch = () => {
           <Seasons seasonsCount={ seasonsCount } id={ id } defaultBackdrop={ movieDetail?.backdrop_path } />
           <TvShows className='mt-56 md:mt-36 lg:mt-44' />
         </div>
-        <SimilarMovies className='fixed right-0 hidden xl:flex flex-col w-1/6 h-screen pt-9' id={ id } />
+        <SimilarTVShows className='fixed right-0 hidden xl:flex flex-col w-1/6 h-screen pt-9' id={ id } />
       </div>
     </Head>
   )

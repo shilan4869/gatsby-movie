@@ -6,14 +6,17 @@ import Link from 'lib/components/Link'
 import { PrimaryButton, SecondaryButton } from '../utilities/Button'
 import { TMDB_POSTER_ORIGIN, TMDB_MOVIE_ORIGIN, TMDB_TV_ORIGIN, API_KEY } from 'src/constants/apiConstants'
 import Star from 'src/assets/icon/Star.svg'
-import useAuthContext from 'src/hooks/useAuthContext'
 
 const VerticalMovie = ({ className, movie }) => {
-  const { homepageTab } = useAuthContext()
-  const { poster_path: posterPath, vote_average: voteAverage, id } = movie
+  const { media_type: media, poster_path: posterPath, vote_average: voteAverage, id } = movie
+
+  if (!posterPath) {
+    return null
+  }
+
   const numberOfStar = Math.floor(Number(voteAverage) * 10) / 10 || 5
-  const apiURL = homepageTab === 1 ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
-  const watchURL = homepageTab === 1 ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
+  const apiURL = media === 'tv' ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
+  const watchURL = media === 'tv' ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
   const preFecthMovie = () => {
     prefetch(apiURL, { api_key: API_KEY })
   }
