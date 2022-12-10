@@ -23,7 +23,7 @@ const TVWatch = () => {
   const numberOfStar = (!loading ? (Math.floor(Number(movieDetail?.vote_average) * 10) / 10) : 5) || 5
   const seasonsCount = movieDetail?.number_of_seasons
 
-  if (!movieDetail?.success) {
+  if (movieDetail?.success === false) {
     return (
       <Head
         title='Video Not Found'
