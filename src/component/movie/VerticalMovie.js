@@ -3,20 +3,31 @@ import clsx from 'lib/utilities/clsx'
 import { prefetch } from 'lib/utilities/prefetch'
 import Image from 'lib/components/Image'
 import Link from 'lib/components/Link'
+import useAuthContext from 'src/hooks/useAuthContext'
 import { PrimaryButton, SecondaryButton } from '../utilities/Button'
 import { TMDB_POSTER_ORIGIN, TMDB_MOVIE_ORIGIN, TMDB_TV_ORIGIN, API_KEY } from 'src/constants/apiConstants'
+import { TV_TAB, MOVIES_TAB } from '../layout/constant'
 import Star from 'src/assets/icon/Star.svg'
 
 const VerticalMovie = ({ className, movie }) => {
+  const { homepageTab } = useAuthContext()
   const { media_type: media, poster_path: posterPath, vote_average: voteAverage, id } = movie
+  const numberOfStar = Math.floor(Number(voteAverage) * 10) / 10 || 5
+  let apiURL
+  let watchURL
 
   if (!posterPath) {
     return null
   }
 
-  const numberOfStar = Math.floor(Number(voteAverage) * 10) / 10 || 5
-  const apiURL = media === 'tv' ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
-  const watchURL = media === 'tv' ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
+  if (media) {
+    apiURL = media === 'tv' ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
+    watchURL = media === 'tv' ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
+  } else {
+    apiURL = homepageTab === TV_TAB ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
+    watchURL = media === MOVIES_TAB ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
+  }
+
   const preFecthMovie = () => {
     prefetch(apiURL, { api_key: API_KEY })
   }
