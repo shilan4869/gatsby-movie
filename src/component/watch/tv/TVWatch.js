@@ -1,7 +1,9 @@
 import React from 'react'
+import Link from 'lib/components/Link'
 import useQuery from 'lib/hooks/useQuery'
 import StarIcon from 'src/assets/icon/Star.svg'
 import CalenderIcon from 'src/assets/icon/Calender.svg'
+import personnel from 'static/personnel.png'
 import { Tags } from 'src/component/utilities/Button'
 import TvShows from 'src/component/home/TvShows'
 import { TMDB_TV_ORIGIN, API_KEY } from 'src/constants/apiConstants'
@@ -9,7 +11,6 @@ import SimilarTVShows from './SimiliarTVShows'
 import Seasons from './Seasons'
 import Iframe from './Iframe'
 import { isClient } from 'lib/utilities/is'
-import { navigate } from 'gatsby'
 import Head from 'src/component/head/head'
 
 const TVWatch = () => {
@@ -17,15 +18,26 @@ const TVWatch = () => {
   const id = isClient ? params?.get('id') : ''
   const apiURL = `${ TMDB_TV_ORIGIN }/${ id }`
 
-  const { loading, error, data: movieDetail } = useQuery(apiURL, { query: { api_key: API_KEY } })
+  const { loading, data: movieDetail } = useQuery(apiURL, { query: { api_key: API_KEY } })
 
   const numberOfStar = (!loading ? (Math.floor(Number(movieDetail?.vote_average) * 10) / 10) : 5) || 5
   const seasonsCount = movieDetail?.number_of_seasons
 
-  if (error?.status === 404) {
-    navigate('/404')
-
-    return
+  if (!movieDetail?.success) {
+    return (
+      <Head
+        title='Video Not Found'
+      >
+        <div className='w-full xl:w-4/6 mx-auto pt-28 px-16'>
+          <Link to='/' className='hover:no-underline'>
+            <div className='text-3xl mb-16'>
+              There is nothing in the desert...
+            </div>
+            <img src={ personnel } alt='' />
+          </Link>
+        </div>
+      </Head>
+    )
   }
 
   return (
