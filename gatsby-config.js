@@ -2,7 +2,7 @@ require('./env')
 module.exports = {
   siteMetadata: {
     title: `Movie Cinema`,
-    description: `This is my first product on ReactJS, enjoy!`,
+    description: `This is my first product on ReactJS. Hope you enjoy the movies and have a fun time with it!`,
     image: `/favicon.png`,
     siteUrl: `https://movie.tienlm.tech`,
   },

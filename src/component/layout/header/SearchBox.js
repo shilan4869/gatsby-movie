@@ -43,13 +43,15 @@ const SearchBox = ({ className, actived }) => {
     if (newKeyword !== '') {
       request(TMDB_MULTI_SEARCH_API, { query: newKeyword, api_key: API_KEY })
         .then(data => {
-          if (data.results.length === 0) {
+          const newSuggestions = data.results.filter(movie => (movie.poster_path && !(movie.media_type === 'person')))
+
+          if (newSuggestions.length === 0) {
             resetSuggestions()
 
             return
           }
 
-          setSuggestions(data.results)
+          setSuggestions(newSuggestions)
         })
     } else {
       resetSuggestions()
