@@ -6,15 +6,11 @@ import VerticalList from 'src/component/list/vertical/VerticalList'
 
 const SimilarMovies = ({ className, id }) => {
   const ApiEndpoint = `${ TMDB_GET_SIMILAR }movie/${ id }/similar`
-  const { loading, error, data: similarMovies } = useQuery(ApiEndpoint, { query: { api_key: API_KEY } })
-
-  if (loading || error) {
-    return
-  }
+  const { data: similarMovies } = useQuery(ApiEndpoint, { query: { api_key: API_KEY } })
 
   return (
     <div className={ clsx('h-screen bg-sub', className) }>
-      <VerticalList movies={ similarMovies.results } heading='Similar Movies' className={ className } />
+      <VerticalList movies={ similarMovies?.results } heading='Similar Movies' className={ className } />
     </div>
   )
 }

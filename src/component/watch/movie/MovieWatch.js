@@ -1,29 +1,48 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useQuery from 'lib/hooks/useQuery'
 import Star from 'src/assets/icon/Star.svg'
 import Calender from 'src/assets/icon/Calender.svg'
+import personnel from 'static/personnel.png'
+import { MOVIES_TAB } from 'src/component/layout/constant'
 import { Tags } from 'src/component/utilities/Button'
 import Movies from 'src/component/home/Movies'
 import { TMDB_MOVIE_ORIGIN, API_KEY } from 'src/constants/apiConstants'
 import SimilarMovies from './SimilarMovies'
 import Iframe from './Iframe'
 import { isClient } from 'lib/utilities/is'
-import { navigate } from 'gatsby'
+import Link from 'lib/components/Link'
 import Head from 'src/component/head/head'
+import useAuthContext from 'src/hooks/useAuthContext'
 
 const MovieWatch = () => {
+  const { setHomepageTab } = useAuthContext()
   const params = isClient ? new URLSearchParams(location.search) : null
   const id = isClient ? params?.get('id') : ''
   const apiURL = `${ TMDB_MOVIE_ORIGIN }/${ id }`
 
-  const { loading, error, data: movieDetail } = useQuery(apiURL, { query: { api_key: API_KEY } })
+  const { loading, data: movieDetail } = useQuery(apiURL, { query: { api_key: API_KEY } })
 
   const numberOfStar = (!loading ? (Math.floor(Number(movieDetail?.vote_average) * 10) / 10) : 5) || 5
 
-  if (error?.status === 404) {
-    navigate('/404')
+  useEffect(() => {
+    setHomepageTab(MOVIES_TAB)
+  }, [ setHomepageTab ])
 
-    return
+  if (movieDetail?.success === false) {
+    return (
+      <Head
+        title='Video Not Found'
+      >
+        <div className='w-full xl:w-4/6 mx-auto pt-28 px-16'>
+          <Link to='/' className='hover:no-underline'>
+            <div className='text-3xl mb-16'>
+              There is nothing in the desert...
+            </div>
+            <img src={ personnel } alt='' />
+          </Link>
+        </div>
+      </Head>
+    )
   }
 
   return (

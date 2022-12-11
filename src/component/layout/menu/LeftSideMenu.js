@@ -1,4 +1,4 @@
-import React, { memo, useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import FontAwesome from 'lib/components/FontAwesome'
 import { falFaBars } from 'lib/fontawesome/fontawesome'
 import Genres from './Genres'
@@ -6,16 +6,16 @@ import clsx from 'lib/utilities/clsx'
 import Link from 'lib/components/Link'
 import UserPlaceholder from 'src/component/layout/menu/authentication/UserPlaceholder'
 import useAuthContext from 'src/hooks/useAuthContext'
-import Television from 'src/assets/icon/Television.svg'
-import Movie from 'src/assets/icon/Movie.svg'
+import TelevisionIcon from './icon/TelevisionIcon'
+import MovieIcon from './icon/MovieIcon'
 import Browse from 'src/assets/icon/Genres.svg'
+import { TV_TAB, MOVIES_TAB } from '../constant'
 
 const LeftSideMenu = ({ className, isMdScreen }) => {
-  const TV_TAB = 1
-  const MOVIES_TAB = 2
   const [ mobileMenuOpened, setMobileMenuOpened ] = useState(false)
   const [ genresOpened, setGenresOpened ] = useState(false)
   const { homepageTab, setHomepageTab } = useAuthContext()
+
   const menuTab = homepageTab
 
   const menu = useRef()
@@ -27,6 +27,8 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
   const genresRef = useRef()
   const genresBar = useRef()
   const genresText = useRef()
+  const tvIconRef = useRef()
+  const movieIconRef = useRef()
 
   const tvMenuSelect = () => {
     localStorage.setItem('menuTab', TV_TAB)
@@ -60,17 +62,21 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
     tvBar.current.style.opacity = '0%'
     moviesText.current.style.color = 'white'
     tvText.current.style.color = 'white'
+    movieIconRef.current.setAttribute('fill', '#fff')
+    tvIconRef.current.setAttribute('fill', '#fff')
 
     switch (menuTab) {
       case TV_TAB: {
         tvBar.current.style.opacity = '100%'
         tvText.current.style.color = '#00B9AE'
+        tvIconRef.current.setAttribute('fill', '#00B9AE')
         break
       }
 
       case MOVIES_TAB: {
         moviesBar.current.style.opacity = '100%'
         moviesText.current.style.color = '#00B9AE'
+        movieIconRef.current.setAttribute('fill', '#00B9AE')
         break
       }
 
@@ -125,14 +131,14 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
           <Link className='hover:no-underline' to='/'>
             <div className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4' onClick={ tvMenuSelect }>
               <div className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto' ref={ tvBar } />
-              <Television className='w-5 h-5 ml-7 md:hidden xl:block' fill={ menuTab === TV_TAB ? '#00B9AE' : '#fff' } />
+              <TelevisionIcon className='w-5 h-5 ml-7 md:hidden xl:block' fill='#fff' ref={ tvIconRef } />
               <span className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100' ref={ tvText }>TV Shows</span>
             </div>
           </Link>
           <Link className='hover:no-underline' to='/'>
             <div className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4' onClick={ moviesMenuSelect }>
               <div className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto' ref={ moviesBar } />
-              <Movie className='w-5 h-6 ml-7 md:hidden xl:block' fill={ menuTab === MOVIES_TAB ? '#00B9AE' : '#fff' } />
+              <MovieIcon className='w-5 h-6 ml-7 md:hidden xl:block' fill='#fff' ref={ movieIconRef } />
               <span className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100' ref={ moviesText }>Movies</span>
             </div>
           </Link>
@@ -156,4 +162,4 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
   )
 }
 
-export default memo(LeftSideMenu)
+export default LeftSideMenu

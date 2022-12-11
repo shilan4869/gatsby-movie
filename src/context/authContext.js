@@ -2,11 +2,12 @@ import React, { createContext, useState } from 'react'
 import useQuery from 'lib/hooks/useQuery'
 import { isClient } from 'lib/utilities/is'
 import { TMDB_MOVIE_GENRES_API, TMDB_TV_GENRES_API } from 'src/constants/apiConstants'
+import { TV_TAB } from 'src/component/layout/constant'
 
 export const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
-  const localTab = isClient ? JSON.parse(localStorage.getItem('menuTab')) || 1 : 1
+  const localTab = isClient ? JSON.parse(localStorage.getItem('menuTab')) || TV_TAB : TV_TAB
 
 
   const [ homepageTab, setHomepageTab ] = useState(localTab)
