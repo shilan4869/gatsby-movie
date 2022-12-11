@@ -5,7 +5,6 @@ import { TMDB_MULTI_SEARCH_API, API_KEY } from 'src/constants/apiConstants'
 import VerticalMovie from 'src/component/movie/VerticalMovie'
 import RecommendSearch from './RecommendSearch'
 import Head from '../head/head'
-import RecommenedMovies from '../list/vertical/RecommenedMovies'
 
 const Search = () => {
   /* eslint-disable react-hooks/rules-of-hooks */
@@ -93,7 +92,7 @@ const Search = () => {
             )
           }) }
         </div>
-        { results < 10 && <RecommenedMovies /> }
+        { results < 10 && <RecommendSearch /> }
       </div>
     </Head>
   )
