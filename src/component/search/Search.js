@@ -92,7 +92,12 @@ const Search = () => {
             )
           }) }
         </div>
-        { results < 10 && <RecommendSearch /> }
+        { results < 10 && (
+          <>
+            <h3 className='p-4 text-shadow mt-4'>Recommends for you</h3>
+            <RecommendSearch />
+          </>
+        ) }
       </div>
     </Head>
   )
