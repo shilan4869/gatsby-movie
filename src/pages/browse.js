@@ -1,13 +1,14 @@
-import React, { useRef, useCallback } from 'react'
+import React, { useRef, useCallback, useEffect } from 'react'
 import useQueryInfinite from 'lib/hooks/useQueryInfinite'
 import useAuthContext from 'src/hooks/useAuthContext'
 import { TMDB_DISCOVER_MOVIE, TMDB_DISCOVER_TV } from 'src/constants/apiConstants'
 import { isClient } from 'lib/utilities/is'
-import VerticalMovie from 'src/component/movie/VerticalMovie'
-import Head from 'src/component/head/head'
+import VerticalMovie from 'src/components/movie/VerticalMovie'
+import Head from 'src/components/head/head'
+import { BROWSE_TAB } from 'src/components/layout/constant'
 
 const Browse = () => {
-  const { homepageTab, genres } = useAuthContext()
+  const { homepageTab, genres, setHomepageTab } = useAuthContext()
   const params = isClient ? new URLSearchParams(location.search) : null
   const genreId = isClient ? params.get('genre') : ''
   const genre = genres.get(Number(genreId))
@@ -45,6 +46,10 @@ const Browse = () => {
 
     return [ ...mergedMovies, ...newMovies ]
   }, [])
+
+  useEffect(() => {
+    setHomepageTab(BROWSE_TAB)
+  }, [ setHomepageTab ])
 
 
   return (

@@ -1,4 +1,4 @@
-import MovieWatch from 'src/component/watch/movie/MovieWatch'
+import MovieWatch from 'src/components/watch/movie/MovieWatch'
 import React from 'react'
 
 const movie = () => (

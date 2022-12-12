@@ -1,7 +1,7 @@
 import React from 'react'
-import Main from 'src/component/home/Main'
-import RightSide from 'src/component/home/RightSide'
-import Head from 'src/component/head/head'
+import Main from 'src/components/home/Main'
+import RightSide from 'src/components/home/RightSide'
+import Head from 'src/components/head/head'
 import 'lib/styles/swiper/swiper.css'
 import 'lib/styles/swiper/navigation.css'
 

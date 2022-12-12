@@ -1,4 +1,4 @@
-import TVWatch from 'src/component/watch/tv/TVWatch'
+import TVWatch from 'src/components/watch/tv/TVWatch'
 import React from 'react'
 
 const tv = () => (

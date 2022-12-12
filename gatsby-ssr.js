@@ -1,4 +1,4 @@
-import Layout from 'src/component/layout/Layout'
+import Layout from 'src/components/layout/Layout'
 
 export const wrapPageElement = ({ element }) => (
   <Layout>
