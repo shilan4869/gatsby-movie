@@ -1,20 +1,20 @@
-import React, { useRef, useCallback, useEffect } from 'react'
+import React, { useRef, useCallback, memo } from 'react'
 import useQueryInfinite from 'lib/hooks/useQueryInfinite'
 import { TMDB_DISCOVER_MOVIE, TMDB_DISCOVER_TV } from 'src/constants/apiConstants'
 import { isClient } from 'lib/utilities/is'
 import VerticalMovie from 'src/components/movie/VerticalMovie'
 import Head from 'src/components/head/head'
-import { BROWSE_TAB } from 'src/components/layout/constant'
-import useMenuTabContext from 'src/hooks/useMenuTabContext'
+import { TV_TAB } from 'src/components/layout/constant'
 import useGenresContext from 'src/hooks/useGenresContext'
 
 const Browse = () => {
-  const { menuTab, setMenuTab } = useMenuTabContext()
+  const menuTab = isClient ? Number(localStorage.getItem('menuTab')) : TV_TAB
+
   const { genres } = useGenresContext()
   const params = isClient ? new URLSearchParams(location.search) : null
   const genreId = isClient ? params.get('genre') : ''
   const genre = genres.get(Number(genreId))
-  const apiURL = menuTab === 1 ? TMDB_DISCOVER_TV : TMDB_DISCOVER_MOVIE
+  const apiURL = menuTab === TV_TAB ? TMDB_DISCOVER_TV : TMDB_DISCOVER_MOVIE
   const { loading, error, data: moviePages, next, retry } = useQueryInfinite(apiURL, { query: { with_genres: genreId, language: 'en-US', api_key: 'c298c2cccf3f21af1e7a841e1034f72e', sort_by: 'popularity.desc' } })
 
   const observer = useRef()
@@ -49,11 +49,6 @@ const Browse = () => {
     return [ ...mergedMovies, ...newMovies ]
   }, [])
 
-  useEffect(() => {
-    setMenuTab(BROWSE_TAB)
-  }, [ setMenuTab ])
-
-
   return (
     <Head title={ `${ genre } movies` }>
       <div className='min-h-screen xl:w-5/6 xl:ml-1/6 text-white pt-16'>
@@ -82,4 +77,4 @@ const Browse = () => {
   )
 }
 
-export default Browse
+export default memo(Browse)

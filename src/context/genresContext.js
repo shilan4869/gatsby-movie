@@ -2,27 +2,47 @@ import React, { createContext } from 'react'
 import useQuery from 'lib/hooks/useQuery'
 import useMenuTabContext from 'src/hooks/useMenuTabContext'
 import { TMDB_MOVIE_GENRES_API, TMDB_TV_GENRES_API } from 'src/constants/apiConstants'
+import { MOVIES_TAB, TV_TAB } from 'src/components/layout/constant'
+import { isClient } from 'lib/utilities/is'
 
 export const GenresContext = createContext()
 
 const GenresProvider = ({ children }) => {
   const { menuTab } = useMenuTabContext()
-  const genresApi = menuTab === 1 ? TMDB_TV_GENRES_API : TMDB_MOVIE_GENRES_API
-  const { loading, error, data } = useQuery(genresApi)
+  let genresApi
 
-  const genresArray = loading || error ? [] : data.genres
+  switch (menuTab) {
+    case TV_TAB:
+      genresApi = TMDB_TV_GENRES_API
+      break
+    case MOVIES_TAB:
+      genresApi = TMDB_MOVIE_GENRES_API
+      break
+
+    default:
+      if (isClient) {
+        genresApi = Number(localStorage.getItem('menuTab')) === TV_TAB ? TMDB_TV_GENRES_API : TMDB_MOVIE_GENRES_API
+      } else {
+        genresApi = TMDB_TV_GENRES_API
+      }
+
+      break
+  }
+
+  const { loading, error, data: genresData } = useQuery(genresApi)
+
+  const genresArray = loading || error ? [] : genresData.genres
   const genres = new Map()
 
   // [{id: 1, name: 'a'}]
   genresArray.forEach(genre => genres.set(genre.id, genre.name))
 
-
-  const authData = {
+  const data = {
     genres,
   }
 
   return (
-    <GenresContext.Provider value={ authData }>
+    <GenresContext.Provider value={ data }>
       { children }
     </GenresContext.Provider>
   )

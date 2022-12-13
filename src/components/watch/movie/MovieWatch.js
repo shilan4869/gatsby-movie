@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import useQuery from 'lib/hooks/useQuery'
 import Star from 'src/assets/icon/Star.svg'
 import Calender from 'src/assets/icon/Calender.svg'
 import personnel from 'static/personnel.png'
-import { MOVIES_TAB } from 'src/components/layout/constant'
 import { Tags } from 'src/components/utilities/Button'
 import Movies from 'src/components/home/Movies'
 import { TMDB_MOVIE_ORIGIN, API_KEY } from 'src/constants/apiConstants'
@@ -12,10 +11,8 @@ import Iframe from './Iframe'
 import { isClient } from 'lib/utilities/is'
 import Link from 'lib/components/Link'
 import Head from 'src/components/head/head'
-import useMenuTabContext from 'src/hooks/useMenuTabContext'
 
 const MovieWatch = () => {
-  const { setMenuTab } = useMenuTabContext()
   const params = isClient ? new URLSearchParams(location.search) : null
   const id = isClient ? params?.get('id') : ''
   const apiURL = `${ TMDB_MOVIE_ORIGIN }/${ id }`
@@ -23,11 +20,6 @@ const MovieWatch = () => {
   const { loading, data: movieDetail } = useQuery(apiURL, { query: { api_key: API_KEY } })
 
   const numberOfStar = (!loading ? (Math.floor(Number(movieDetail?.vote_average) * 10) / 10) : 5) || 5
-
-  useEffect(() => {
-    setMenuTab(MOVIES_TAB)
-    localStorage.setItem('menuTab', MOVIES_TAB)
-  }, [ setMenuTab ])
 
   if (movieDetail?.success === false) {
     return (

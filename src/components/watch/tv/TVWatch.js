@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Link from 'lib/components/Link'
 import useQuery from 'lib/hooks/useQuery'
 import StarIcon from 'src/assets/icon/Star.svg'
@@ -7,16 +7,13 @@ import personnel from 'static/personnel.png'
 import { Tags } from 'src/components/utilities/Button'
 import TvShows from 'src/components/home/TvShows'
 import { TMDB_TV_ORIGIN, API_KEY } from 'src/constants/apiConstants'
-import { TV_TAB } from 'src/components/layout/constant'
 import SimilarTVShows from './SimiliarTVShows'
 import Seasons from './Seasons'
 import Iframe from './Iframe'
 import { isClient } from 'lib/utilities/is'
 import Head from 'src/components/head/head'
-import useMenuTabContext from 'src/hooks/useMenuTabContext'
 
 const TVWatch = () => {
-  const { setMenuTab } = useMenuTabContext()
   const params = isClient ? new URLSearchParams(location.search) : null
   const id = isClient ? params?.get('id') : ''
   const apiURL = `${ TMDB_TV_ORIGIN }/${ id }`
@@ -25,11 +22,6 @@ const TVWatch = () => {
 
   const numberOfStar = (!loading ? (Math.floor(Number(movieDetail?.vote_average) * 10) / 10) : 5) || 5
   const seasonsCount = movieDetail?.number_of_seasons
-
-  useEffect(() => {
-    setMenuTab(TV_TAB)
-    localStorage.setItem('menuTab', TV_TAB)
-  }, [ setMenuTab ])
 
   if (movieDetail?.success === false) {
     return (
