@@ -9,12 +9,13 @@ import Link from 'lib/components/Link'
 import playButton from 'src/assets/img/play-button.png'
 import useMenuTabContext from 'src/hooks/useMenuTabContext'
 import useGenresContext from 'src/hooks/useGenresContext'
+import { MOVIES_TAB } from '../layout/constant'
 
 const Carousel = () => {
   const swiperRef = useRef()
   const { menuTab } = useMenuTabContext()
   const { genres } = useGenresContext()
-  const api = menuTab === 1 ? TMDB_TRENDING_TV_API : TMDB_NOW_PLAYING_MOVIE_API
+  const api = menuTab === MOVIES_TAB ? TMDB_NOW_PLAYING_MOVIE_API : TMDB_TRENDING_TV_API
   const { loading, error, data: nowPlayingMovies } = useQuery(api, { query: { api_key: API_KEY } })
 
 
