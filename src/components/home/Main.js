@@ -7,7 +7,7 @@ import useMenuTabContext from 'src/hooks/useMenuTabContext'
 
 const Main = ({ className }) => {
   const TV_TAB = 1
-  const { menuTab } = useMenuTabContext
+  const { menuTab } = useMenuTabContext()
 
   const MainContent = (menuTab === TV_TAB) ? () => <TvShows /> : () => <Movies />
 
