@@ -74,6 +74,18 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
     return () => window.removeEventListener('click', closeMenu)
   }, [ mobileMenuOpened, isMdScreen ])
 
+  /** rerender and create initial localStorage's item at the first render */
+  useEffect(() => {
+    const localTab = localStorage.getItem('menuTab')
+
+    if (localTab) {
+      setMenuTab(Number(localTab))
+    } else {
+      localStorage.setItem('menuTab', TV_TAB)
+      setMenuTab(Number(TV_TAB))
+    }
+  }, [ setMenuTab ])
+
 
   return (
     <>
