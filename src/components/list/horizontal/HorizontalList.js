@@ -29,9 +29,11 @@ const HorizontalList = ({ movies, heading, className }) => {
       >
         <div className='swiper-wrapper'>
           { movies.map((movie, index) => (
-            <SwiperSlide className='w-1/4 lg:w-1/5 cursor-pointer' key={ index }>
-              <VerticalMovie className='w-full' movie={ movie } />
-            </SwiperSlide>
+            movie.poster_path && (
+              <SwiperSlide className='w-1/4 lg:w-1/5 cursor-pointer' key={ index }>
+                <VerticalMovie className='w-full' movie={ movie } />
+              </SwiperSlide>
+            )
           )) }
         </div>
       </Swiper>
