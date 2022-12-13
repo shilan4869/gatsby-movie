@@ -131,7 +131,7 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
                   className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto'
                   style={ menuTab === BOOKMARK_TAB ? {} : { opacity: '0' } }
                 />
-                <Logout className='w-5 h-6 ml-9 md:hidden xl:block' fill={ menuTab === BOOKMARK_TAB || genresOpened ? PRMIARY_CYAN : '#fff' } />
+                <Logout className='w-5 h-6 ml-9 md:hidden xl:block' fill={ menuTab === BOOKMARK_TAB ? PRMIARY_CYAN : '#fff' } />
                 <span
                   className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100'
                   style={ menuTab !== BOOKMARK_TAB ? {} : { color: PRMIARY_CYAN } }
@@ -150,7 +150,7 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
                 className={ 'w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto' }
                 style={ (menuTab === BROWSE_TAB) || genresOpened ? {} : { opacity: '0' } }
               />
-              <BrowseIcon className='w-5 h-5 ml-9 mt-1 md:hidden xl:block' fill={ menuTab === BROWSE_TAB ? PRMIARY_CYAN : '#fff' } />
+              <BrowseIcon className='w-5 h-5 ml-9 mt-1 md:hidden xl:block' fill={ menuTab === BROWSE_TAB || genresOpened ? PRMIARY_CYAN : '#fff' } />
               <span
                 className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100'
                 style={ (menuTab !== BROWSE_TAB) && !genresOpened ? {} : { color: PRMIARY_CYAN } }
