@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
   // [{id: 1, name: 'a'}]
   genresArray.forEach(genre => genres.set(genre.id, genre.name))
 
-  if (isNaN(userId)) {
+  if (isNaN(userId) && isClient) {
     preload()
   }
 
