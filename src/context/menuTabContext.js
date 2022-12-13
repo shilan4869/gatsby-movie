@@ -16,7 +16,7 @@ const MenuTabProvider = ({ children }) => {
   }, [])
 
 
-  const [ menuTab, setMenuTab ] = useState(localTab)
+  const [ menuTab, setMenuTab ] = useState(Number(localTab))
 
   const authData = {
     menuTab,
