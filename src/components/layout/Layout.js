@@ -2,6 +2,8 @@ import React, { useState, useEffect, memo } from 'react'
 import AuthProvider from 'src/context/authContext'
 import Header from 'src/components/layout/header/Header'
 import LeftSideMenu from 'src/components/layout/menu/LeftSideMenu'
+import MenuTabProvider from 'src/context/menuTabContext'
+import GenresProvider from 'src/context/genresContext'
 
 const Layout = ({ children }) => {
   const XL_SCREEN = 1200
@@ -55,12 +57,16 @@ const Layout = ({ children }) => {
 
     <div className='bg w-full relative min-h-screen text-white '>
       <AuthProvider>
-        <LeftSideMenu
-          className='fixed w-1/2 xl:w-1/6 text-base text-shadow shadow-black'
-          isMdScreen={ isMdScreen }
-        />
-        <Header isXlScreen={ isXlScreen } />
-        { children }
+        <MenuTabProvider>
+          <GenresProvider>
+            <LeftSideMenu
+              className='fixed w-1/2 xl:w-1/6 text-base text-shadow shadow-black'
+              isMdScreen={ isMdScreen }
+            />
+            <Header isXlScreen={ isXlScreen } />
+            { children }
+          </GenresProvider>
+        </MenuTabProvider>
       </AuthProvider>
     </div>
 

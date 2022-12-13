@@ -5,14 +5,14 @@ import { PrimaryButton, SecondaryButton } from '../utilities/Button'
 import { TMDB_SMALL_BACKDROP_ORIGIN, TMDB_TV_ORIGIN, TMDB_MOVIE_ORIGIN, API_KEY } from 'src/constants/apiConstants'
 import Star from 'src/assets/icon/Star.svg'
 import Link from 'lib/components/Link'
-import useAuthContext from 'src/hooks/useAuthContext'
+import useMenuTabContext from 'src/hooks/useMenuTabContext'
 
 const HorizontalMovie = ({ className, movie }) => {
-  const { homepageTab } = useAuthContext()
+  const { menuTab } = useMenuTabContext()
   const { poster_path: backdropPath, vote_average: voteAverage, id } = movie
   const numberOfStar = Math.floor(Number(voteAverage) * 10) / 10 || 5
-  const apiURL = homepageTab === 1 ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
-  const watchUrl = homepageTab === 1 ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
+  const apiURL = menuTab === 1 ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
+  const watchUrl = menuTab === 1 ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
   const preFecthMovie = () => {
     prefetch(apiURL, { api_key: API_KEY })
   }

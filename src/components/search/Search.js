@@ -1,16 +1,23 @@
-import React, { useRef, useCallback } from 'react'
-import { isClient } from 'lib/utilities/is'
+import React, { useRef, useCallback, useEffect } from 'react'
+import useMenuTabContext from 'src/hooks/useMenuTabContext'
 import useQueryInfinite from 'lib/hooks/useQueryInfinite'
-import { TMDB_MULTI_SEARCH_API, API_KEY } from 'src/constants/apiConstants'
 import VerticalMovie from 'src/components/movie/VerticalMovie'
-import RecommendSearch from './RecommendSearch'
 import Head from '../head/head'
+import RecommendSearch from './RecommendSearch'
+import { isClient } from 'lib/utilities/is'
+import { TMDB_MULTI_SEARCH_API, API_KEY } from 'src/constants/apiConstants'
+import { TV_TAB } from '../layout/constant'
 
 const Search = () => {
   /* eslint-disable react-hooks/rules-of-hooks */
   /** I want to call react hooks conditionally for some improvement */
+  const { setMenuTab } = useMenuTabContext()
 
   const searchKeyword = isClient ? window.history.state?.keyword || '' : ''
+
+  useEffect(() => {
+    setMenuTab(Number(localStorage.getItem('menuTab')) || TV_TAB)
+  }, [ setMenuTab ])
 
   if (searchKeyword === '') {
     return (

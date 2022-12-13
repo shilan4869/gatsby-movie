@@ -1,10 +1,10 @@
 import React from 'react'
-import useAuthContext from 'src/hooks/useAuthContext'
 import Link from 'lib/components/Link'
 import clsx from 'lib/utilities/clsx'
+import useGenresContext from 'src/hooks/useGenresContext'
 
 const Genres = ({ className }) => {
-  const { genres } = useAuthContext()
+  const { genres } = useGenresContext()
   const genresArray = Array.from(genres, ([ name, value ]) => [ name, value ]) || []
 
   return (

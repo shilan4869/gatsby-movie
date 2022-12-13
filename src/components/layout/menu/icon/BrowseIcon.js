@@ -1,13 +1,12 @@
 /* eslint-disable max-len */
-import React, { forwardRef } from 'react'
+import React from 'react'
 
-const BrowseIcon = (props, ref) => (
+const BrowseIcon = ({ className, fill }) => (
   <svg
     viewBox='0 0 468.062 468.062'
     xmlSpace='preserve'
-    className={ props.className }
-    fill={ props.fill }
-    ref={ ref }
+    className={ className }
+    fill={ fill }
   >
     <g>
       <path d='M431.379,0.222h-394.7C16.458,0.222,0,16.671,0,36.895v394.268c0,20.221,16.458,36.677,36.679,36.677h394.7
@@ -22,4 +21,4 @@ const BrowseIcon = (props, ref) => (
   </svg>
 )
 
-export default forwardRef(BrowseIcon)
+export default BrowseIcon

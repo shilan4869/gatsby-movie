@@ -13,10 +13,10 @@ import Seasons from './Seasons'
 import Iframe from './Iframe'
 import { isClient } from 'lib/utilities/is'
 import Head from 'src/components/head/head'
-import useAuthContext from 'src/hooks/useAuthContext'
+import useMenuTabContext from 'src/hooks/useMenuTabContext'
 
 const TVWatch = () => {
-  const { setHomepageTab } = useAuthContext()
+  const { setMenuTab } = useMenuTabContext()
   const params = isClient ? new URLSearchParams(location.search) : null
   const id = isClient ? params?.get('id') : ''
   const apiURL = `${ TMDB_TV_ORIGIN }/${ id }`
@@ -27,9 +27,9 @@ const TVWatch = () => {
   const seasonsCount = movieDetail?.number_of_seasons
 
   useEffect(() => {
-    setHomepageTab(TV_TAB)
+    setMenuTab(TV_TAB)
     localStorage.setItem('menuTab', TV_TAB)
-  }, [ setHomepageTab ])
+  }, [ setMenuTab ])
 
   if (movieDetail?.success === false) {
     return (

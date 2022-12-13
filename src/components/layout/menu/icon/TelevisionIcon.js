@@ -1,7 +1,7 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 
-const TelevisionIcon = forwardRef((props, ref) => (
-  <svg ref={ ref } className={ props.className } xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64.000000 64.000000' fill={ props.fill }>
+const TelevisionIcon = ({ className, fill }) => (
+  <svg className={ className } xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64.000000 64.000000' fill={ fill }>
     <g
       transform='translate(0.000000,64.000000) scale(0.100000,-0.100000)'
       stroke='none'
@@ -18,6 +18,6 @@ const TelevisionIcon = forwardRef((props, ref) => (
       />
     </g>
   </svg>
-))
+)
 
 export default TelevisionIcon

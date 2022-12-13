@@ -165,6 +165,120 @@
     transform: scale(1.05);
   }
 
+  .field-input {
+    @apply w-full h-12 px-4 border border-secondary rounded-md ring-1 ring-transparent bg-light outline-none block hover:border-primary-cyan hover:ring-primary-cyan focus:border-primary-cyan focus:ring-primary-cyan disabled:animate-disabled disabled:pointer-events-none;
+  }
+
+  .field-label {
+    @apply pt-5 pb-0;
+  }
+
+  .field-label + label {
+    @apply absolute left-px top-px px-4 py-3 text-quaternary pointer-events-none;
+  }
+
+  .field-active + label,
+  .field-label:focus + label {
+    /* -translate-y-2 */
+    transform: translateX(2px) translateY(-0.5rem) scale(0.85);
+    transform-origin: top left;
+    transition: transform 0.125s ease-out;
+  }
+
+  .field-label:focus + label {
+    @apply text-primary-cyan;
+  }
+
+  .field-label::-webkit-inner-spin-button,
+  .field-label::-webkit-calendar-picker-indicator {
+    @apply cursor-pointer;
+
+    /* -translate-y-2.5 */
+    transform: translateY(-0.625rem);
+  }
+
+  .field-select {
+    @apply pr-12 appearance-none bg-no-repeat;
+
+    background-size: 1rem;
+    /* right-4 */
+    background-position: center right 1rem;
+  }
+
+  .checkbox,
+  .radio {
+    @apply w-5 h-5 mr-2 border border-tertiary ring-1 ring-transparent bg-light appearance-none checked:bg-primary-cyan checked:bg-no-repeat checked:bg-center checked:border-primary-cyan group-hover:border-primary-cyan group-hover:ring-primary-cyan focus:border-primary-cyan focus:ring-primary-cyan disabled:animate-disabled disabled:pointer-events-none;
+  }
+
+  .checkbox {
+    @apply rounded;
+  }
+
+  .checkbox:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='white' d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 12px;
+  }
+
+  .radio {
+    @apply rounded-full;
+  }
+
+  .radio:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='10' fill='white' /%3E%3C/svg%3E");
+    background-size: 7px;
+  }
+
+  .field-invalid,
+  .check-invalid {
+    @apply border-danger hover:border-danger hover:ring-danger focus:border-danger focus:ring-danger;
+  }
+
+  .check-invalid {
+    @apply group-hover:border-danger group-hover:ring-danger;
+  }
+
+  .field-invalid + label,
+  .field-invalid:focus + label,
+  .check-invalid + div,
+  .check-invalid:focus + div {
+    @apply text-danger;
+  }
+
+  .skeleton {
+    @apply bg-cover;
+
+    background-image: var(--tw-skeleton);
+  }
+
+  .slide-navigate {
+    @apply absolute inset-y-0 w-24 opacity-0 bg-black-10 group-hover:opacity-100 focus-visible:opacity-100;
+  }
+
+  .slide-dot {
+    @apply px-0.5 py-2 box-content cursor-pointer after:h-[3px] after:rounded-md after:bg-light after:block;
+  }
+
+  .table {
+    @apply rounded-md;
+
+    border-collapse: collapse;
+    border-style: hidden;
+    box-shadow: inset rgba(228, 228, 231) 0 0 0 1px;
+  }
+
+  .table-cell {
+    @apply border px-3 py-2;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
   .gradient-bottom {
     background: linear-gradient(0deg, rgba(20,20,20,.65) 5%, rgba(20,20,20,0.45) 25%, rgba(20,20,20,0.1) 100%);
   }

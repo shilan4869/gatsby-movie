@@ -7,12 +7,14 @@ import { Tags } from '../utilities/Button'
 import Image from 'lib/components/Image'
 import Link from 'lib/components/Link'
 import playButton from 'src/assets/img/play-button.png'
-import useAuthContext from 'src/hooks/useAuthContext'
+import useMenuTabContext from 'src/hooks/useMenuTabContext'
+import useGenresContext from 'src/hooks/useGenresContext'
 
 const Carousel = () => {
   const swiperRef = useRef()
-  const { genres, homepageTab } = useAuthContext()
-  const api = homepageTab === 1 ? TMDB_TRENDING_TV_API : TMDB_NOW_PLAYING_MOVIE_API
+  const { menuTab } = useMenuTabContext()
+  const { genres } = useGenresContext()
+  const api = menuTab === 1 ? TMDB_TRENDING_TV_API : TMDB_NOW_PLAYING_MOVIE_API
   const { loading, error, data: nowPlayingMovies } = useQuery(api, { query: { api_key: API_KEY } })
 
 
@@ -79,10 +81,10 @@ const Carousel = () => {
       >
         { movies.map((movie, index) => (
           <SwiperSlide className='w-full group' key={ index }>
-            <Image src={ TMDB_BACKDROP_ORIGIN + movie.backdrop_path } alt={ homepageTab === 1 ? movie.name : movie.title } className='object-cover' />
+            <Image src={ TMDB_BACKDROP_ORIGIN + movie.backdrop_path } alt={ menuTab === 1 ? movie.name : movie.title } className='object-cover' />
             <div className='absolute flex flex-col bottom-5 left-8 right-8 md:left-20 md:right-20 md:bottom-16 z-10'>
               <div className='text-2xl md:text-3xl font-semibold text-shadow shadow-black md:mb-6'>
-                { homepageTab === 1 ? movie.name : movie.title }
+                { menuTab === 1 ? movie.name : movie.title }
               </div>
               <div className='hidden text-xs md:text-sm lg:text-base sm:block text-shadow shadow-black lg:mb-4'>
                 { movie.overview }
@@ -98,7 +100,7 @@ const Carousel = () => {
             <div className='absolute gradient-bottom inset-0' />
             <Link
               className='absolute opacity-0 group-hover:opacity-100 transition-opacity bg-black-25 inset-0 flex items-center justify-center'
-              to={ homepageTab === 1 ? `/watch/tv?id=${ movie.id }` : `/watch/movie?id=${ movie.id }` }
+              to={ menuTab === 1 ? `/watch/tv?id=${ movie.id }` : `/watch/movie?id=${ movie.id }` }
             >
               <img src={ playButton } alt='play' className='h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 opacity-100' />
             </Link>

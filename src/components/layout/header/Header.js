@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from 'react'
-import useAuthContext from 'src/hooks/useAuthContext'
 import SearchBox from './SearchBox'
 import UserPlaceholder from 'src/components/layout/menu/authentication/UserPlaceholder'
 import NetflixLogo from 'src/assets/img/netflix.png'
 import { Link } from 'gatsby'
 import { TV_TAB } from '../constant'
+import useMenuTabContext from 'src/hooks/useMenuTabContext'
 
 
 const Header = ({ isXlScreen }) => {
-  const { setHomepageTab } = useAuthContext()
+  const { setMenuTab } = useMenuTabContext()
   const headerRef = useRef()
 
   const checkIsWindowOnTop = () => {
@@ -33,7 +33,7 @@ const Header = ({ isXlScreen }) => {
         <Link
           className='absolute top-3 md:top-4 left-14 md:left-6 xl:left-12 right-6 justify-start w-24'
           to='/'
-          onClick={ () => setHomepageTab(Number(localStorage.getItem('menuTab')) || TV_TAB) }
+          onClick={ () => setMenuTab(Number(localStorage.getItem('menuTab')) || TV_TAB) }
         >
           <img src={ NetflixLogo } alt='netfix' className='w-24' />
         </Link>

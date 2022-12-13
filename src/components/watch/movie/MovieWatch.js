@@ -12,10 +12,10 @@ import Iframe from './Iframe'
 import { isClient } from 'lib/utilities/is'
 import Link from 'lib/components/Link'
 import Head from 'src/components/head/head'
-import useAuthContext from 'src/hooks/useAuthContext'
+import useMenuTabContext from 'src/hooks/useMenuTabContext'
 
 const MovieWatch = () => {
-  const { setHomepageTab } = useAuthContext()
+  const { setMenuTab } = useMenuTabContext()
   const params = isClient ? new URLSearchParams(location.search) : null
   const id = isClient ? params?.get('id') : ''
   const apiURL = `${ TMDB_MOVIE_ORIGIN }/${ id }`
@@ -25,9 +25,9 @@ const MovieWatch = () => {
   const numberOfStar = (!loading ? (Math.floor(Number(movieDetail?.vote_average) * 10) / 10) : 5) || 5
 
   useEffect(() => {
-    setHomepageTab(MOVIES_TAB)
+    setMenuTab(MOVIES_TAB)
     localStorage.setItem('menuTab', MOVIES_TAB)
-  }, [ setHomepageTab ])
+  }, [ setMenuTab ])
 
   if (movieDetail?.success === false) {
     return (
