@@ -91,51 +91,76 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
             <Link className='hover:no-underline' to='/'>
               <div className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4' onClick={ tvMenuSelect }>
                 <div
-                  className={ clsx('w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto', menuTab === TV_TAB ? '' : 'opacity-0') }
+                  className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto'
+                  style={ menuTab === TV_TAB ? {} : { opacity: '0' } }
                 />
                 <TelevisionIcon className='w-5 h-5 ml-9 md:hidden xl:block' fill={ menuTab === TV_TAB ? PRMIARY_CYAN : '#fff' } />
-                <span className={ clsx('ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100', menuTab === TV_TAB ? 'text-primary-cyan' : '') }>TV Shows</span>
+                <span
+                  className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100'
+                  style={ menuTab !== TV_TAB ? {} : { color: PRMIARY_CYAN } }
+                >TV Shows
+                </span>
               </div>
             </Link>
             <Link className='hover:no-underline' to='/'>
               <div className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4' onClick={ moviesMenuSelect }>
                 <div
-                  className={ clsx('w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto', menuTab === MOVIES_TAB ? '' : 'opacity-0') }
+                  className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto'
+                  style={ menuTab === MOVIES_TAB ? {} : { opacity: '0' } }
                 />
                 <MovieIcon className='w-5 h-6 ml-9 md:hidden xl:block' fill={ menuTab === MOVIES_TAB ? PRMIARY_CYAN : '#fff' } />
-                <span className={ clsx('ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100', menuTab === MOVIES_TAB ? 'text-primary-cyan' : '') }>Movies</span>
+                <span
+                  className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100'
+                  style={ menuTab !== MOVIES_TAB ? {} : { color: PRMIARY_CYAN } }
+                >Movies
+                </span>
               </div>
             </Link>
             <Link className='hover:no-underline' to='/'>
               <div className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4'>
                 <div
-                  className={ clsx('w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto', menuTab === FAVORITE_TAB ? '' : 'opacity-0') }
+                  className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto'
+                  style={ menuTab === FAVORITE_TAB ? {} : { opacity: '0' } }
                 />
                 <Favorite className='w-5 h-6 ml-9 md:hidden xl:block' fill={ menuTab === FAVORITE_TAB ? PRMIARY_CYAN : '#fff' } />
-                <span className={ clsx('ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100', menuTab === FAVORITE_TAB ? 'text-primary-cyan' : '') }>Favorite</span>
+                <span
+                  className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100'
+                  style={ menuTab !== FAVORITE_TAB ? {} : { color: PRMIARY_CYAN } }
+                >Favorite
+                </span>
               </div>
             </Link>
             <Link className='hover:no-underline' to='/'>
               <div className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4'>
                 <div
-                  className={ clsx('w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto', menuTab === BOOKMARK_TAB ? '' : 'opacity-0') }
+                  className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto'
+                  style={ menuTab === BOOKMARK_TAB ? {} : { opacity: '0' } }
                 />
                 <Logout className='w-5 h-6 ml-9 md:hidden xl:block' fill={ menuTab === BOOKMARK_TAB ? PRMIARY_CYAN : '#fff' } />
-                <span className={ clsx('ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100', menuTab === BOOKMARK_TAB ? 'text-primary-cyan' : '') }>Bookmark</span>
+                <span
+                  className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100'
+                  style={ menuTab !== BOOKMARK_TAB ? {} : { color: PRMIARY_CYAN } }
+                >Bookmark
+                </span>
               </div>
             </Link>
             <div
-              className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4'
+              className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4 cursor-pointer'
               onClick={ handleToggleGenres }
               onMouseEnter={ handleOpenGenres }
               onMouseLeave={ handleCloseGenres }
               onBlur={ handleCloseGenres }
             >
               <div
-                className={ clsx('w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto', menuTab === BROWSE_TAB ? '' : 'opacity-0') }
+                className={ 'w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto' }
+                style={ (menuTab === BROWSE_TAB) || genresOpened ? {} : { opacity: '0' } }
               />
               <BrowseIcon className='w-5 h-5 ml-9 mt-1 md:hidden xl:block' fill={ menuTab === BROWSE_TAB ? PRMIARY_CYAN : '#fff' } />
-              <span className={ clsx('ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100', menuTab === BROWSE_TAB ? 'text-primary-cyan' : '') }>Genres</span>
+              <span
+                className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100'
+                style={ (menuTab !== BROWSE_TAB) && !genresOpened ? {} : { color: PRMIARY_CYAN } }
+              >Genres
+              </span>
               { genresOpened && <Genres /> }
             </div>
           </div>

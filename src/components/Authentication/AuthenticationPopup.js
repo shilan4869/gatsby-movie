@@ -4,30 +4,28 @@ import { LOG_IN, SIGN_UP } from 'src/constants/authentication'
 import LogIn from './LogIn'
 import SignUp from './SignUp'
 import useAuthContext from 'src/hooks/useAuthContext'
-import clsx from 'lib/utilities/clsx'
 
 const AuthenticationPopup = ({ page }) => {
   const { logIn, signUp, resetPassword } = useAuthContext()
-
-  const components = { LOG_IN, SIGN_UP }
 
   return (
 
     (page === LOG_IN || page === SIGN_UP) ? (
       <div className='flex items-center justify-between'>
         <div className='w-full lg:span-12'>
-          <div className='flex justify-beetween z-5 absolute'>
+          <div className='flex justify-between z-10 absolute'>
             <button
               type='button'
-              className={ clsx(page === LOG_IN ? '' : 'opacity-30', 'font-medium text-2xl py-2 px-8 rounded-t-xl border-t border-x bg-gray-50') }
+              className='font-medium text-2xl py-2 px-8 rounded-t-xl border-t border-x bg-gray-50'
+              style={ page === LOG_IN ? {} : { opacity: '40%' } }
               onClick={ logIn }
             >Log in
             </button>
             <button
               type='button'
-              className={ clsx(page === SIGN_UP ? '' : 'opacity-30', 'font-medium text-2xl ml-4 py-2 px-8 rounded-t-xl border-t border-x bg-gray-50') }
+              className='font-medium text-2xl ml-1 py-2 px-8 rounded-t-xl border-t border-x bg-gray-50'
+              style={ page === SIGN_UP ? {} : { opacity: '40%' } }
               onClick={ signUp }
-
             >Sign Up
             </button>
           </div>
