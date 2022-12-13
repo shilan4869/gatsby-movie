@@ -1,6 +1,8 @@
+import { isClient } from 'lib/utilities/is'
+
 export const API_KEY = 'c298c2cccf3f21af1e7a841e1034f72e'
-export const TMDB_POSTER_ORIGIN = 'https://image.tmdb.org/t/p/w342'
-export const TMDB_BACKDROP_ORIGIN = 'https://image.tmdb.org/t/p/w1280'
+export const TMDB_POSTER_ORIGIN = (isClient && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'https://image.tmdb.org/t/p/w185' : 'https://image.tmdb.org/t/p/w342'
+export const TMDB_BACKDROP_ORIGIN = (isClient && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ? 'https://image.tmdb.org/t/p/w780' : 'https://image.tmdb.org/t/p/w1280'
 export const TMDB_SMALL_BACKDROP_ORIGIN = 'https://image.tmdb.org/t/p/w500'
 export const TMDB_MOVIE_ORIGIN = 'https://api.themoviedb.org/3/movie'
 export const TMDB_DISCOVER_MOVIE = 'https://api.themoviedb.org/3/discover/movie'

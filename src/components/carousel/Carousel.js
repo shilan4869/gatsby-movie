@@ -82,7 +82,7 @@ const Carousel = () => {
       >
         { movies.map((movie, index) => (
           <SwiperSlide className='w-full group' key={ index }>
-            <Image src={ TMDB_BACKDROP_ORIGIN + movie.backdrop_path } alt={ menuTab === 1 ? movie.name : movie.title } className='object-cover' />
+            <Image src={ TMDB_BACKDROP_ORIGIN + movie.backdrop_path } alt={ menuTab === 1 ? movie.name : movie.title } className='object-cover w-full' />
             <div className='absolute flex flex-col bottom-5 left-8 right-8 md:left-20 md:right-20 md:bottom-16 z-10'>
               <div className='text-2xl md:text-3xl font-semibold text-shadow shadow-black md:mb-6'>
                 { menuTab === 1 ? movie.name : movie.title }
