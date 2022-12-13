@@ -14,6 +14,7 @@ import Logout from 'src/assets/icon/Logout.svg'
 import { TV_TAB, MOVIES_TAB, FAVORITE_TAB, BOOKMARK_TAB, BROWSE_TAB } from '../constant'
 import { PRMIARY_CYAN } from 'src/constants/cssConstants'
 
+// eslint-disable-next-line complexity
 const LeftSideMenu = ({ className, isMdScreen }) => {
   const [ mobileMenuOpened, setMobileMenuOpened ] = useState(false)
   const [ genresOpened, setGenresOpened ] = useState(false)
@@ -41,10 +42,6 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
   }
 
   const handleCloseGenres = () => {
-    // if (menuTab !== BROWSE_TAB) {
-    //   genresBar.current.style.opacity = '0%'
-    // }
-
     setGenresOpened(false)
   }
 
@@ -73,19 +70,6 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
 
     return () => window.removeEventListener('click', closeMenu)
   }, [ mobileMenuOpened, isMdScreen ])
-
-  /** synchronize the menu with previous user session */
-  useEffect(() => {
-    const localTab = localStorage.getItem('menuTab')
-
-    if (localTab) {
-      setMenuTab(Number(localTab))
-    } else {
-      localStorage.setItem('menuTab', TV_TAB)
-      setMenuTab(Number(TV_TAB))
-    }
-  }, [ setMenuTab ])
-
 
   return (
     <>
@@ -147,7 +131,7 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
                   className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto'
                   style={ menuTab === BOOKMARK_TAB ? {} : { opacity: '0' } }
                 />
-                <Logout className='w-5 h-6 ml-9 md:hidden xl:block' fill={ menuTab === BOOKMARK_TAB ? PRMIARY_CYAN : '#fff' } />
+                <Logout className='w-5 h-6 ml-9 md:hidden xl:block' fill={ menuTab === BOOKMARK_TAB || genresOpened ? PRMIARY_CYAN : '#fff' } />
                 <span
                   className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100'
                   style={ menuTab !== BOOKMARK_TAB ? {} : { color: PRMIARY_CYAN } }

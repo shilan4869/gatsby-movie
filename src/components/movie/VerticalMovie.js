@@ -2,14 +2,14 @@ import React, { memo } from 'react'
 import clsx from 'lib/utilities/clsx'
 import { prefetch } from 'lib/utilities/prefetch'
 import Link from 'lib/components/Link'
-import useAuthContext from 'src/hooks/useAuthContext'
 import { PrimaryButton, SecondaryButton } from '../utilities/Button'
 import { TMDB_POSTER_ORIGIN, TMDB_MOVIE_ORIGIN, TMDB_TV_ORIGIN, API_KEY } from 'src/constants/apiConstants'
 import { TV_TAB } from '../layout/constant'
 import Star from 'src/assets/icon/Star.svg'
+import useMenuTabContext from 'src/hooks/useMenuTabContext'
 
 const VerticalMovie = ({ className, movie }) => {
-  const { homepageTab } = useAuthContext()
+  const { menuTab } = useMenuTabContext()
   const { media_type: media, poster_path: posterPath, vote_average: voteAverage, id } = movie
   const numberOfStar = Math.floor(Number(voteAverage) * 10) / 10 || 5
   let apiURL
@@ -23,8 +23,8 @@ const VerticalMovie = ({ className, movie }) => {
     apiURL = media === 'tv' ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
     watchURL = media === 'tv' ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
   } else {
-    apiURL = homepageTab === TV_TAB ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
-    watchURL = homepageTab === TV_TAB ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
+    apiURL = menuTab === TV_TAB ? `${ TMDB_TV_ORIGIN }/${ id }` : `${ TMDB_MOVIE_ORIGIN }/${ id }`
+    watchURL = menuTab === TV_TAB ? `/watch/tv?id=${ id }` : `/watch/movie?id=${ id }`
   }
 
   const preFecthMovie = () => {
@@ -38,7 +38,7 @@ const VerticalMovie = ({ className, movie }) => {
       to={ watchURL }
       onPrefetch={ preFecthMovie }
     >
-      <div className='relative transform-none group-hover:scale-105 group-hover:z-50 group-hover:animate-sharpen duration-300 shadow-lg shadow-light-gray'>
+      <div className='relative transform-none group-hover:scale-105 group-hover:animate-sharpen duration-300 shadow-lg shadow-light-gray'>
         <div className='aspect-ratio aspect-h-3 aspect-w-2 overflow-hidden rounded-t-xl'>
           <img src={ TMDB_POSTER_ORIGIN + posterPath } alt='movie' className='object-cover' />
         </div>
