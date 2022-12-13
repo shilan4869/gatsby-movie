@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import useMenuTabContext from 'src/hooks/useMenuTabContext'
-import useAuthContext from 'src/hooks/useAuthContext'
 import FontAwesome from 'lib/components/FontAwesome'
 import { falFaBars } from 'lib/fontawesome/fontawesome'
 import Genres from './Genres'

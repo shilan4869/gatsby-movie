@@ -2,7 +2,7 @@ import Popup from 'lib/components/Popup'
 import loadable from 'lib/utilities/loadable'
 import { useCallback, useState } from 'react'
 import { FORGOT_PASS, LOG_IN, SIGN_UP } from 'src/constants/authentication'
-import { load } from 'src/utilities/captcha'
+// import { load } from 'src/utilities/captcha'
 
 const Authentication = loadable(() => import(`src/components/Authentication/AuthenticationPopup`))
 
@@ -37,7 +37,7 @@ const useAuthenticationPopup = () => {
   const preload = useCallback(
     () => {
       Authentication.preload()
-      load()
+      // load()
     },
     [],
   )
