@@ -75,7 +75,7 @@ const Search = () => {
         <h3 className='p-4 text-shadow'>{ `Search Result for ${ searchKeyword }` }</h3>
         <div className='flex flex-wrap'>
           { searcheMovies.map((movie, index) => {
-            if (index + 10 === searcheMovies.length && results > 20) {
+            if (index + 10 === results) {
               return (
                 <div className='w-1/2 md:w-1/4 lg:w-1/5' key={ movie.id } ref={ observedRef }>
                   <VerticalMovie movie={ movie }>
