@@ -13,6 +13,7 @@ import Link from 'lib/components/Link'
 import Head from 'src/components/head/head'
 
 const MovieWatch = () => {
+  const key = Math.random() * 1000
   const params = isClient ? new URLSearchParams(location.search) : null
   const id = isClient ? params?.get('id') : ''
   const apiURL = `${ TMDB_MOVIE_ORIGIN }/${ id }`
@@ -46,7 +47,7 @@ const MovieWatch = () => {
     >
       <div className='flex bg'>
         <div className='w-full xl:w-4/6 mx-auto'>
-          <Iframe />
+          <Iframe key={ key } id={ id } />
           { (
             <div className='p-4 text-shadow-sm mb-4'>
               <h3 className='my-4'>

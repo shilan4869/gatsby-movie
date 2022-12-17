@@ -12,13 +12,14 @@ import Seasons from './Seasons'
 import Iframe from './Iframe'
 import { isClient } from 'lib/utilities/is'
 import Head from 'src/components/head/head'
+import { TV_TAB } from 'src/components/layout/constant'
 
 const TVWatch = () => {
   const key = Math.random() * 1000
   const params = isClient ? new URLSearchParams(location.search) : null
   const id = isClient ? params?.get('id') : ''
-  const season = isClient ? params.get('season') || 1 : 1
-  const episode = isClient ? params.get('episode') || 1 : 1
+  const season = isClient ? params.get('season') || TV_TAB : TV_TAB
+  const episode = isClient ? params.get('episode') || TV_TAB : TV_TAB
   const apiURL = `${ TMDB_TV_ORIGIN }/${ id }`
 
   const { loading, data: movieDetail } = useQuery(apiURL, { query: { api_key: API_KEY } })

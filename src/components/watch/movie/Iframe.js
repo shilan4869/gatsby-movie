@@ -1,10 +1,7 @@
-import { isClient } from 'lib/utilities/is'
 import React from 'react'
 import { EMBED_MOVIE_API } from 'src/constants/apiConstants'
 
-const Iframe = () => {
-  const params = isClient ? new URLSearchParams(location.search) : null
-  const id = isClient ? params?.get('id') : ''
+const Iframe = ({ id }) => {
   const embedMovieURL = `${ EMBED_MOVIE_API }?id=${ id }`
 
   return (
@@ -14,8 +11,6 @@ const Iframe = () => {
       <iframe
         id='iframe'
         src={ embedMovieURL }
-        width='100%'
-        height='100%'
         frameBorder='0'
         className='absolute px-3 md:px-4 rounded-lg'
         allowFullScreen
