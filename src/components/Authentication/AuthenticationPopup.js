@@ -1,8 +1,9 @@
 import React, { memo } from 'react'
 import LoginImage from 'static/login.jpg'
-import { LOG_IN, SIGN_UP } from 'src/constants/authentication'
+import { FORGOT_PASS, LOG_IN, SIGN_UP } from 'src/constants/authentication'
 import LogIn from './LogIn'
 import SignUp from './SignUp'
+import ResetPassword from './ResetPassword'
 import useAuthContext from 'src/hooks/useAuthContext'
 
 const AuthenticationPopup = ({ page }) => {
@@ -10,8 +11,8 @@ const AuthenticationPopup = ({ page }) => {
 
   return (
 
-    (page === LOG_IN || page === SIGN_UP) ? (
-      <div className='flex items-center justify-between'>
+    <div className='flex items-center justify-between'>
+      { (page === LOG_IN || page === SIGN_UP) && (
         <div className='w-full lg:span-12'>
           <div className='flex justify-between z-10 absolute'>
             <button
@@ -34,18 +35,10 @@ const AuthenticationPopup = ({ page }) => {
             { page === SIGN_UP && <SignUp /> }
           </div>
         </div>
-        <img src={ LoginImage } alt='' className='span-12 ml-6 rounded-lg hidden lg:block' />
-      </div>
-    )
-      : (
-        <div>
-          <div>
-            Đây là trang quên mật khẩu
-          </div>
-          <button type='button' onClick={ () => logIn() }>Quay lại đăng nhập</button>
-        </div>
-      )
-
+      ) }
+      { page === FORGOT_PASS && <ResetPassword logIn={ logIn } /> }
+      <img src={ 'https://movie.tienlm.tech/login.jpg?hash=2c68b3858d38155e9707d4d07c49b823' } alt='' className='span-12 ml-6 rounded-lg hidden lg:block' />
+    </div>
 
   )
 }

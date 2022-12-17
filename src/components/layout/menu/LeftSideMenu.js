@@ -1,36 +1,43 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useLocation } from '@reach/router'
 import useMenuTabContext from 'src/hooks/useMenuTabContext'
 import FontAwesome from 'lib/components/FontAwesome'
 import { falFaBars } from 'lib/fontawesome/fontawesome'
 import Genres from './Genres'
 import clsx from 'lib/utilities/clsx'
-import Link from 'lib/components/Link'
 import UserPlaceholder from 'src/components/layout/menu/authentication/UserPlaceholder'
 import TelevisionIcon from './icon/TelevisionIcon'
 import MovieIcon from './icon/MovieIcon'
 import BrowseIcon from './icon/BrowseIcon'
-import Favorite from 'src/assets/icon/Favorite.svg'
+import FavoriteIcon from 'src/assets/icon/Favorite.svg'
 import Logout from 'src/assets/icon/Logout.svg'
-import { TV_TAB, MOVIES_TAB, FAVORITE_TAB, BOOKMARK_TAB, BROWSE_TAB } from '../constant'
+import MenuItem from './MenuItem'
+import { TV_TAB, MOVIES_TAB, FAVORITE_TAB, HISTORY_TAB, BROWSE_TAB } from '../constant'
 import { PRMIARY_CYAN } from 'src/constants/cssConstants'
 
-// eslint-disable-next-line complexity
 const LeftSideMenu = ({ className, isMdScreen }) => {
+  const location = useLocation()
   const [ mobileMenuOpened, setMobileMenuOpened ] = useState(false)
   const [ genresOpened, setGenresOpened ] = useState(false)
-  const { menuTab, setMenuTab } = useMenuTabContext()
+  const { menuTab, synchronize } = useMenuTabContext()
 
   const menu = useRef()
   const menuIcon = useRef()
 
   const tvMenuSelect = () => {
     localStorage.setItem('menuTab', TV_TAB)
-    setMenuTab(TV_TAB)
+
+    if (location.pathname === '/' && menuTab !== TV_TAB) {
+      synchronize()
+    }
   }
 
   const moviesMenuSelect = () => {
     localStorage.setItem('menuTab', MOVIES_TAB)
-    setMenuTab(MOVIES_TAB)
+
+    if (location.pathname === '/' && menuTab !== MOVIES_TAB) {
+      synchronize()
+    }
   }
 
   const handleOpenGenres = () => {
@@ -83,81 +90,51 @@ const LeftSideMenu = ({ className, isMdScreen }) => {
         <div className='text-lg md:text-sm lg:text-lg'>
           <UserPlaceholder className='absolute top-24 left-0 w-full md:hidden xl:block' />
           <div className='mt-48 md:mt-0 xl:mt-48 md:flex xl:block'>
-            <Link className='hover:no-underline' to='/'>
-              <div className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4' onClick={ tvMenuSelect }>
-                <div
-                  className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto'
-                  style={ menuTab === TV_TAB ? {} : { opacity: '0' } }
-                />
-                <TelevisionIcon className='w-5 h-5 ml-9 md:hidden xl:block' fill={ menuTab === TV_TAB ? PRMIARY_CYAN : '#fff' } />
-                <span
-                  className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100'
-                  style={ menuTab !== TV_TAB ? {} : { color: PRMIARY_CYAN } }
-                >TV Shows
-                </span>
-              </div>
-            </Link>
-            <Link className='hover:no-underline' to='/'>
-              <div className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4' onClick={ moviesMenuSelect }>
-                <div
-                  className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto'
-                  style={ menuTab === MOVIES_TAB ? {} : { opacity: '0' } }
-                />
-                <MovieIcon className='w-5 h-6 ml-9 md:hidden xl:block' fill={ menuTab === MOVIES_TAB ? PRMIARY_CYAN : '#fff' } />
-                <span
-                  className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100'
-                  style={ menuTab !== MOVIES_TAB ? {} : { color: PRMIARY_CYAN } }
-                >Movies
-                </span>
-              </div>
-            </Link>
-            <Link className='hover:no-underline' to='/'>
-              <div className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4'>
-                <div
-                  className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto'
-                  style={ menuTab === FAVORITE_TAB ? {} : { opacity: '0' } }
-                />
-                <Favorite className='w-5 h-6 ml-9 md:hidden xl:block' fill={ menuTab === FAVORITE_TAB ? PRMIARY_CYAN : '#fff' } />
-                <span
-                  className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100'
-                  style={ menuTab !== FAVORITE_TAB ? {} : { color: PRMIARY_CYAN } }
-                >Favorite
-                </span>
-              </div>
-            </Link>
-            <Link className='hover:no-underline' to='/'>
-              <div className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4'>
-                <div
-                  className='w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto'
-                  style={ menuTab === BOOKMARK_TAB ? {} : { opacity: '0' } }
-                />
-                <Logout className='w-5 h-6 ml-9 md:hidden xl:block' fill={ menuTab === BOOKMARK_TAB ? PRMIARY_CYAN : '#fff' } />
-                <span
-                  className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100'
-                  style={ menuTab !== BOOKMARK_TAB ? {} : { color: PRMIARY_CYAN } }
-                >Bookmark
-                </span>
-              </div>
-            </Link>
-            <div
-              className='flex md:flex-col-reverse xl:flex-row py-4 md:py-1 xl:py-4 md:px-4 cursor-pointer'
+            <MenuItem
+              title='TV Shows'
+              activeCondition={ menuTab === TV_TAB }
+              color={ menuTab === TV_TAB ? PRMIARY_CYAN : '#fff' }
+              icon={ TelevisionIcon }
+              onClick={ tvMenuSelect }
+              to='/'
+            />
+            <MenuItem
+              title='Movies'
+              activeCondition={ menuTab === MOVIES_TAB }
+              color={ menuTab === MOVIES_TAB ? PRMIARY_CYAN : '#fff' }
+              icon={ MovieIcon }
+              onClick={ moviesMenuSelect }
+              to='/'
+            />
+            <MenuItem
+              title='Favorite'
+              activeCondition={ menuTab === FAVORITE_TAB }
+              color={ menuTab === FAVORITE_TAB ? PRMIARY_CYAN : '#fff' }
+              icon={ FavoriteIcon }
+              onClick={ () => {} }
+              to='/'
+            />
+            <MenuItem
+              title='History'
+              activeCondition={ menuTab === HISTORY_TAB }
+              color={ menuTab === HISTORY_TAB ? PRMIARY_CYAN : '#fff' }
+              icon={ Logout }
+              onClick={ () => {} }
+              to='/'
+            />
+            <MenuItem
+              title='Genres'
+              activeCondition={ menuTab === BROWSE_TAB || genresOpened }
+              color={ menuTab === BROWSE_TAB || genresOpened ? PRMIARY_CYAN : '#fff' }
+              icon={ BrowseIcon }
+              to='/browse'
               onClick={ handleToggleGenres }
               onMouseEnter={ handleOpenGenres }
               onMouseLeave={ handleCloseGenres }
               onBlur={ handleCloseGenres }
             >
-              <div
-                className={ 'w-1 rounded-r-md bg-primary-cyan md:w-full md:h-1 md:mt-1 xl:mt-0 md:rounded-none md:rounded-t-md xl:w-1 xl:rounded-none xl:rounded-r-md xl:h-auto' }
-                style={ (menuTab === BROWSE_TAB) || genresOpened ? {} : { opacity: '0' } }
-              />
-              <BrowseIcon className='w-5 h-5 ml-9 mt-1 md:hidden xl:block' fill={ menuTab === BROWSE_TAB || genresOpened ? PRMIARY_CYAN : '#fff' } />
-              <span
-                className='ml-5 md:ml-0 xl:ml-5 opacity-80 hover:opacity-100'
-                style={ (menuTab !== BROWSE_TAB) && !genresOpened ? {} : { color: PRMIARY_CYAN } }
-              >Genres
-              </span>
               { genresOpened && <Genres /> }
-            </div>
+            </MenuItem>
           </div>
         </div>
       </div>

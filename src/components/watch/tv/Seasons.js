@@ -48,6 +48,7 @@ const Seasons = ({ seasonsCount, id, defaultBackdrop }) => {
           if (seasons.length === seasonsCount) {
             seasons.sort(sort)
             setSeasonDetails(seasons)
+            setSelectedSeason(0)
           }
         })
     }
