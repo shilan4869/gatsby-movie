@@ -16,9 +16,12 @@ import Head from 'src/components/head/head'
 import useMenuTabContext from 'src/hooks/useMenuTabContext'
 
 const TVWatch = () => {
+  const key = Math.random() * 1000
   const { setMenuTab } = useMenuTabContext()
   const params = isClient ? new URLSearchParams(location.search) : null
   const id = isClient ? params?.get('id') : ''
+  const season = isClient ? params.get('season') || 1 : 1
+  const episode = isClient ? params.get('episode') || 1 : 1
   const apiURL = `${ TMDB_TV_ORIGIN }/${ id }`
 
   const { loading, data: movieDetail } = useQuery(apiURL, { query: { api_key: API_KEY } })
@@ -56,22 +59,21 @@ const TVWatch = () => {
     >
       <div className='flex bg'>
         <div className='w-full xl:w-4/6 mx-auto'>
-          <Iframe />
+          <Iframe id={ id } season={ season } episode={ episode } key={ key } />
           { (
             <div className='p-4 text-shadow-sm mb-4'>
               <h3 className='my-4'>
-                { loading ? 'Movie Title' : movieDetail?.name }
+                { movieDetail?.name }
               </h3>
-              { loading ? 'This is movies tagline'
-                : movieDetail?.tagline !== '' && <p className='opacity-70 italic text-sm my-4'> { movieDetail?.tagline } </p> }
+              { movieDetail?.tagline !== '' && <p className='opacity-70 italic text-sm my-4'> { movieDetail?.tagline } </p> }
               <div className='hidden md:flex opacity-70 mb-6'>
                 <StarIcon className='w-2 h-2 md:w-4 md:h-4 mt-1 mr-1 fill-primary-cyan' />
                 { numberOfStar }
                 <CalenderIcon className='w-2 h-2 md:w-4 md:h-4 mt-1 mx-2 fill-primary-cyan' />
-                { loading ? '2022' : movieDetail?.release_date || movieDetail?.first_air_date }
+                { movieDetail?.release_date || movieDetail?.first_air_date }
               </div>
               <div className='flex flex-wrap w-full px-1'>
-                { !loading && movieDetail?.genres.map(genre => (
+                { movieDetail?.genres.map(genre => (
                   <Tags key={ genre.id } className='mt-4 mr-1 md:mr-2' to={ `/browse?genre=${ genre.id }` }>
                     { genre.name }
                   </Tags>

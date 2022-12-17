@@ -1,15 +1,10 @@
-import { isClient } from 'lib/utilities/is'
 import React from 'react'
 import { EMBED_TV_API } from 'src/constants/apiConstants'
 
-const Iframe = () => {
-  const params = isClient ? new URLSearchParams(location.search) : null
-  const id = isClient ? params?.get('id') : ''
-  const season = isClient ? params.get('season') || 1 : 1
-  const episode = isClient ? params.get('episode') || 1 : 1
+const Iframe = ({ id, season, episode }) => {
   const embedMovieURL = `${ EMBED_TV_API }?id=${ id }&s=${ season }&e=${ episode }`
 
-  console.log(embedMovieURL)
+  console.log(`Iframe loaded ${ Math.random() }`)
 
   return (
     <div
@@ -18,8 +13,6 @@ const Iframe = () => {
       <iframe
         id='iframe'
         src={ embedMovieURL }
-        width='100%'
-        height='100%'
         frameBorder='0'
         className='absolute px-3 md:px-4 rounded-lg'
         allowFullScreen

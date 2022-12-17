@@ -1,22 +1,23 @@
+/* eslint-disable react/button-has-type */
 import clsx from 'lib/utilities/clsx'
 import React from 'react'
 import Link from 'lib/components/Link'
 
-export const PrimaryButton = ({ className, children, ...props }) => (
+export const PrimaryButton = ({ className, children, type = 'button', ...props }) => (
   <button
     { ...props }
     className={ clsx('button-primary px-10 sm:px-6 py-3', className) }
-    type='button'
+    type={ type }
   >
     { children }
   </button>
 )
 
-export const SecondaryButton = ({ className, children, ...props }) => (
+export const SecondaryButton = ({ className, children, type = 'button', ...props }) => (
   <button
     { ...props }
     className={ clsx('button-secondary p-3', className) }
-    type='button'
+    type={ type }
   >
     { children }
   </button>

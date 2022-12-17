@@ -5,10 +5,10 @@ import useAuthenticationPopup from 'src/hooks/useAuthenticationPopup'
 export const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
-  const [ userId, setUserId ] = useState(NaN)
+  const [ user, setUser ] = useState(null)
   const { popup, logIn, signUp, preload, resetPassword } = useAuthenticationPopup()
 
-  if (isNaN(userId) && isClient) {
+  if ((!user) && isClient) {
     preload()
   }
 
@@ -18,14 +18,14 @@ const AuthProvider = ({ children }) => {
     signUp,
     preload,
     resetPassword,
-    userId,
-    setUserId,
+    user,
+    setUser,
   }
 
   return (
     <AuthContext.Provider value={ authData }>
       { children }
-      { popup }
+      { !user && popup }
     </AuthContext.Provider>
   )
 }

@@ -16,6 +16,7 @@ const useAuthenticationPopup = () => {
     },
     [],
   )
+
   const signUp = useCallback(
     event => {
       event?.preventDefault?.()
