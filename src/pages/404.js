@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
+import Head from 'src/components/head/head'
 
 const pageStyles = {
   padding: '96px',
@@ -21,24 +22,27 @@ const codeStyles = {
 }
 
 const NotFoundPage = () => (
-  <main style={ pageStyles } className='xl:ml-1/6 text-white'>
-    <h1 style={ headingStyles }>You are lost!</h1>
-    <p style={ paragraphStyles }>
-      Sorry 😔, we couldn’t find what you were looking for.
-      <br />
-      { process.env.NODE_ENV === 'development' ? (
-        <>
-          <br />
-          Try creating a page in <code style={ codeStyles }>src/pages/</code>.
-          <br />
-        </>
-      ) : null }
-      <br />
-      <Link to='/'>Go to Homepage</Link>.
-    </p>
-  </main>
+  <Head
+    title='Page not found'
+    description='This page is not exist. Please check the Url.'
+  >
+    <main style={ pageStyles } className='xl:ml-1/6 text-white'>
+      <h1 style={ headingStyles }>You are lost!</h1>
+      <p style={ paragraphStyles }>
+        Sorry 😔, we couldn’t find what you were looking for.
+        <br />
+        { process.env.NODE_ENV === 'development' ? (
+          <>
+            <br />
+            Try creating a page in <code style={ codeStyles }>src/pages/</code>.
+            <br />
+          </>
+        ) : null }
+        <br />
+        <Link to='/'>Go to Homepage</Link>.
+      </p>
+    </main>
+  </Head>
 )
 
 export default NotFoundPage
-
-export const Head = () => <title>Not found</title>

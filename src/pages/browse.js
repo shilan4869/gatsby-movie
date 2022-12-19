@@ -50,7 +50,10 @@ const Browse = () => {
   }, [])
 
   return (
-    <Head title={ `${ genre || 'Browse' } ${ menuTab === TV_TAB ? 'TV Shows' : 'Movies' }` }>
+    <Head
+      title={ `${ genre || 'Browse' } ${ menuTab === TV_TAB ? 'TV Shows' : 'Movies' }` }
+      description={ `Browse ${ genre } ${ menuTab === TV_TAB ? 'TV Shows' : 'Movies' } and more at movie.tienlm.tech` }
+    >
       <div className='min-h-screen xl:w-5/6 xl:ml-1/6 text-white pt-16'>
         <h3 className='p-4 text-shadow'>Select your favorite { genre } { menuTab === 1 ? 'TV shows' : 'movies' }.</h3>
         <div className='flex flex-wrap'>

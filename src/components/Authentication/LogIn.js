@@ -7,6 +7,7 @@ import useForm from 'lib/hooks/useForm'
 import useAuthContext from 'src/hooks/useAuthContext'
 
 const LogIn = ({ resetPassword }) => {
+  const LOGIN_API = 'https://api.movie.tienlm.tech/auth/login'
   const { setUser } = useAuthContext()
   const { submit } = useForm()
 
@@ -19,10 +20,10 @@ const LogIn = ({ resetPassword }) => {
   }
 
   return (
-    <form action='http://localhost:1000/auth/login' onSubmit={ handleLogIn }>
+    <form action={ LOGIN_API } onSubmit={ handleLogIn }>
       <div className='pb-8 border-b'>
         <p className=''>Login to add movies to your favorite list, make comments and more...</p>
-        <Input className='my-4' label='Enter username' name='username' />
+        <Input className='my-4' label='Enter Email' name='email' />
         <Input className='my-4' label='Enter your password' type='password' name='password' />
         <button type='button' onClick={ resetPassword } className='text-primary-cyan'>Forgot your password?</button>
         <PrimaryButton className='w-full mt-4' type='submit'>Log In</PrimaryButton>

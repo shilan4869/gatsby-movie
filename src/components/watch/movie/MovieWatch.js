@@ -42,7 +42,7 @@ const MovieWatch = () => {
   return (
     <Head
       title={ movieDetail?.title }
-      description={ `Watch ${ movieDetail?.title } online!` }
+      description={ `Watch ${ movieDetail?.title } and more movies at movie.tienlm.tech` }
       image={ movieDetail?.poster_path }
     >
       <div className='flex bg'>

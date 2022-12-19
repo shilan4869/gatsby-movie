@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import { useSiteMetadata } from 'src/hooks/useSiteMetadata'
 
 export const SEO = ({ title, description, pathname, children }) => {
@@ -13,10 +14,12 @@ export const SEO = ({ title, description, pathname, children }) => {
 
   return (
     <>
-      <title>{ seo.title }</title>
-      <meta name='description' content={ seo.description } />
-      <meta name='image' content={ seo.image } />
-      <link rel='icon' href={ seo.image } />
+      <Helmet>
+        <title>{ seo.title }</title>
+        <meta name='description' content={ seo.description } />
+        <meta name='image' content={ seo.image } />
+        <link rel='icon' href={ seo.image } />
+      </Helmet>
       { children }
     </>
   )
