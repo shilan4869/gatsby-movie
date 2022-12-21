@@ -167,7 +167,7 @@
   }
 
   .field-input {
-    @apply w-full h-12 px-4 border border-secondary rounded-md ring-1 ring-transparent bg-light outline-none block hover:border-primary-cyan hover:ring-primary-cyan focus:border-primary-cyan focus:ring-primary-cyan disabled:animate-disabled disabled:pointer-events-none;
+    @apply w-full h-14 px-4 border border-secondary rounded-md ring-1 ring-transparent bg-light outline-none block hover:border-primary-cyan hover:ring-primary-cyan focus:border-primary-cyan focus:ring-primary-cyan disabled:animate-disabled disabled:pointer-events-none;
   }
 
   .field-label {

@@ -6,7 +6,7 @@ import Link from 'lib/components/Link'
 export const PrimaryButton = ({ className, children, type = 'button', ...props }) => (
   <button
     { ...props }
-    className={ clsx('button-primary px-10 sm:px-6 py-3', className) }
+    className={ clsx('button-primary px-10 sm:px-6 py-3 disabled:opacity-50', className) }
     type={ type }
   >
     { children }
@@ -16,7 +16,7 @@ export const PrimaryButton = ({ className, children, type = 'button', ...props }
 export const SecondaryButton = ({ className, children, type = 'button', ...props }) => (
   <button
     { ...props }
-    className={ clsx('button-secondary p-3', className) }
+    className={ clsx('button-secondary p-3 disabled:opacity-50', className) }
     type={ type }
   >
     { children }

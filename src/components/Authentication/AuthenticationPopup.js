@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import LoginImage from 'static/login.jpg'
 import { FORGOT_PASS, LOG_IN, SIGN_UP } from 'src/constants/authentication'
-import LogIn from './LogIn'
+import LogIn from './login/Login'
 import SignUp from './SignUp'
 import ResetPassword from './ResetPassword'
 import useAuthContext from 'src/hooks/useAuthContext'

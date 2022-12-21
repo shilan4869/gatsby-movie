@@ -23,6 +23,7 @@
   "dependencies": {
     "babel-preset-gatsby": "^3.0.0",
     "date-fns": "^2.29.3",
+    "formik": "^2.2.9",
     "gatsby": "^5.0.0",
     "gatsby-plugin-image": "^3.0.0",
     "gatsby-plugin-lodash": "^6.0.0",
@@ -38,7 +39,8 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "swiper": "^8.4.4",
-    "webpack-bundle-analyzer": "^4.7.0"
+    "webpack-bundle-analyzer": "^4.7.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@dkh-dev/eslint-config": "^2.0.1",

@@ -1,19 +1,10 @@
-import React, { useEffect } from 'react'
-import useAuthenticationPopup from 'src/hooks/useAuthenticationPopup'
+import React from 'react'
+import LoginForm from 'src/components/authentication/login/LoginForm'
 
-const Test = () => {
-  const { popup, logIn, signUp, preload } = useAuthenticationPopup()
-  const Popup = () => popup
+const test = () => (
+  <div className='min-h-screen xl:w-5/6 xl:ml-1/6 pt-16 text-black'>
+    <LoginForm />
+  </div>
+)
 
-  useEffect(() => {
-    logIn()
-  }, [ logIn, preload ])
-
-  return (
-
-    <Popup />
-
-  )
-}
-
-export default Test
+export default test
