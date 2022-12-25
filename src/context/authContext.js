@@ -1,27 +1,35 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 import { isClient } from 'lib/utilities/is'
 import useAuthenticationPopup from 'src/hooks/useAuthenticationPopup'
-import { set } from 'date-fns'
 
 export const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
-  const USER_INFO_API = 'https://api.movie.tienlm.tech/auth/get/user'
   const [ user, setUser ] = useState(null)
   const { popup, logIn, signUp, preload, resetPassword } = useAuthenticationPopup()
+
+  const USER_INFO_API = 'http://api.movie.tienlm.tech/auth/get/user'
+
   const getUserInfo = async () => {
     if (user) {
       return
     }
 
-    const response = await fetch(USER_INFO_API)
-    const data = await response.json()
+    try {
+      const response = await fetch(USER_INFO_API, {
+        credentials: 'include',
+      })
+      const data = await response.json()
 
-    if (data.success) {
-      console.log(data)
-      setUser(data)
+      if (data.success) {
+        console.log(data)
+        setUser(data)
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
+
 
   if ((!user) && isClient) {
     preload()
@@ -37,6 +45,11 @@ const AuthProvider = ({ children }) => {
     setUser,
     getUserInfo,
   }
+
+  useEffect(() => {
+    getUserInfo()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <AuthContext.Provider value={ authData }>

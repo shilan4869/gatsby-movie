@@ -186,8 +186,16 @@
     transition: transform 0.125s ease-out;
   }
 
+  .field-error {
+    @apply border-danger hover:border-danger hover:ring-danger focus:border-danger focus:ring-danger
+  }
+
   .field-label:focus + label {
     @apply text-primary-cyan;
+  }
+
+  .field-label-error:focus + label {
+    @apply text-danger;
   }
 
   .field-label::-webkit-inner-spin-button,

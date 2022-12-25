@@ -13,10 +13,10 @@ const ResetPassword = ({ logIn }) => (
       <Input label='Your Email' className='my-4' type='password' />
       <Input label='New password' className='my-4' type='password' />
       <Input label='Confirm password' className='my-4' type='password' />
-      <PrimaryButton className='w-full mt-4'>Reset Password</PrimaryButton>
+      <PrimaryButton className='w-full mt-4' disabled>This feature is under development</PrimaryButton>
     </div>
 
-    <button type='button' onClick={ logIn } className='mt-2 text-primary-cyan'>Quay lại đăng nhập</button>
+    <button type='button' onClick={ logIn } className='mt-2 text-primary-cyan'>Back to Log In</button>
   </div>
 )
 

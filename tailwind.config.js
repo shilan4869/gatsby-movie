@@ -18,6 +18,7 @@ module.exports = {
     textColor: theme => ({
       ...theme('colors'),
       DEFAULT: '#141414',
+      error: colors.red[ 500 ],
       dark: colors.gray[ 900 ],
       secondary: colors.gray[ 700 ],
       tertiary: colors.gray[ 500 ],
