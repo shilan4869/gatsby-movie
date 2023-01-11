@@ -6,9 +6,9 @@ export const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
   const [ user, setUser ] = useState(null)
-  const { popup, logIn, signUp, preload, resetPassword } = useAuthenticationPopup()
+  const { popup, logIn, signUp, preload, resetPassword, handleClose: closeAuthPopUp } = useAuthenticationPopup()
 
-  const USER_INFO_API = 'http://api.movie.tienlm.tech/auth/get/user'
+  const USER_INFO_API = 'http://localhost:1000/auth/get/user'
 
   const getUserInfo = async () => {
     if (user) {
@@ -19,10 +19,9 @@ const AuthProvider = ({ children }) => {
       const response = await fetch(USER_INFO_API, {
         credentials: 'include',
       })
-      const data = await response.json()
+      const { data } = await response.json()
 
       if (data.success) {
-        console.log(data)
         setUser(data)
       }
     } catch (error) {
@@ -44,6 +43,7 @@ const AuthProvider = ({ children }) => {
     user,
     setUser,
     getUserInfo,
+    closeAuthPopUp,
   }
 
   useEffect(() => {

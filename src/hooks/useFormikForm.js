@@ -4,7 +4,7 @@ import useAuthContext from './useAuthContext'
 
 const useFormikForm = () => {
   const [ responseError, setResponseError ] = useState('')
-  const { setUser } = useAuthContext()
+  const { setUser, closeAuthPopUp } = useAuthContext()
   const { loading, submit: formSubmit } = useForm()
 
   const clearResponseError = () => {
@@ -16,6 +16,7 @@ const useFormikForm = () => {
       const onFulfilled = response => {
         if (response.data && response.data.username) {
           setUser(response.data)
+          closeAuthPopUp()
         } else if (response.data && response.data.success) {
           console.log('email sent!')
         } else {

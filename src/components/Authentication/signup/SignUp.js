@@ -7,7 +7,7 @@ import useFormikForm from 'src/hooks/useFormikForm'
 
 
 const SignUp = () => {
-  const SIGN_UP_API = 'https://api.movie.tienlm.tech/auth/register'
+  const SIGN_UP_API = 'http://localhost:1000/auth/register'
   const { responseError, clearResponseError, loading, submit } = useFormikForm()
 
   const clearValidateErrors = props => () => {

@@ -57,6 +57,7 @@ const useAuthenticationPopup = () => {
     signUp,
     preload,
     resetPassword,
+    handleClose,
   }
 }
 

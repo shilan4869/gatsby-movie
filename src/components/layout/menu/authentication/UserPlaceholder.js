@@ -2,7 +2,7 @@ import React from 'react'
 import clsx from 'lib/utilities/clsx'
 import useAuthContext from 'src/hooks/useAuthContext'
 import { PrimaryButton, SecondaryButton } from 'src/components/utilities/Button'
-import Logout from 'src/assets/icon/Logout.svg'
+import User from './User'
 
 
 const UserPlaceholder = ({ className }) => {
@@ -10,14 +10,7 @@ const UserPlaceholder = ({ className }) => {
 
   if (user) {
     return (
-      <div className={ clsx('flex flex-col border-b md:border-0 xl:border-b-2 border-dark-gray group text-shadow cursor-pointer', className) }>
-        <div className='flex items-center pl-8 pr-2 xl:pl-12 mb-10 md:mb-0 xl:mb-10 md:ml-auto xl:ml-0'>
-          <p className='py-3 px-6 md:px-4 xl:px-6 xl:py-3 rounded-lg inline'>
-            { user.username }
-          </p>
-          <Logout className='w-5 h-5' fill='#fff' />
-        </div>
-      </div>
+      <User className={ className } />
     )
   }
 

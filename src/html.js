@@ -27,7 +27,7 @@ const Html = ({
       <meta name='apple-mobile-web-app-title' content='Divine Shop' />
       <script dangerouslySetInnerHTML={ { __html: gtag } } />
       <script dangerouslySetInnerHTML={ { __html: fbq } } />
-      <script src='https://accounts.google.com/gsi/client async defer' />
+      <script src='https://accounts.google.com/gsi/client' async defer />
       { headComponents }
     </head>
     <body { ...bodyAttributes }>
