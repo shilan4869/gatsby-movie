@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import useFormikForm from 'src/hooks/useFormikForm'
 import { Formik, Form } from 'formik'
 import { PrimaryButton } from '../../utilities/Button'
@@ -6,6 +6,7 @@ import GoogleIcon from 'src/assets/icon/google.svg'
 import FacebookIcon from 'src/assets/icon/facebook.svg'
 import { FormikInput } from 'lib/components/FormikField'
 import { loginSchema } from '../Schema'
+import { getGoogleUrl, loginWithGoogle } from 'src/utilities/getGoogleUrl'
 
 const LOG_IN_API = 'http://localhost:1000/auth/login'
 const LogIn = ({ resetPassword }) => {
@@ -16,27 +17,13 @@ const LogIn = ({ resetPassword }) => {
     props.setErrors({})
   }
 
-  const handleGoogleResponse = googleResponse => {
-    console.log(googleResponse.credential)
+  const googleLogin = () => {
+    const googleLoginUrl = getGoogleUrl()
+
+    window.addEventListener('message', loginWithGoogle)
+    window.open(googleLoginUrl, '_blank', 'location=yes,height=700,width=600,scrollbars=yes,status=yes')
   }
 
-
-  /* global google */
-  const loginWithGoogle = () => {
-
-
-  }
-
-  useEffect(() => {
-    google.accounts.id.initialize({
-      client_id: process.env.GOOGLE_CLIENT_ID,
-      callback: handleGoogleResponse,
-      auto_select: true,
-    })
-    google.accounts.id.renderButton(googleButton.current, {
-      theme: 'none',
-    })
-  }, [])
 
   return (
     <Formik
@@ -76,7 +63,7 @@ const LogIn = ({ resetPassword }) => {
           </fieldset>
           <div className='text-center block bg-gray-50 -mt-2 mx-auto w-1/2'>Or log in with</div>
           <div className='flex justify-center items-center mt-2'>
-            <button type='button' ref={ googleButton }>
+            <button type='button' ref={ googleButton } onClick={ googleLogin }>
               <GoogleIcon className='w-8' />
             </button>
             <button type='button'>
