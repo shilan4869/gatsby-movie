@@ -20,14 +20,12 @@ export const getGoogleUrl = () => {
   return `${ rootUrl }?${ qs.toString() }`
 }
 
-export const loginWithGoogle = event => {
-  if (event.origin !== 'http://localhost:8000') {
-    return
+export const getUserByGoogleCode = async code => {
+  const response = await request('http://localhost:1000/oauth/google', null, { code })
+
+  if (response && response.data && response.data.username) {
+    return response.data
   }
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-
-  request('http://localhost:1000/oauth/google', null, { code: event.data.payload.code })
-
-  event.target.removeEventListener('message', loginWithGoogle)
+  return null
 }

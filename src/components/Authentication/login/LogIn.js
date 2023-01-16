@@ -6,10 +6,12 @@ import GoogleIcon from 'src/assets/icon/google.svg'
 import FacebookIcon from 'src/assets/icon/facebook.svg'
 import { FormikInput } from 'lib/components/FormikField'
 import { loginSchema } from '../Schema'
-import { getGoogleUrl, loginWithGoogle } from 'src/utilities/getGoogleUrl'
+import { getGoogleUrl, getUserByGoogleCode } from 'src/utilities/getGoogleUrl'
+import useAuthContext from 'src/hooks/useAuthContext'
 
 const LOG_IN_API = 'http://localhost:1000/auth/login'
 const LogIn = ({ resetPassword }) => {
+  const { setUser, closeAuthPopUp } = useAuthContext()
   const { responseError, clearResponseError, loading, submit } = useFormikForm()
   const googleButton = useRef()
 
@@ -17,11 +19,32 @@ const LogIn = ({ resetPassword }) => {
     props.setErrors({})
   }
 
-  const googleLogin = () => {
+  const logInWithGoogle = async event => {
+    if (!(event.origin === 'http://localhost:8000' && event.data.payload)) {
+      return
+    }
+
+    console.log(event)
+
+    const { code } = event.data.payload
+
+    if (code) {
+      const userData = await getUserByGoogleCode(code)
+
+      if (userData) {
+        setUser(userData)
+        closeAuthPopUp()
+      }
+    }
+
+    event.target.removeEventListener('message', logInWithGoogle)
+  }
+
+  const openGooglePopUp = () => {
     const googleLoginUrl = getGoogleUrl()
 
-    window.addEventListener('message', loginWithGoogle)
     window.open(googleLoginUrl, '_blank', 'location=yes,height=700,width=600,scrollbars=yes,status=yes')
+    window.addEventListener('message', logInWithGoogle)
   }
 
 
@@ -63,7 +86,7 @@ const LogIn = ({ resetPassword }) => {
           </fieldset>
           <div className='text-center block bg-gray-50 -mt-2 mx-auto w-1/2'>Or log in with</div>
           <div className='flex justify-center items-center mt-2'>
-            <button type='button' ref={ googleButton } onClick={ googleLogin }>
+            <button type='button' ref={ googleButton } onClick={ openGooglePopUp }>
               <GoogleIcon className='w-8' />
             </button>
             <button type='button'>
